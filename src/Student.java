@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Student implements User {
 	private String name;
-    private String gender;
+    private char gender;
     private String nationality;
     private String matricNo;
     private String password;

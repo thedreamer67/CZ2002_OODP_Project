@@ -19,9 +19,9 @@ public interface User {
 
     public void setName(String name);
 
-    public String getGender();
+    public char getGender();
 
-    public void setGender(String gender);
+    public void setGender(char gender);
 
     public String getNationality();
 
