@@ -116,9 +116,9 @@ public class Login {
 		    
 		    int count = 0; 	
 		    while (count < studentList.size()) {
-		    		if (inputUser.equals((studentList.get(count)).getMatricNo()) && inputPass.equals((studentList.get(count)).getPassword())) {
-		    			System.out.print("You have logged in successfully as " + (studentList.get(count)).getMatricNo() + "\n");
-		    			setusername(studentList.get(count).getMatricNo()); 
+		    		if (inputUser.equals((studentList.get(count)).getUserName()) && inputPass.equals((studentList.get(count)).getPassword())) {
+		    			System.out.print("You have logged in successfully as " + (studentList.get(count)).getUserName() + "\n");
+		    			setusername(studentList.get(count).getUserName()); 
 		    			return 1; 
 		    	}
 		    	count++;
@@ -132,7 +132,7 @@ public class Login {
 		String user = getusername();
 		Student selected = null;
 		for(Student s : studentList) {
-			String matriNo = s.getMatricNo();
+			String matriNo = s.getUserName();
 			if(matriNo == user) {
 			   //System.out.println("student is" + s);
 			   selected = s;

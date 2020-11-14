@@ -1,48 +1,39 @@
-public class User {
+public interface User {
+  /*
     private String name;
     private String gender;
     private String nationality;
     private String userName;
     private String password;
 
-    public User(String name, String gender, String nationality, String password) {
+    public User(String name, String gender, String nationality, String userName, String password) {
       this.name = name;
       this.gender = gender;
       this.nationality = nationality;
+      this.userName = userName;
       this.password = password;
     }
+    */
 
-    public String getName() {
-    	return this.name;
-    }
+    public String getName();
 
-    public void setName(String name) {
-    	this.name = name;
-    }
+    public void setName(String name);
 
-    public String getgender() {
-    	return this.gender;
-    }
+    public String getGender();
 
-    public void setgender(String gender) {
-    	this.gender = gender;
-    }
+    public void setGender(String gender);
 
-    public String getNationality() {
-    	return this.nationality;
-    }
+    public String getNationality();
 
-    public void setNationality(String nationality) {
-    	this.nationality = nationality;
-    }
+    public void setNationality(String nationality);
 
-    public String getPassword() {
-    	return password;
-    }
+    public String getUserName();
 
-    public void setPassword(String password) {
-      this.password = password;
-    }
+    public void setUserName(String userName);
+
+    public String getPassword();
+
+    public void setPassword(String password);
 
     // public String toString() {
     // return "Student [matriculation no.=" + matriNo + ", name =" + name + ", gender=" + gender + ", nationality =" + nationality

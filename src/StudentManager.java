@@ -116,7 +116,7 @@ public class StudentManager {
 		int arrayIndexOfOtherStudent=-1;
 		int arrayIndex1=-1;
 		for(int i=0;i<app.getStudent().size();i++) {
-			if(matricNo.equals(app.getStudent().get(i).getMatricNo())) {
+			if(matricNo.equals(app.getStudent().get(i).getUserName())) {
 				arrayIndexOfOtherStudent = i;
 				for(int j=0;j<app.getStudent().get(i).getCourseRegistered().size();j++) {
 					if(courseCode.equals(app.getStudent().get(i).getCourseRegistered().get(j).getCourseCode())) {

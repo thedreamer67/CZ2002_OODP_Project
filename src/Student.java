@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 
-public class Student {
+public class Student implements User {
 	private String name;
-	private String matricNo;
-	private String gender;
-	private String nationality;
-	private String password;
+    private String gender;
+    private String nationality;
+    private String matricNo;
+    private String password;
+	private String email;
 	private ArrayList<CourseIndex> courseRegistered;
-	public Object matriNo;
+	//public Object matriNo;
 	
 	
 	public Student(String matricNo, String name, String gender, String nationality, String password) {
@@ -31,10 +32,10 @@ public class Student {
 		this.name=name;
 	}
 	
-	public String getMatricNo() {
+	public String getUserName() {
 		return this.matricNo;
 	}
-	public void setMatricNo(String matricNo) {
+	public void setUserName(String matricNo) {
 		this.matricNo=matricNo;
 	}
 	

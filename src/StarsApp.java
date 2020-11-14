@@ -4,8 +4,7 @@ import java.util.Scanner; // I use scanner because it's command line.
 public class StarsApp {
 
 	private static Login login = new Login();
-	//testing
-	//e
+	
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
