@@ -4,7 +4,8 @@ import java.util.Scanner; // I use scanner because it's command line.
 public class StarsApp {
 
 	private static Login login = new Login();
-
+	//testing
+	//e
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
@@ -54,7 +55,7 @@ public class StarsApp {
 		c2.addIndex("001");
 		c2.addIndex("002");
 		Student s = login.getstudent();
-		//Student s2 = new Student("Shauna","U1935622A");
+		Student s2 = new Student("U1923622G","testing123");
 		app.addCourse(c1);
 		app.addCourse(c2);
 		app.addStudent(s);

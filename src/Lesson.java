@@ -6,6 +6,15 @@ public class Lesson {
 	private int duration;
 	private int[] lessonWeek;
 	
+	public Lesson(String type, String location, String dayOfWeek, int time, int duration, int[] lessonWeek) {
+		this.type = type;
+		this.location = location;
+		this.dayOfWeek = dayOfWeek;
+		this.time = time;
+		this.duration = duration;
+		this.lessonWeek = lessonWeek;
+	}
+	
 	public String getType() {
 		return this.type;
 	}
