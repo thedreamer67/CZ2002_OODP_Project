@@ -46,6 +46,7 @@ public class StudentManager {
 					}
 				}*/
 				this.user.getCourseRegistered().remove(i);
+				
 				break;
 			}
 		}

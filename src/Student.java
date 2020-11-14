@@ -18,6 +18,11 @@ public class Student {
 		this.password = password;
 		this.courseRegistered = new ArrayList<CourseIndex>();
 	}
+
+	public Student(String matricNo,String password){
+		this.matricNo=matricNo;
+		this.password=password;
+	}
 	
 	public String getName() {
 		return this.name;
