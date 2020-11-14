@@ -78,7 +78,7 @@ public class StarsApp {
 			sm.addCourse(app);
 		}
 		else if(choice==2)
-			sm.dropCourse();
+			sm.dropCourse(app);
 		else if(choice==3)
 			sm.checkRegistered();
 		else if(choice==4)

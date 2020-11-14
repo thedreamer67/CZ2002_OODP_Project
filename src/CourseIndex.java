@@ -38,8 +38,22 @@ public class CourseIndex extends Course {
 	public void addStudent(Student s) {
 		this.studentList.add(s);
 	}
+	public void removeStudent(Student s) {
+		String matric = s.getMatricNo();
+		for(int i=0;i<studentList.size();i++){
+			if(studentList.get(i).getMatricNo().equals(matric)){
+				studentList.remove(i);
+			}
+		}
+	}
 	/*public ArrayList<Student> getStudent(){
 		return this.studentList;
 	}*/
+	public void increaseVacancy(){
+		this.vacancy=this.vacancy+1;
+	}
+	public void decreaseVacancy(){
+		this.vacancy = this.vacancy-1;
+	}
 
 }
