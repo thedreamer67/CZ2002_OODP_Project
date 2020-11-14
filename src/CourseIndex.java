@@ -35,10 +35,10 @@ public class CourseIndex extends Course {
 		this.waitingList.add(matricNo);
 	}
 	
-	/*public void addStudent(Student s) {
+	public void addStudent(Student s) {
 		this.studentList.add(s);
 	}
-	public ArrayList<Student> getStudent(){
+	/*public ArrayList<Student> getStudent(){
 		return this.studentList;
 	}*/
 

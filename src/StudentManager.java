@@ -21,6 +21,7 @@ public class StudentManager {
 				for(int j=0;j<c.getIndex().size();j++) {
 					if(c.getIndex().get(j).getIndexNo().equals(index)) {
 						user.addCourse(c.getIndex().get(j));
+						app.getCourse().get(i).getIndex().get(j).addStudent(this.user);
 						System.out.println("Successful");
 						user.checkRegistered();
 						break;
