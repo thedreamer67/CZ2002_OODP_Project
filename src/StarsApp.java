@@ -46,7 +46,7 @@ public class StarsApp {
 	}
 
 	public static void AppManager() {
-		AppManager app = new AppManager();
+		DataManager app = new DataManager();
 		Course c1 = new Course("CZ2002","Object Oriented Programming","SCSE");
 		Course c2 = new Course("CZ2005","Databases","SCSE");
 		c1.addIndex("001");
