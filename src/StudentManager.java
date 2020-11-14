@@ -21,6 +21,7 @@ public class StudentManager {
 				for(int j=0;j<c.getIndex().size();j++) {
 					if(c.getIndex().get(j).getIndexNo().equals(index)) {
 						user.addCourse(c.getIndex().get(j));
+						app.getCourse().get(i).getIndex().get(j).decreaseVacancy();
 						app.getCourse().get(i).getIndex().get(j).addStudent(this.user);
 						System.out.println("Successful");
 						user.checkRegistered();
@@ -32,22 +33,31 @@ public class StudentManager {
 			}
 	}
 	
-	public void dropCourse() {
+	public void dropCourse(AppManager app) {
 		Scanner sc = new Scanner(System.in);
 		this.user.checkRegistered();
 		System.out.println("Enter the Course Code of the course you wish to drop");
-		String index = sc.next().toUpperCase();
+		String courseCode = sc.next().toUpperCase();
+		String code = "";
+		String index = "";
 		for(int i=0;i<this.user.getCourseRegistered().size();i++) {
-			if(this.user.getCourseRegistered().get(i).getCourseCode().equals(index)) {
-				/*for(int j=0;j<this.user.getCourseRegistered().get(i).getStudent().size();j++) {
-					if(this.user.getMatricNo().equals(this.user.getCourseRegistered().get(i).getStudent().get(j).getMatricNo())) {
-						this.user.getCourseRegistered().get(i).getStudent().remove(j);
-						break;
-					}
-				}*/
+			if(this.user.getCourseRegistered().get(i).getCourseCode().equals(courseCode)) {
+				code = this.user.getCourseRegistered().get(i).getCourseCode();
+				index = this.user.getCourseRegistered().get(i).getIndexNo();
 				this.user.getCourseRegistered().remove(i);
 				break;
 			}
+		for(int j=0;j<app.getCourse().size();j++){
+			if(app.getCourse().get(j).getCourseCode().equals(code)){
+				for(int a=0;a<app.getCourse().get(i).getIndex().size();a++){
+					if(app.getCourse().get(i).getIndex().get(a).getIndexNo().equals(index)){
+						app.getCourse().get(i).getIndex().get(a).decreaseVacancy();
+						app.getCourse().get(i).getIndex().get(a).removeStudent(this.user);
+					}
+				}
+			}
+		}
+		
 		}
 		System.out.println("Course successfully dropped.");
 		System.out.println("\n");
