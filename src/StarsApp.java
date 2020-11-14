@@ -20,16 +20,16 @@ public class StarsApp {
 			switch (sc.nextInt()) {
 				case 1:
 					login.student();
-		    	  if (login.getusertype() == 1) {
-		    	  retry = false;
-		    	  }
-		    	  break;
-		      case 2: 
-		    	  login.admin();
-		    	  if (login.getusertype() == 2) {
-		    	  retry = false;
-		    	  }
-		    	  break;
+					if (login.getusertype() == 1) {
+					retry = false;
+					}
+					break;
+		     	case 2: 
+					login.admin();
+					if (login.getusertype() == 2) {
+					retry = false;
+					}
+					break;
 			}
 		
 		}

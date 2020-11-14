@@ -1,8 +1,8 @@
 public class User {
-    //private String matriNo;
     private String name;
     private String gender;
     private String nationality;
+    private String userName;
     private String password;
 
     public User(String name, String gender, String nationality, String password) {

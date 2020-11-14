@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-public class AppManager {
+public class DataManager {
 	private ArrayList<Student> student;
 	//private ArrayList<Admin> admin;
 	private ArrayList<Course> course;
 	
-	public AppManager() {
+	public DataManager() {
 		this.student = new ArrayList<Student>();
 		this.course = new ArrayList<Course>();
 	}
