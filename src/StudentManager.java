@@ -1,11 +1,10 @@
-//package StarsAPP;
 import java.util.*;
 
 public class StudentManager {
 	private Student user;
 	
-	public void setUser(Student user) {
-		this.user=user;
+	public void setUser(Student student) {
+		this.user=student;
 	}
 	
 	public void addCourse(AppManager app) {
@@ -46,7 +45,6 @@ public class StudentManager {
 					}
 				}*/
 				this.user.getCourseRegistered().remove(i);
-				
 				break;
 			}
 		}

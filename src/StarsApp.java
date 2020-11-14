@@ -55,7 +55,6 @@ public class StarsApp {
 		c2.addIndex("001");
 		c2.addIndex("002");
 		Student s = login.getstudent();
-		Student s2 = new Student("U1923622G","testing123");
 		app.addCourse(c1);
 		app.addCourse(c2);
 		app.addStudent(s);

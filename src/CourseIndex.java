@@ -31,7 +31,9 @@ public class CourseIndex extends Course {
 		this.lessons.add(new Lesson(type,location,dayOfWeek,time,duration,lessonWeek));
 	}
 	
-	//public void 
+	public void addWaitingList(String matricNo) {
+		this.waitingList.add(matricNo);
+	}
 	
 	/*public void addStudent(Student s) {
 		this.studentList.add(s);
