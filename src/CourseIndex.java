@@ -23,24 +23,6 @@ public class CourseIndex extends Course {
 	public int getVacancy() {
 		return this.vacancy;
 	}
-	public boolean setLimit(int limit) {
-		int totalRegistered = this.limit-this.vacancy;
-		if(limit>totalRegistered) {
-			this.limit = limit;
-			return true;
-		}
-		else
-			return false;
-    }
-    
-    public void checkVacancy() {
-        // check vacancy of the index
-        // if there's vacancy:
-            // update waiting list accordingly
-            // call add course method for the student
-            // call add student method for the course
-            // call send email method
-    }
 	public void setVacancy(int vacancy) {
 		this.vacancy=vacancy;
 	}
@@ -56,6 +38,15 @@ public class CourseIndex extends Course {
 	}
 	public ArrayList<Student> getStudent(){
 		return this.studentList;
-	}*/
+    }*/
+    
+    public void checkVacancy() {
+        // check vacancy of the index
+        // if there's vacancy:
+            // update waiting list accordingly
+            // call add course method for the student
+            // call add student method for the course
+            // call send email method
+    }
 
 }
