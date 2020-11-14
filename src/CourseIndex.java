@@ -34,7 +34,16 @@ public class CourseIndex extends Course {
 		}
 		else
 			return false;
-	}
+    }
+    
+    public void checkVacancy() {
+        // check vacancy of the index
+        // if there's vacancy:
+            // update waiting list accordingly
+            // call add course method for the student
+            // call add student method for the course
+            // call send email method
+    }
 	
 	/*public void addStudent(Student s) {
 		this.studentList.add(s);

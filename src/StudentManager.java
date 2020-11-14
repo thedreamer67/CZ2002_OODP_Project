@@ -140,6 +140,10 @@ public class StudentManager {
 		this.user.addCourse(temp);
 		System.out.println("Swopping of index successful");
 		this.user.checkRegistered();
-	}
+    }
+    
+    public void sendEmail() {
+        // method to send an email to a student according to the email given, maybe take email as input
+    }
 	
 }
