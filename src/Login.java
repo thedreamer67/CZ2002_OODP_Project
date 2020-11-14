@@ -89,7 +89,7 @@ public class Login {
 			    String[] temp = line.split(",");
 			    String matriNo = temp[0];
 			    String name = temp[1];
-			    String gender = temp[2];
+			    char gender = temp[2].charAt(0);
 			    String nationality = temp[3];
 			    String password = temp[4];
 			    studentList.add(new Student(matriNo, name, gender, nationality, password));

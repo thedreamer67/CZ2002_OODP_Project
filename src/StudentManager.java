@@ -1,11 +1,10 @@
-//package StarsAPP;
 import java.util.*;
 
 public class StudentManager {
 	private Student user;
 	
-	public void setUser(Student user) {
-		this.user=user;
+	public void setUser(Student student) {
+		this.user=student;
 	}
 	
 	public void addCourse(DataManager app) {
@@ -22,6 +21,7 @@ public class StudentManager {
 				for(int j=0;j<c.getIndex().size();j++) {
 					if(c.getIndex().get(j).getIndexNo().equals(index)) {
 						user.addCourse(c.getIndex().get(j));
+						app.getCourse().get(i).getIndex().get(j).addStudent(this.user);
 						System.out.println("Successful");
 						user.checkRegistered();
 						break;
@@ -46,7 +46,6 @@ public class StudentManager {
 					}
 				}*/
 				this.user.getCourseRegistered().remove(i);
-				
 				break;
 			}
 		}

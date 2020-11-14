@@ -10,19 +10,13 @@ public class Student implements User {
 	private ArrayList<CourseIndex> courseRegistered;
 	//public Object matriNo;
 	
-	
-	public Student(String matricNo, String name, String gender, String nationality, String password) {
-		this.matricNo=matricNo;
+	public Student(String name, String matricNo,char gender,String nationality,String password) {
 		this.name=name;
-		this.gender = gender;
-		this.nationality = nationality;
-		this.password = password;
-		this.courseRegistered = new ArrayList<CourseIndex>();
-	}
-
-	public Student(String matricNo,String password){
 		this.matricNo=matricNo;
+		this.gender=gender;
+		this.nationality=nationality;
 		this.password=password;
+		this.courseRegistered = new ArrayList<CourseIndex>();
 	}
 	
 	public String getName() {
@@ -39,10 +33,10 @@ public class Student implements User {
 		this.matricNo=matricNo;
 	}
 	
-	public String getGender() {
+	public char getGender() {
 		return this.gender;
 	}
-	public void setGender(String gender) {
+	public void setGender(char gender) {
 		this.gender=gender;
 	}
 	
@@ -74,9 +68,5 @@ public class Student implements User {
 		for(int i=0;i<this.courseRegistered.size();i++) {
 			System.out.println((i+1)+". "+this.courseRegistered.get(i).getCourseCode()+"\t"+this.courseRegistered.get(i).getCourseName()+"\t"+this.courseRegistered.get(i).getIndexNo());
 		}
-	}
-
-	public boolean contains(String user) {
-		return false;
 	}
 }
