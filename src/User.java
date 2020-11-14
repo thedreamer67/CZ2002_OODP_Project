@@ -20,14 +20,6 @@ public class User {
     	this.name = name;
     }
 
-    // public String getMatriNo() {
-    // 	return matriNo;
-    // }
-
-    public void setMatriNo(String matriNo) {
-    	this.matriNo = matriNo;
-    }
-
     public String getgender() {
     	return this.gender;
     }
