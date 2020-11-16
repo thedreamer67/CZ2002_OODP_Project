@@ -2,12 +2,13 @@ import java.util.ArrayList;
 
 public class AppManager {
 	private ArrayList<Student> student;
-	//private ArrayList<Admin> admin;
+	private ArrayList<Admin> admin;
 	private ArrayList<Course> course;
 	
 	public AppManager() {
 		this.student = new ArrayList<Student>();
 		this.course = new ArrayList<Course>();
+		this.admin = new ArrayList<Admin>();
 	}
 	
 	public ArrayList<Course> getCourse(){
@@ -17,6 +18,10 @@ public class AppManager {
 	public ArrayList<Student> getStudent(){
 		return this.student;
 	}
+
+	public ArrayList<Admin> getAdmin(){
+		return this.admin;
+	}
 	
 	public void addStudent(Student s) {
 		student.add(s);
@@ -24,6 +29,10 @@ public class AppManager {
 	
 	public void addCourse(Course c) {
 		course.add(c);
+	}
+
+	public void addAdmin(Admin a) {
+		admin.add(a);
 	}
 	
 	public void printCourse() {

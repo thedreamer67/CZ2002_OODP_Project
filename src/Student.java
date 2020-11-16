@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 
+<<<<<<< Updated upstream
 public class Student {
+=======
+public class Student implements User {
+	private int type;
+>>>>>>> Stashed changes
 	private String name;
 	private String matricNo;
 	private char gender;
@@ -9,6 +14,7 @@ public class Student {
 	private ArrayList<CourseIndex> courseRegistered;
 	
 	public Student(String name, String matricNo,char gender,String nationality,String password) {
+		this.type = 2;
 		this.name=name;
 		this.matricNo=matricNo;
 		this.gender=gender;
@@ -17,6 +23,9 @@ public class Student {
 		this.courseRegistered = new ArrayList<CourseIndex>();
 	}
 	
+	public int getType(){
+		return this.type;
+	}
 	public String getName() {
 		return this.name;
 	}

@@ -33,7 +33,7 @@ public class StudentManager {
 			}
 	}
 	
-	public void dropCourse(AppManager app) {
+	public void dropCourse(DataManager app) {
 		Scanner sc = new Scanner(System.in);
 		this.user.checkRegistered();
 		System.out.println("Enter the Course Code of the course you wish to drop");

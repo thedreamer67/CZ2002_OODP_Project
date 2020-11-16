@@ -1,14 +1,19 @@
 //package src;
 import java.util.Scanner; // I use scanner because it's command line.
+<<<<<<< Updated upstream
 
 public class StarsApp {
 
 	private static Login login = new Login();
 	//testing
 	//e
+=======
+import java.io.*;
+public class StarsApp {	
+>>>>>>> Stashed changes
 	public static void main(String[] args) {
-
 		Scanner sc = new Scanner(System.in);
+<<<<<<< Updated upstream
 		// Login login = new Login();
 
 		boolean retry = true; // retry until user/admin is logged in
@@ -31,19 +36,37 @@ public class StarsApp {
 		    	  retry = false;
 		    	  }
 		    	  break;
+=======
+		DataManager app = new DataManager();
+		FileIO file = new FileIO();
+		file.readCourse(app);
+		file.readStudent(app);
+		file.readCourseIndex(app);
+		LoginManager lm = new LoginManager();
+		String[] array = lm.Login(app);
+		AdminManager am = new AdminManager();
+		StudentManager sm = new StudentManager();
+		if(array[0]=="1"){
+			for(int i=0;i<app.getAdmin().size();i++){
+				if(array[1].equals(app.getAdmin().get(i).getUserName())){
+					am.setUser(app.getAdmin().get(i));
+					break;
+				}
+>>>>>>> Stashed changes
 			}
-		
 		}
-		
-		if (login.getusertype() == 1) {
-			System.out.println(login.getusername());
-			AppManager();
-
+		else{
+			for(int i=0;i<app.getStudent().size();i++){
+				if(array[1].equals(app.getStudent().get(i).getUserName())){
+					sm.setUser(app.getStudent().get(i));
+					break;
+				}
+			}
 		}
-
-		else if (login.getusertype() == 2) {
-			System.out.println(login.getusername());
+		if(array[0]=="1"){
+			//Admin Options
 		}
+<<<<<<< Updated upstream
 	}
 
 	public static void AppManager() {
@@ -63,8 +86,11 @@ public class StarsApp {
 		StudentManager sm = new StudentManager();
 		sm.setUser(s);
 		int choice;
+=======
+		else{
+			int choice;
+>>>>>>> Stashed changes
 		do {
-		Scanner sc = new Scanner(System.in);
 		System.out.println("1.Register a course");
 		System.out.println("2.Drop a course");
 		System.out.println("3.Check/Print Courses Registered");
@@ -88,52 +114,6 @@ public class StarsApp {
 		else if(choice==6)
 			sm.swopIndex(app);
 		}while(choice!=7);
-	
-
-	}
-
-
-}
-
-
-
-/* Old code
-while (scantext.hasNextLine()) {
-String line = scantext.nextLine();
-System.out.println(line);
-}
-
-import java.util.Scanner; // I use scanner because it's command line.
-import java.io.*; 
-
-public class login {
-	public static void main(String[] args) {
-	    Scanner scantext = null; //scan text from keyboard 
-	    Scanner keyboard = new Scanner (System.in); //scan keyboard
-		try {
-			scantext = new Scanner (new File("out.txt"));
-		    String user = scantext.nextLine();
-		    String pass = scantext.nextLine(); // looks at selected file in scan
-
-		    String inpUser = keyboard.nextLine();
-		    String inpPass = keyboard.nextLine(); // gets input from user
-
-		    if (inpUser.equals(user) && inpPass.equals(pass)) {
-		        System.out.print("your login message");
-		    } else {
-		        System.out.print("your error message");
-			scantext.close();
-		    }
-		  
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found");
 		}
 	}
 }
-
-
-String test = "testing"; 
-System.out.println("Your HashCode Generated is: " + app.hashing(test));
-
-*/
-
