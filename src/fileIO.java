@@ -1,7 +1,7 @@
 import java.io.*;
-public class FileIO {
+public class fileIO {
     public void readCourse(DataManager app){
-        String courseFile = "/Users/user/Desktop/courses.txt";
+        String courseFile = "C:/Users/Soul/Desktop/courses.txt";
 		BufferedReader br=null;
 		String line = "";
 		try {
@@ -29,7 +29,7 @@ public class FileIO {
 			}
     }
     public void readStudent(DataManager app){
-        String studentFile = "/Users/user/Desktop/students.txt";
+        String studentFile = "C:/Users/Soul/Desktop/students.txt";
 		BufferedReader br2=null;
 		String line2 = "";
 		try {		
@@ -67,7 +67,7 @@ public class FileIO {
 				}
     }
     public void readCourseIndex(DataManager app){
-        String courseIndexFile = "/Users/user/Desktop/courseindex.txt";
+        String courseIndexFile = "C:/Users/Soul/Desktop/courseindex.txt";
 		BufferedReader br3=null;
 		String line3 = "";	
 		int arrayindex1=-1;
@@ -131,6 +131,33 @@ public class FileIO {
 				}
 			}
 		}
+	}
+	
+	public void readAdmin(DataManager app){
+        String adminFile = "C:/Users/Soul/Desktop/admins.txt";
+		BufferedReader br4=null;
+		String line4 = "";
+		try {		
+				br4 = new BufferedReader(new FileReader(adminFile));
+				while ((line4 = br4.readLine()) != null) {
+					String[] values = line4.split("\t");
+					app.addAdmin(new Admin(values[0],values[1],values[2].charAt(0),values[3],values[4]));
+					//System.out.println("Admin: " + app.getAdmin());
+					}
+		
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					if (br4 != null) {
+						try {
+							br4.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				}
     }
     
 }

@@ -26,7 +26,7 @@ public class LoginManager {
             do{
                 System.out.println("Enter Password:");
                 String inputPass = hashing(sc.nextLine());
-                if(searchAdmin(inputPass, app)==false){
+                if(verifyAdmin(inputPass, app)==false){
                     System.out.println("Incorrect Password, try again");
                 }
                 else{
