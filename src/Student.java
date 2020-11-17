@@ -9,10 +9,10 @@ public class Student implements User {
 	private String password;
 	private ArrayList<CourseIndex> courseRegistered;
 	
-	public Student(String name, String userName,char gender,String nationality,String password) {
+	public Student(String name, String matricNo,char gender,String nationality,String password) {
 		this.type = 2;
 		this.name=name;
-		this.userName=userName;
+		this.userName=matricNo;
 		this.gender=gender;
 		this.nationality=nationality;
 		this.password=password;

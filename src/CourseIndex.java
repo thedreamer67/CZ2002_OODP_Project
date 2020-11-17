@@ -11,6 +11,8 @@ public class CourseIndex extends Course {
 		super(courseCode,courseName,school);
 		this.indexNo=indexNo;
 		this.waitingList = new ArrayList<String>();
+		this.studentList = new ArrayList<Student>();
+		this.lessons = new ArrayList<Lesson>();
 	}
 	
 	public String getIndexNo() {
@@ -39,9 +41,9 @@ public class CourseIndex extends Course {
 		this.studentList.add(s);
 	}
 	public void removeStudent(Student s) {
-		String matric = s.getMatricNo();
+		String matric = s.getUserName();
 		for(int i=0;i<studentList.size();i++){
-			if(studentList.get(i).getMatricNo().equals(matric)){
+			if(studentList.get(i).getUserName().equals(matric)){
 				studentList.remove(i);
 			}
 		}
@@ -64,6 +66,12 @@ public class CourseIndex extends Course {
 	}
 	public void decreaseVacancy(){
 		this.vacancy = this.vacancy-1;
+	}
+
+	public void printLesson(){
+		for(int i=0;i<lessons.size();i++){
+			System.out.println(this.lessons.get(i).getType()+","+this.lessons.get(i).getLocation()+","+this.lessons.get(i).getDayOfWeek());
+		}
 	}
 
 }

@@ -33,7 +33,7 @@ public class StudentManager {
 			}
 	}
 	
-	public void dropCourse(AppManager app) {
+	public void dropCourse(DataManager app) {
 		Scanner sc = new Scanner(System.in);
 		this.user.checkRegistered();
 		System.out.println("Enter the Course Code of the course you wish to drop");
@@ -51,7 +51,7 @@ public class StudentManager {
 			if(app.getCourse().get(j).getCourseCode().equals(code)){
 				for(int a=0;a<app.getCourse().get(i).getIndex().size();a++){
 					if(app.getCourse().get(i).getIndex().get(a).getIndexNo().equals(index)){
-						app.getCourse().get(i).getIndex().get(a).decreaseVacancy();
+						app.getCourse().get(i).getIndex().get(a).increaseVacancy();
 						app.getCourse().get(i).getIndex().get(a).removeStudent(this.user);
 					}
 				}
