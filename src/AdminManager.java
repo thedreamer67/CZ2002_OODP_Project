@@ -95,10 +95,10 @@ public class AdminManager {
         
         System.out.println("Please enter course code of the course you wish to update:");
         String courseCode = sc.next().toUpperCase();
-        boolean contiune = true;
+        boolean cont = true;
 		for(int i=0;i<app.getCourse().size();i++) {
 			if(courseCode.equals(app.getCourse().get(i).getCourseCode())) {
-                while(contiune){
+                while(cont){
                     System.out.println("1.Update course code");
                     System.out.println("2.Update course name");
                     System.out.println("3.Update course school");
@@ -133,12 +133,12 @@ public class AdminManager {
                             System.out.println(" "); //extra spacing
                             break;
                         case (4):
-                            contiune = false;
+                            cont = false;
                     }
                 }	
             }
         }
-        if (contiune == true){
+        if (cont == true){
             System.out.println("Invalid Course Code\n");
         }
     }
