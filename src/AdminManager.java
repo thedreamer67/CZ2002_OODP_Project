@@ -30,7 +30,6 @@ public class AdminManager {
             Student s = app.getStudent().get(i);
             Course c = app.getCourse().get(i);
             if (courseCode.equals(c.getCourseCode()) && courseCode.equals(s.getCourseRegistered().get(i).getCourseCode())){
-            
                 app.getCourse().get(i).printVacancy();
                 System.out.println("Enter the course index that you wish to print the student list from:");
                 String courseIndex = sc.next();
@@ -39,8 +38,7 @@ public class AdminManager {
                         System.out.println(s.getUserName() + "\t" + s.getName());
                     }
                 }
-                System.out.println();
-                break;
+                
                
             }
             
