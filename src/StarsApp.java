@@ -4,27 +4,27 @@ import java.io.*;
 public class StarsApp {	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		DataManager app = new DataManager();
+		DataManager data = new DataManager();
 		FileIO file = new FileIO();
-		file.readCourse(app);
-		file.readStudent(app);
-		file.readCourseIndex(app);
+		file.readCourse(data);
+		file.readStudent(data);
+		file.readCourseIndex(data);
 		LoginManager lm = new LoginManager();
-		String[] array = lm.Login(app);
+		String[] array = lm.Login(data);
 		AdminManager am = new AdminManager();
 		StudentManager sm = new StudentManager();
 		if(array[0]=="1"){
-			for(int i=0;i<app.getAdmin().size();i++){
-				if(array[1].equals(app.getAdmin().get(i).getUserName())){
-					am.setUser(app.getAdmin().get(i));
+			for(int i=0;i<data.getAdmin().size();i++){
+				if(array[1].equals(data.getAdmin().get(i).getUserName())){
+					am.setUser(data.getAdmin().get(i));
 					break;
 				}
 			}
 		}
 		else{
-			for(int i=0;i<app.getStudent().size();i++){
-				if(array[1].equals(app.getStudent().get(i).getUserName())){
-					sm.setUser(app.getStudent().get(i));
+			for(int i=0;i<data.getStudent().size();i++){
+				if(array[1].equals(data.getStudent().get(i).getUserName())){
+					sm.setUser(data.getStudent().get(i));
 					break;
 				}
 			}
@@ -45,18 +45,18 @@ public class StarsApp {
 		System.out.println("Enter Choice");
 		choice = sc.nextInt();
 		if(choice==1) {
-			sm.addCourse(app);
+			sm.addCourse(data);
 		}
 		else if(choice==2)
-			sm.dropCourse(app);
+			sm.dropCourse(data);
 		else if(choice==3)
 			sm.checkRegistered();
 		else if(choice==4)
-			sm.checkVacancy(app);
+			sm.checkVacancy(data);
 		else if(choice==5)
-			sm.changeIndex(app);
+			sm.changeIndex(data);
 		else if(choice==6)
-			sm.swopIndex(app);
+			sm.swopIndex(data);
 		}while(choice!=7);
 		}
 	}

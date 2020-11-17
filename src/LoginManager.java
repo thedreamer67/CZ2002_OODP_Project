@@ -26,19 +26,19 @@ public class LoginManager {
             do{
                 System.out.println("Enter Password:");
                 String inputPass = hashing(sc.nextLine());
-                if(searchAdmin(inputPass, app)==false){
+                if(searchAdmin(inputPass, app)==false) {
                     System.out.println("Incorrect Password, try again");
                 }
-                else{
+                else {
                     System.out.println("Successful Login");
                     check2=true;
                 }
-            }while(check2==false);
-        String choiceStr = Integer.toString(choice);
-        String[] array = new String[2];
-        array[0]=choiceStr;
-        array[1]=inputUser;
-        return array;
+            } while(check2==false);
+            String choiceStr = Integer.toString(choice);
+            String[] array = new String[2];
+            array[0]=choiceStr;
+            array[1]=inputUser;
+            return array;
         }
         else{
             String inputUser="";
