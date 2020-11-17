@@ -10,6 +10,7 @@ public class StarsApp {
 		file.readCourse(data);
 		file.readStudent(data);
 		file.readCourseIndex(data);
+		file.readAccessperiod(data);
 		LoginManager lm = new LoginManager();
 		String[] array = lm.Login(data);
 		AdminManager am = new AdminManager();
@@ -28,28 +29,30 @@ public class StarsApp {
 
 			int choice = 0;
 			do{
-				System.out.println("1.Check availability slot for an index");
-				System.out.println("2.Print student list by index");
-				System.out.println("3.Print student list by course");
-				//System.out.println("4.Check Vacancies Available");
-				//System.out.println("5.Swap Index Number of Course");
-				//System.out.println("6.Swop Index with Another Student");
-				System.out.println("7.Exit");
+				System.out.println("1.Edit a student access period");
+				System.out.println("2.Add a student");
+				System.out.println("3.Add a course");
+				System.out.println("4.Update a course");
+				System.out.println("5.Check availability slot for an index");
+				System.out.println("6.Print student list by index");
+				System.out.println("7.Print student list by course");
+				System.out.println("8.Exit");
 				System.out.println("Enter Choice");
 				choice = sc.nextInt();
-				if(choice==1) {
-					am.checkVacancy(data);
-				}
+				if(choice==1) 
+					am.editAccessPeriod(data);
 				else if(choice==2)
-					am.printStudent(data);
+					am.addAStudent(data);
 				else if(choice==3)
-					am.printStudentByCourse(data);
-				/*else if(choice==4)
-					sm.checkVacancy(data);
+					am.addACourse(data);
+				else if(choice==4)
+					am.UpdateACourse(data);	
 				else if(choice==5)
-				sm.changeIndex(data);
+					am.checkVacancy(data);
 				else if(choice==6)
-					sm.swopIndex(data);*/
+					am.printStudent(data);
+				else if(choice==7)
+					am.printStudentByCourse(data);
 			}while(choice!=7);
 			
 			case 2: 

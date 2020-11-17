@@ -4,11 +4,13 @@ public class DataManager {
 	private ArrayList<Student> student;
 	private ArrayList<Admin> admin;
 	private ArrayList<Course> course;
+	private String[] accessperiod;
 	
 	public DataManager() {
 		this.student = new ArrayList<Student>();
 		this.course = new ArrayList<Course>();
 		this.admin = new ArrayList<Admin>();
+		this.accessperiod = new String[3];
 	}
 	
 	public ArrayList<Course> getCourse(){
@@ -21,6 +23,10 @@ public class DataManager {
 
 	public ArrayList<Admin> getAdmin(){
 		return this.admin;
+	}
+	public String[] getAccessPeriod(){
+
+		return this.accessperiod;
 	}
 	
 	public void addStudent(Student s) {
@@ -35,6 +41,11 @@ public class DataManager {
 		admin.add(a);
 	}
 	
+	public void addAccessPeriod(String a, String b) {
+		accessperiod[0] = a; //start date 
+		accessperiod[1] = b; //end date 
+	}
+
 	public void printCourse() {
 		for(int i=0;i<this.course.size();i++) {
 			System.out.println(course.get(i).getCourseCode()+" "+course.get(i).getCourseName());

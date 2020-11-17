@@ -1,7 +1,7 @@
 import java.io.*;
 public class fileIO {
     public void readCourse(DataManager app){
-        String courseFile = "C:/Users/Soul/Desktop/courses.txt";
+        String courseFile = "/Users/nicklaustan/VSC Repo/CZ2002_OODP_Project/courses.txt";
 		BufferedReader br=null;
 		String line = "";
 		try {
@@ -29,7 +29,7 @@ public class fileIO {
 			}
     }
     public void readStudent(DataManager app){
-        String studentFile = "C:/Users/Soul/Desktop/students.txt";
+        String studentFile = "/Users/nicklaustan/VSC Repo/CZ2002_OODP_Project/students.txt";
 		BufferedReader br2=null;
 		String line2 = "";
 		try {		
@@ -67,7 +67,7 @@ public class fileIO {
 				}
     }
     public void readCourseIndex(DataManager app){
-        String courseIndexFile = "C:/Users/Soul/Desktop/courseindex.txt";
+        String courseIndexFile = "/Users/nicklaustan/VSC Repo/CZ2002_OODP_Project/courseindex.txt";
 		BufferedReader br3=null;
 		String line3 = "";	
 		int arrayindex1=-1;
@@ -134,7 +134,7 @@ public class fileIO {
 	}
 	
 	public void readAdmin(DataManager app){
-        String adminFile = "C:/Users/Soul/Desktop/admins.txt";
+        String adminFile = "/Users/nicklaustan/VSC Repo/CZ2002_OODP_Project/admins.txt";
 		BufferedReader br4=null;
 		String line4 = "";
 		try {		
@@ -158,6 +158,32 @@ public class fileIO {
 						}
 					}
 				}
-    }
+	}
+	public void readAccessperiod(DataManager app){
+		String AccessperiodFile = "/Users/nicklaustan/VSC Repo/CZ2002_OODP_Project/accessperiod.txt";
+		BufferedReader br5=null;
+		String line5 = "";
+		try {		
+			br5 = new BufferedReader(new FileReader(AccessperiodFile));
+			while ((line5 = br5.readLine()) != null) {
+				String[] values = line5.split("\t");
+				app.addAccessPeriod(values[0],values[1]);
+				//System.out.println("Admin: " + app.getAdmin());
+				}
+	
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (br5 != null) {
+					try {
+						br5.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+	}
     
 }
