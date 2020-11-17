@@ -31,7 +31,9 @@ public class StarsApp {
 					break;
 				}
 			}
+		}
 
+		if (array[0] == "1"){
 			int choice = 0;
 			do {
 			System.out.println("1.Register a course");
@@ -59,7 +61,7 @@ public class StarsApp {
 			}while(choice!=7);
 		}
 
-		
+		else if(array[0]=="2"){
 		int choice=0;
 			do{
 				System.out.println("1.Check availability slot for an index");
@@ -85,6 +87,7 @@ public class StarsApp {
 				else if(choice==6)
 					sm.swopIndex(data);*/
 			}while(choice!=7);
+		}
 		
 	}
 }
