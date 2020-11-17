@@ -91,6 +91,7 @@ public class StudentManager {
 		int arrayIndexInStudent = -1;
 		for(int i=0;i<this.user.getCourseRegistered().size();i++) {
 			if(courseCode.equals(this.user.getCourseRegistered().get(i).getCourseCode())) {
+				this.user.getCourseRegistered().get(i).increaseVacancy();
 				arrayIndexInStudent = i;
 				break;
 			}
@@ -109,6 +110,7 @@ public class StudentManager {
 			if(index.equals(app.getCourse().get(arrayIndexInApp).getIndex().get(a).getIndexNo())) {
 				this.user.getCourseRegistered().remove(arrayIndexInStudent);
 				this.user.addCourse(app.getCourse().get(arrayIndexInApp).getIndex().get(a));
+				app.getCourse().get(arrayIndexInApp).getIndex().get(a).decreaseVacancy();
 				System.out.println("Changing of course index successful");
 				this.user.checkRegistered();
 			}
