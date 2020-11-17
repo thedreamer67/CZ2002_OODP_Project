@@ -1,42 +1,9 @@
 //package src;
 import java.util.Scanner; // I use scanner because it's command line.
-<<<<<<< Updated upstream
-
-public class StarsApp {
-
-	private static Login login = new Login();
-	//testing
-	//e
-=======
 import java.io.*;
 public class StarsApp {	
->>>>>>> Stashed changes
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-<<<<<<< Updated upstream
-		// Login login = new Login();
-
-		boolean retry = true; // retry until user/admin is logged in
-
-		System.out.println("(1) Login as Student");
-		System.out.println("(2) Login as Admin");
-
-		while (retry) {
-			System.out.println("Enter the number of your choice:");
-			switch (sc.nextInt()) {
-				case 1:
-					login.student();
-		    	  if (login.getusertype() == 1) {
-		    	  retry = false;
-		    	  }
-		    	  break;
-		      case 2: 
-		    	  login.admin();
-		    	  if (login.getusertype() == 2) {
-		    	  retry = false;
-		    	  }
-		    	  break;
-=======
 		DataManager app = new DataManager();
 		FileIO file = new FileIO();
 		file.readCourse(app);
@@ -52,7 +19,6 @@ public class StarsApp {
 					am.setUser(app.getAdmin().get(i));
 					break;
 				}
->>>>>>> Stashed changes
 			}
 		}
 		else{
@@ -66,30 +32,8 @@ public class StarsApp {
 		if(array[0]=="1"){
 			//Admin Options
 		}
-<<<<<<< Updated upstream
-	}
-
-	public static void AppManager() {
-		AppManager app = new AppManager();
-		Course c1 = new Course("CZ2002","Object Oriented Programming","SCSE");
-		Course c2 = new Course("CZ2005","Databases","SCSE");
-		c1.addIndex("001");
-		c1.addIndex("002");
-		c2.addIndex("001");
-		c2.addIndex("002");
-		Student s = login.getstudent();
-		app.addCourse(c1);
-		app.addCourse(c2);
-		app.addStudent(s);
-		//app.addStudent(s2);
-		//s2.addCourse(c1.getIndex().get(0));
-		StudentManager sm = new StudentManager();
-		sm.setUser(s);
-		int choice;
-=======
 		else{
 			int choice;
->>>>>>> Stashed changes
 		do {
 		System.out.println("1.Register a course");
 		System.out.println("2.Drop a course");

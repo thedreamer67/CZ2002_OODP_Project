@@ -1,51 +1,16 @@
-public class User {
-    //private String matriNo;
-    private String name;
-    private String gender;
-    private String nationality;
-    private String password;
+interface User {
+    public String getUserName();
+    public void setUserName(String userName);
 
-    public User(String name, String gender, String nationality, String password) {
-      this.name = name;
-      this.gender = gender;
-      this.nationality = nationality;
-      this.password = password;
-    }
+    public String getName();
+    public void setName(String name);
 
-    public String getName() {
-    	return this.name;
-    }
+    public char getGender();
+    public void setGender(char gender);
 
-    public void setName(String name) {
-    	this.name = name;
-    }
+    public String getNationality();
+    public void setNationality(String nationality);
 
-    public String getgender() {
-    	return this.gender;
-    }
-
-    public void setgender(String gender) {
-    	this.gender = gender;
-    }
-
-    public String getNationality() {
-    	return this.nationality;
-    }
-
-    public void setNationality(String nationality) {
-    	this.nationality = nationality;
-    }
-
-    public String getPassword() {
-    	return password;
-    }
-
-    public void setPassword(String password) {
-      this.password = password;
-    }
-
-    // public String toString() {
-    // return "Student [matriculation no.=" + matriNo + ", name =" + name + ", gender=" + gender + ", nationality =" + nationality
-    // + "]";
-    // }
+    public String getPassword();
+    public void setPassword(String password);
 }

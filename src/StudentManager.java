@@ -7,7 +7,7 @@ public class StudentManager {
 		this.user=student;
 	}
 	
-	public void addCourse(AppManager app) {
+	public void addCourse(DataManager app) {
 		Scanner sc = new Scanner(System.in);
 		app.printCourse();
 		System.out.println("Enter the course code of the course you wish to register in");
@@ -51,7 +51,7 @@ public class StudentManager {
 			if(app.getCourse().get(j).getCourseCode().equals(code)){
 				for(int a=0;a<app.getCourse().get(i).getIndex().size();a++){
 					if(app.getCourse().get(i).getIndex().get(a).getIndexNo().equals(index)){
-						app.getCourse().get(i).getIndex().get(a).decreaseVacancy();
+						app.getCourse().get(i).getIndex().get(a).increaseVacancy();
 						app.getCourse().get(i).getIndex().get(a).removeStudent(this.user);
 					}
 				}
@@ -71,7 +71,7 @@ public class StudentManager {
 		this.user.checkRegistered();
 	}
 	
-	public void checkVacancy(AppManager app) {
+	public void checkVacancy(DataManager app) {
 		Scanner sc = new Scanner(System.in);
 		app.printCourse();
 		System.out.println("Enter the course code of the course you wish to check vacancy for");
@@ -83,7 +83,7 @@ public class StudentManager {
 		}
 	}
 	
-	public void changeIndex(AppManager app) {
+	public void changeIndex(DataManager app) {
 		Scanner sc = new Scanner(System.in);
 		this.user.checkRegistered();
 		System.out.println("Enter course code of the course that you wish to swap index");
@@ -115,7 +115,7 @@ public class StudentManager {
 		}
 	}
 	
-	public void swopIndex(AppManager app) {
+	public void swopIndex(DataManager app) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Matriculation Number of the Student you wish to swap with");
 		String matricNo = sc.next().toUpperCase();
@@ -125,7 +125,7 @@ public class StudentManager {
 		int arrayIndexOfOtherStudent=-1;
 		int arrayIndex1=-1;
 		for(int i=0;i<app.getStudent().size();i++) {
-			if(matricNo.equals(app.getStudent().get(i).getMatricNo())) {
+			if(matricNo.equals(app.getStudent().get(i).getUserName())) {
 				arrayIndexOfOtherStudent = i;
 				for(int j=0;j<app.getStudent().get(i).getCourseRegistered().size();j++) {
 					if(courseCode.equals(app.getStudent().get(i).getCourseRegistered().get(j).getCourseCode())) {
