@@ -14,11 +14,8 @@ public class AdminManager {
 		String courseCode = sc.next().toUpperCase();
 		for(int i=0;i<app.getCourse().size();i++) {
 			if(courseCode.equals(app.getCourse().get(i).getCourseCode())) {
-                for (int j=0; j<app.getCourse().get(i).getIndex().size(); j++)
-                {
-                    int sum = 0;
-                    sum += app.getCourse().get(i).getIndex().get(j).getVacancy();
-                }
+                app.getCourse().get(i).getIndex().get(i).getVacancy();
+                
 				
 			}
 		}
@@ -42,7 +39,6 @@ public class AdminManager {
                     System.out.println(s.getUserName() + "\t" + s.getName());
                
             }
-            
         }
 
     }
