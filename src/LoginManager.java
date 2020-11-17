@@ -12,11 +12,11 @@ public class LoginManager {
         boolean check1=false;
         boolean check2=false;
         if(choice==1){
-            String inputUser="test";
+            String inputUser="";
             do{
-                System.out.println("Enter Username:");;
+                System.out.println("Enter Username:");
+                inputUser = sc.nextLine();
                 if(searchAdmin(inputUser, app)==false){
-                    System.out.println(inputUser);
                     System.out.println("Incorrect Username, try again");
                 }
                 else{
@@ -26,19 +26,19 @@ public class LoginManager {
             do{
                 System.out.println("Enter Password:");
                 String inputPass = hashing(sc.nextLine());
-                if(searchAdmin(inputPass, app)==false) {
+                if(searchAdmin(inputPass, app)==false){
                     System.out.println("Incorrect Password, try again");
                 }
-                else {
+                else{
                     System.out.println("Successful Login");
                     check2=true;
                 }
-            } while(check2==false);
-            String choiceStr = Integer.toString(choice);
-            String[] array = new String[2];
-            array[0]=choiceStr;
-            array[1]=inputUser;
-            return array;
+            }while(check2==false);
+        String choiceStr = Integer.toString(choice);
+        String[] array = new String[2];
+        array[0]=choiceStr;
+        array[1]=inputUser;
+        return array;
         }
         else{
             String inputUser="";

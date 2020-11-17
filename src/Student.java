@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Student implements User {
-	private int type;
 	private String name;
 	private String userName;
 	private char gender;
@@ -10,17 +9,12 @@ public class Student implements User {
 	private ArrayList<CourseIndex> courseRegistered;
 	
 	public Student(String name, String matricNo,char gender,String nationality,String password) {
-		this.type = 2;
 		this.name=name;
 		this.userName=matricNo;
 		this.gender=gender;
 		this.nationality=nationality;
 		this.password=password;
 		this.courseRegistered = new ArrayList<CourseIndex>();
-	}
-	
-	public int getType(){
-		return this.type;
 	}
 	public String getName() {
 		return this.name;
