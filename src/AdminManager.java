@@ -148,20 +148,25 @@ public class AdminManager {
     public void checkVacancy(DataManager app) {
         Scanner sc = new Scanner(System.in);
         app.printCourse();
-        System.out.println("Enter the course code of the course you wish to check vacancy for:");
+        System.out.println("Enter the course code of the course:");
         String courseCode = sc.next().toUpperCase();
         List<Course> courses = app.getCourse();
         for (Course c : courses) {
             if (courseCode.equals(c.getCourseCode())) {
                 ArrayList<CourseIndex> index = c.getIndex();
-                ArrayList<Integer> vacancies = new ArrayList<Integer>();
-                for (CourseIndex courseindex : index) {
-                    int vacancy = courseindex.getVacancy();
-                    vacancies.add(vacancy);
-                    //System.out.println(vacancies);
+                System.out.println("Course " + c.getCourseCode() + " has the following indexes: ");
+                //Print the available indexes
+                for (CourseIndex courseindex : index){
+                    System.out.println("Index: " + courseindex.getIndexNo());
                 }
-                int sum = vacancies.stream().mapToInt(i -> i.intValue()).sum();
-                System.out.println("Vacancies for " + c.getCourseCode() + " : " + sum);
+                System.out.println("Enter the course index of the course you wish to check vacancy for:");
+                String indexinput = sc.next();
+                for (CourseIndex courseindex : index) {
+                    if (indexinput.equals(courseindex.getIndexNo()))
+                        System.out.println("Vacancies for " + courseindex.getIndexNo() + " : " + courseindex.getVacancy());
+                }
+                //int sum = vacancies.stream().mapToInt(i -> i.intValue()).sum();
+                //System.out.println("Vacancies for " + c.getCourseCode() + " : " + sum);
             }
 		}
     }
