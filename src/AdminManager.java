@@ -185,7 +185,7 @@ public class AdminManager {
                     for (CourseIndex indexNo: index){
                         //System.out.println("Students " + s.getUserName() + " " + indexNo.getIndexNo());
                         if (courseIndex.equals(indexNo.getIndexNo()) && courseCode.equals(indexNo.getCourseCode())){
-                           System.out.println(s.getUserName() + "\t" + s.getName());
+                           System.out.println(s.getName() + "\t" + s.getGender() + "\t" + s.getNationality());
                        }
                    }
                }
@@ -212,7 +212,7 @@ public class AdminManager {
                      for (CourseIndex indexNo: index){
                          //System.out.println("Students " + s.getUserName() + " " + indexNo.getIndexNo());
                          if (courseCode.equals(indexNo.getCourseCode()) && courseCode.equals(course.getCourseCode())){
-                            System.out.println(s.getUserName() + "\t" + s.getName());
+                            System.out.println(s.getName() + "\t" + s.getGender() + "\t" + s.getNationality());
                         }
                     }
                 }
