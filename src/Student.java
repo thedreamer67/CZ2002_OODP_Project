@@ -66,4 +66,7 @@ public class Student implements User {
 			System.out.println((i+1)+". "+this.courseRegistered.get(i).getCourseCode()+"\t"+this.courseRegistered.get(i).getCourseName()+"\t"+this.courseRegistered.get(i).getIndexNo());
 		}
 	}
+	public char[] get(int i) {
+		return null;
+	}
 }

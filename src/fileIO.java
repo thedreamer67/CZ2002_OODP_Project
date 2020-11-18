@@ -1,7 +1,7 @@
 import java.io.*;
 public class fileIO {
     public void readCourse(DataManager app){
-        String courseFile = "/Users/nicklaustan/VSC Repo/CZ2002_OODP_Project/courses.txt";
+        String courseFile = "C:/Users/Soul/Desktop/courses.txt";
 		BufferedReader br=null;
 		String line = "";
 		try {
@@ -29,7 +29,7 @@ public class fileIO {
 			}
     }
     public void readStudent(DataManager app){
-        String studentFile = "/Users/nicklaustan/VSC Repo/CZ2002_OODP_Project/students.txt";
+        String studentFile = "C:/Users/Soul/Desktop/students.txt";
 		BufferedReader br2=null;
 		String line2 = "";
 		try {		
@@ -67,7 +67,7 @@ public class fileIO {
 				}
     }
     public void readCourseIndex(DataManager app){
-        String courseIndexFile = "/Users/nicklaustan/VSC Repo/CZ2002_OODP_Project/courseindex.txt";
+        String courseIndexFile = "C:/Users/Soul/Desktop/courseindex.txt";
 		BufferedReader br3=null;
 		String line3 = "";	
 		int arrayindex1=-1;
@@ -134,7 +134,7 @@ public class fileIO {
 	}
 	
 	public void readAdmin(DataManager app){
-        String adminFile = "/Users/nicklaustan/VSC Repo/CZ2002_OODP_Project/admins.txt";
+        String adminFile = "C:/Users/Soul/Desktop/admins.txt";
 		BufferedReader br4=null;
 		String line4 = "";
 		try {		

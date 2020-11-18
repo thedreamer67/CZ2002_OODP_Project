@@ -50,11 +50,12 @@ public class StarsApp {
 				else if(choice==5)
 					am.checkVacancy(data);
 				else if(choice==6)
-					am.printStudent(data);
+					am.printStudentByIndex(data);
 				else if(choice==7)
 					am.printStudentByCourse(data);
-			}while(choice!=7);
-			
+			}while(choice!=8);
+			break; 
+
 			case 2: 
 				
 				for(int i=0;i<data.getStudent().size();i++){
@@ -88,6 +89,8 @@ public class StarsApp {
 				else if(choice==6)
 					sm.swopIndex(data);
 				}while(choice!=7);
+			
+			break;
 				
 		}
 		
