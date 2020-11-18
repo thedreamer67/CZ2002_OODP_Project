@@ -16,13 +16,15 @@ public class AdminManager {
         System.out.println("End date is : " + temp[1]);
         System.out.println("1.Update start date");
         System.out.println("2.Update end date");
+        System.out.println("3.Exit");
+        int choice = sc.nextInt();
 
-        if (sc.nextInt() == 1){
+        if (choice == 1){
             System.out.println("Enter new start date");
             tempdate = sc.next();
             app.addAccessPeriod(tempdate, temp[1]); // update start while keeping end same
         }
-        else if (sc.nextInt() == 2){
+        else if (choice == 2){
             System.out.println("Enter new end date");
             tempdate = sc.next();
             app.addAccessPeriod(temp[0], tempdate); // update end while keeping start same
@@ -55,13 +57,13 @@ public class AdminManager {
         Student tempstudent = new Student (tempname, tempmatricNo, tempgender, tempnationality,temppassword);
         app.addStudent(tempstudent);
 
-        System.out.println("Student successfully added.");
+        System.out.println("Student successfully added.\n");
         System.out.println("Current names of student(s):");
         for (int i=0; i<app.getStudent().size(); i++){
             Student s = app.getStudent().get(i);
             System.out.println((i+1) + ". " + s.getName());
         }
-
+        System.out.println(" "); //extra spacing
     }
 
     public void addACourse(DataManager app) {
