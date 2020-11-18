@@ -88,7 +88,7 @@ public class StarsApp {
 					sm.changeIndex(data);
 				else if(choice==6)
 					sm.swopIndex(data);
-				}while(choice!=7);
+			}while(choice!=7);
 			
 			break;
 				
