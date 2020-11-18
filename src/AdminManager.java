@@ -52,7 +52,7 @@ public class AdminManager {
         String tempnationality = sc.next();
 
         System.out.println("Enter student's password:");
-        String temppassword = sc.next();
+        String temppassword = LoginManager.hashing(sc.next());
 
         Student tempstudent = new Student(tempname, tempmatricNo, tempgender, tempnationality, temppassword);
         app.addStudent(tempstudent);

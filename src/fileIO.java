@@ -134,7 +134,7 @@ public class fileIO {
 	}
 	
 	public void readAdmin(DataManager app){
-        String adminFile = "C:/Users/Soul/Desktop/admins.txt";
+        String adminFile = "/Users/nicklaustan/VSC Repo/CZ2002_OODP_Project/admins.txt";
 		BufferedReader br4=null;
 		String line4 = "";
 		try {		

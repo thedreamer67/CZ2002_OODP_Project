@@ -71,7 +71,7 @@ public class LoginManager {
         }
     }
 
-    public String hashing(String rawinput) {
+    public static String hashing(String rawinput) {
 		try { 
 			  
             // Select between 1.MD52 2.SHA-1 3.SHA-256(Strongest)
