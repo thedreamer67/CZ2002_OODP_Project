@@ -1,5 +1,5 @@
 import java.io.*;
-public class fileIO {
+public class FileIOManager {
     public void readCourse(DataManager app){
         String courseFile = "C:/Users/Soul/Desktop/courses.txt";
 		BufferedReader br=null;

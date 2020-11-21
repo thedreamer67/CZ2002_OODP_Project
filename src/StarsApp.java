@@ -5,7 +5,7 @@ public class StarsApp {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		DataManager data = new DataManager();
-		fileIO file = new fileIO();
+		FileIOManager file = new FileIOManager();
 		file.readAdmin(data);
 		file.readCourse(data);
 		file.readStudent(data);
