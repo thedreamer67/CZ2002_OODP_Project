@@ -20,11 +20,11 @@ public class StudentManager {
 				String index = sc.next().toUpperCase();
 				for(int j=0;j<c.getIndex().size();j++) {
 					if(c.getIndex().get(j).getIndexNo().equals(index)) {
-						user.addCourse(c.getIndex().get(j));
+						this.user.addCourse(c.getIndex().get(j));
 						app.getCourse().get(i).getIndex().get(j).decreaseVacancy();
 						app.getCourse().get(i).getIndex().get(j).addStudent(this.user);
 						System.out.println("Successful");
-						user.checkRegistered();
+						this.user.checkRegistered();
 						break;
 					}
 				}

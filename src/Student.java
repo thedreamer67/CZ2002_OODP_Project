@@ -7,6 +7,7 @@ public class Student implements User {
 	private String nationality;
 	private String password;
 	String email;
+	int totalAUs;
 	private ArrayList<CourseIndex> courseRegistered;
 	
 	public Student(String name, String matricNo, char gender, String nationality, String password, String email) {
@@ -16,6 +17,7 @@ public class Student implements User {
 		this.nationality=nationality;
 		this.password=password;
 		this.email = email;
+		this.totalAUs = 0;
 		//this.courseRegistered = new ArrayList<CourseIndex>();
 	}
 	
@@ -60,12 +62,21 @@ public class Student implements User {
 	public void setEmail(String email) {
 		this.email=email;
 	}
+
+	public int getTotalAUs() {
+		return this.totalAUs;
+	}
+	public void setTotalAUs(int totalAUs) {
+		this.totalAUs=totalAUs;
+	}
 	
 	public ArrayList<CourseIndex> getCourseRegistered() {
 		return this.courseRegistered;
 	}
+
 	public void addCourse(CourseIndex index) {
 		courseRegistered.add(index);
+		this.totalAUs += index.getNumOfAUs();
 		//index.addStudent(this);
 	}
 	

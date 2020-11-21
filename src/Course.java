@@ -35,6 +35,13 @@ public class Course {
 	public void setSchool(String school) {
 		this.school=school;
 	}
+
+	public int getNumOfAUs() {
+		return this.numOfAUs;
+	}
+	public void setNumOfAUs(int numOfAUs) {
+		this.numOfAUs=numOfAUs;
+	}
 	
 	public ArrayList<CourseIndex> getIndex() {
 		return this.index;
