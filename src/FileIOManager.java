@@ -9,7 +9,7 @@ public class FileIOManager {
 				br = new BufferedReader(new FileReader(courseFile));
 				while ((line = br.readLine()) != null) {
 					String[] values = line.split("\t");
-					app.addCourse(new Course(values[0],values[1],values[2]));
+					app.addCourse(new Course(values[0],values[1],values[2],Integer.parseInt(values[3])));
 					String[] index = values[3].split(",");
 					for(int i=0;i<index.length;i++) {
 						app.getCourse().get(app.getCourse().size()-1).addIndex(index[i]);

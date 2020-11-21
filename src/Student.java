@@ -16,7 +16,7 @@ public class Student implements User {
 		this.nationality=nationality;
 		this.password=password;
 		this.email = email;
-		this.courseRegistered = new ArrayList<CourseIndex>();
+		//this.courseRegistered = new ArrayList<CourseIndex>();
 	}
 	
 	public String getName() {

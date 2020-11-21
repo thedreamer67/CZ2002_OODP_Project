@@ -4,13 +4,15 @@ public class Course {
 	protected String courseCode;
 	protected String courseName;
 	protected String school;
+	protected int numOfAUs;
 	private ArrayList<CourseIndex> index;
 	
-	public Course(String courseCode,String courseName, String school) {
+	public Course(String courseCode,String courseName, String school, int numOfAUs) {
 		this.courseCode=courseCode;
 		this.courseName=courseName;
 		this.school=school;
-		this.index = new ArrayList<CourseIndex>();
+		this.numOfAUs=numOfAUs;
+		//this.index = new ArrayList<CourseIndex>();
 	}
 	
 	public String getCourseCode() {
@@ -39,7 +41,7 @@ public class Course {
 	}
 	
 	public void addIndex(String indexNo) {
-		CourseIndex ci = new CourseIndex(this.courseCode,this.courseName,this.school,indexNo);
+		CourseIndex ci = new CourseIndex(this.courseCode,this.courseName,this.school,this.numOfAUs,indexNo);
 		index.add(ci);
 	}
 	

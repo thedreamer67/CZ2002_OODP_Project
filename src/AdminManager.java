@@ -81,7 +81,10 @@ public class AdminManager {
         System.out.println("Enter course's school:");
         String tempschool = sc.next();
 
-        Course tempcourse = new Course(tempcourseCode, tempcourseName, tempschool);
+        System.out.println("Enter number of AUs the course is:");
+        int tempAU = sc.nextInt();
+
+        Course tempcourse = new Course(tempcourseCode, tempcourseName, tempschool, tempAU);
         app.addCourse(tempcourse);
 
         System.out.println("Course successfully added.\n");

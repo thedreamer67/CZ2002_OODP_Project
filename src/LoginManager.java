@@ -54,7 +54,7 @@ public class LoginManager {
             }while(check1==false);
             do{
                 System.out.println("Enter Password:");
-                String inputPass = sc.nextLine();
+                String inputPass = hashing(sc.nextLine());
                 if(verifyStudent(inputPass, app)==false){
                     System.out.println("Incorrect Password, try again");
                 }
