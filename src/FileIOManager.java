@@ -37,10 +37,10 @@ public class FileIOManager {
 		try {		
 				br2 = new BufferedReader(new FileReader(studentFile));
 				while ((line2 = br2.readLine()) != null) {
-                    String[] values = line2.split("\t");
+                    String[] values2 = line2.split("\t");
                     // create Student object, but without course attribute
-					app.addStudent(new Student(values[0],values[1],values[2].charAt(0),values[3],values[4],values[5]));
-					String[] courses = values[6].split(",");    // separate different courses
+					app.addStudent(new Student(values2[0],values2[1],values2[2].charAt(0),values2[3],values2[4],values2[5]));
+					String[] courses = values2[6].split(",");    // separate different courses
 					for(int i=0;i<courses.length;i++) {
 						String[] courseIndex = courses[i].split(" ");   // separate course index from respective course
 						for(int j=0;j<app.getCourse().size();j++) {
@@ -79,13 +79,13 @@ public class FileIOManager {
 		try {
 			br3 = new BufferedReader(new FileReader(courseIndexFile));
 			while ((line3 = br3.readLine()) != null) {
-				String[] values = line3.split("\t");
-                String course  = values[0];
-                String index = values[1];
-                String vacancy = values[2];
-                String lesson = values[3];
-                String waiting = values[4];
-                String student = values[5];
+				String[] values3 = line3.split("\t");
+                String course  = values3[0];
+                String index = values3[1];
+                String vacancy = values3[2];
+                String lesson = values3[3];
+                String waiting = values3[4];
+                String student = values3[5];
 				for(int i=0;i<app.getCourse().size();i++) {
                     if(course.equals(app.getCourse().get(i).getCourseCode()))
 						arrayindex1=i;
@@ -144,8 +144,8 @@ public class FileIOManager {
 		try {		
 				br4 = new BufferedReader(new FileReader(adminFile));
 				while ((line4 = br4.readLine()) != null) {
-					String[] values = line4.split("\t");
-					app.addAdmin(new Admin(values[0],values[1],values[2].charAt(0),values[3],values[4]));
+					String[] values4 = line4.split("\t");
+					app.addAdmin(new Admin(values4[0],values4[1],values4[2].charAt(0),values4[3],values4[4]));
 					//System.out.println("Admin: " + app.getAdmin());
 					}
 		
@@ -171,8 +171,8 @@ public class FileIOManager {
 		try {		
 			br5 = new BufferedReader(new FileReader(AccessperiodFile));
 			while ((line5 = br5.readLine()) != null) {
-				String[] values = line5.split("\t");
-				app.addAccessPeriod(values[0],values[1]);
+				String[] values5 = line5.split("\t");
+				app.addAccessPeriod(values5[0],values5[1]);
 				//System.out.println("Admin: " + app.getAdmin());
 				}
 	
@@ -190,5 +190,5 @@ public class FileIOManager {
 				}
 			}
 	}
-    
+	
 }
