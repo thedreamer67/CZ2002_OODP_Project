@@ -75,7 +75,7 @@ public class Login {
 	    //List <Student> studentList = new ArrayList <>();
 	    String line = null;
 
-	    // Read all lines in from CSV file and add to studentList
+	    // Read all lines in from txt file and add to studentList
 	    BufferedReader bufferedReader = null;
 		try {
 			bufferedReader = new BufferedReader(new FileReader(file));
@@ -91,8 +91,9 @@ public class Login {
 			    String name = temp[1];
 			    char gender = temp[2].charAt(0);
 			    String nationality = temp[3];
-			    String password = temp[4];
-			    studentList.add(new Student(matriNo, name, gender, nationality, password));
+				String password = temp[4];
+				String email = temp[5];
+			    studentList.add(new Student(matriNo, name, gender, nationality, password, email));
 			}
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block

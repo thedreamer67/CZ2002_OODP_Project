@@ -40,22 +40,25 @@ public class AdminManager {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter student's name:");
-        String tempname = sc.next();
+        String tempName = sc.next();
 
         System.out.println("Enter student's ID:");
-        String tempmatricNo = sc.next().toUpperCase();
+        String tempMatricNo = sc.next().toUpperCase();
 
         System.out.println("Enter student's sex:");
-        char tempgender = sc.next().charAt(0);
+        char tempGender = sc.next().charAt(0);
 
         System.out.println("Enter student's nationality:");
-        String tempnationality = sc.next();
+        String tempNationality = sc.next();
 
         System.out.println("Enter student's password:");
-        String temppassword = LoginManager.hashing(sc.next());
+        String tempPassword = LoginManager.hashing(sc.next());
 
-        Student tempstudent = new Student(tempname, tempmatricNo, tempgender, tempnationality, temppassword);
-        app.addStudent(tempstudent);
+        System.out.println("Enter student's email:");
+        String tempEmail = sc.next().toLowerCase();
+
+        Student tempStudent = new Student(tempName, tempMatricNo, tempGender, tempNationality, tempPassword, tempEmail);
+        app.addStudent(tempStudent);
 
         System.out.println("Student successfully added.\n");
         System.out.println("Current names of student(s):");

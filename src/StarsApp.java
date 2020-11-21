@@ -11,6 +11,7 @@ public class StarsApp {
 		file.readStudent(data);
 		file.readCourseIndex(data);
 		file.readAccessperiod(data);
+		
 		LoginManager lm = new LoginManager();
 		String[] array = lm.Login(data);
 		AdminManager am = new AdminManager();

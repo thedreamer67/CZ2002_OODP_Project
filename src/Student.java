@@ -6,16 +6,19 @@ public class Student implements User {
 	private char gender;
 	private String nationality;
 	private String password;
+	String email;
 	private ArrayList<CourseIndex> courseRegistered;
 	
-	public Student(String name, String matricNo,char gender,String nationality,String password) {
+	public Student(String name, String matricNo, char gender, String nationality, String password, String email) {
 		this.name=name;
 		this.userName=matricNo;
 		this.gender=gender;
 		this.nationality=nationality;
 		this.password=password;
+		this.email = email;
 		this.courseRegistered = new ArrayList<CourseIndex>();
 	}
+	
 	public String getName() {
 		return this.name;
 	}
@@ -49,6 +52,13 @@ public class Student implements User {
 	}
 	public void setPassword(String password) {
 		this.password=password;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+	public void setEmail(String email) {
+		this.email=email;
 	}
 	
 	public ArrayList<CourseIndex> getCourseRegistered() {

@@ -1,7 +1,8 @@
 import java.io.*;
 public class FileIOManager {
+
     public void readCourse(DataManager app){
-        String courseFile = "C:/Users/Soul/Desktop/courses.txt";
+        String courseFile = "courses.txt";
 		BufferedReader br=null;
 		String line = "";
 		try {
@@ -28,18 +29,20 @@ public class FileIOManager {
 				}
 			}
     }
+
     public void readStudent(DataManager app){
-        String studentFile = "C:/Users/Soul/Desktop/students.txt";
+        String studentFile = "students.txt";
 		BufferedReader br2=null;
 		String line2 = "";
 		try {		
 				br2 = new BufferedReader(new FileReader(studentFile));
 				while ((line2 = br2.readLine()) != null) {
-					String[] values = line2.split("\t");
-					app.addStudent(new Student(values[0],values[1],values[2].charAt(0),values[3],values[4]));
-					String[] courses = values[5].split(",");
+                    String[] values = line2.split("\t");
+                    // create Student object, but without course attribute
+					app.addStudent(new Student(values[0],values[1],values[2].charAt(0),values[3],values[4],values[5]));
+					String[] courses = values[6].split(",");    // separate different courses
 					for(int i=0;i<courses.length;i++) {
-						String[] courseIndex = courses[i].split(" ");
+						String[] courseIndex = courses[i].split(" ");   // separate course index from respective course
 						for(int j=0;j<app.getCourse().size();j++) {
 							if(courseIndex[0].equals(app.getCourse().get(j).getCourseCode())) {
 								for(int a=0;a<app.getCourse().get(j).getIndex().size();a++) {
@@ -66,8 +69,9 @@ public class FileIOManager {
 					}
 				}
     }
+
     public void readCourseIndex(DataManager app){
-        String courseIndexFile = "C:/Users/Soul/Desktop/courseindex.txt";
+        String courseIndexFile = "courseindex.txt";
 		BufferedReader br3=null;
 		String line3 = "";	
 		int arrayindex1=-1;
@@ -134,7 +138,7 @@ public class FileIOManager {
 	}
 	
 	public void readAdmin(DataManager app){
-        String adminFile = "/Users/nicklaustan/VSC Repo/CZ2002_OODP_Project/admins.txt";
+        String adminFile = "admins.txt";
 		BufferedReader br4=null;
 		String line4 = "";
 		try {		
@@ -158,9 +162,10 @@ public class FileIOManager {
 						}
 					}
 				}
-	}
+    }
+    
 	public void readAccessperiod(DataManager app){
-		String AccessperiodFile = "/Users/nicklaustan/VSC Repo/CZ2002_OODP_Project/accessperiod.txt";
+		String AccessperiodFile = "accessperiod.txt";
 		BufferedReader br5=null;
 		String line5 = "";
 		try {		
