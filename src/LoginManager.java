@@ -15,7 +15,7 @@ public class LoginManager {
             String inputUser="";
             do{
                 System.out.println("Enter Username:");
-                inputUser = sc.nextLine();
+                inputUser = sc.nextLine().toUpperCase();
                 if(searchAdmin(inputUser, app)==false){
                     System.out.println("Incorrect Username, try again");
                 }
@@ -44,7 +44,7 @@ public class LoginManager {
             String inputUser="";
             do{
                 System.out.println("Enter Username:");
-                inputUser = sc.nextLine();
+                inputUser = sc.nextLine().toUpperCase();
                 if(searchStudent(inputUser, app)==false){
                     System.out.println("Incorrect Username, try again");
                 }
