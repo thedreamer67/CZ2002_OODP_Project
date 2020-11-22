@@ -79,6 +79,25 @@ public class Student implements User {
 		this.totalAUs += index.getNumOfAUs();
 		//index.addStudent(this);
 	}
+	public void dropCourse(CourseIndex index) {
+		for(int i=0;i<this.courseRegistered.size();i++)
+		{
+			if(index.getCourseCode().equals(this.courseRegistered.get(i).getCourseCode())){
+				this.courseRegistered.remove(i);
+				break;
+			}
+		}
+	}
+
+	//returns index of array where course code is found
+	public int findCourse(String courseCode){
+		for(int i=0;i<this.courseRegistered.size();i++){
+			if(courseCode.equals(this.courseRegistered.get(i).getCourseCode())){
+				return i;
+			}
+		}
+		return -1;
+	}
 	
 	
 	public void checkRegistered() {

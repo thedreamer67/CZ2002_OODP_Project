@@ -39,6 +39,7 @@ public class CourseIndex extends Course {
 	
 	public void addStudent(Student s) {
 		this.studentList.add(s);
+		this.vacancy=this.vacancy-1;
 	}
 	public void removeStudent(Student s) {
 		String matric = s.getUserName();
@@ -47,6 +48,7 @@ public class CourseIndex extends Course {
 				studentList.remove(i);
 			}
 		}
+		this.vacancy=this.vacancy+1;
 	}
 	/*public ArrayList<Student> getStudent(){
 		return this.studentList;
@@ -60,13 +62,6 @@ public class CourseIndex extends Course {
             // call add student method for the course
             // call send email method
     }
-	
-	public void increaseVacancy(){
-		this.vacancy=this.vacancy+1;
-	}
-	public void decreaseVacancy(){
-		this.vacancy = this.vacancy-1;
-	}
 
 	public void printLesson(){
 		for(int i=0;i<lessons.size();i++){

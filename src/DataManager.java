@@ -71,5 +71,14 @@ public class DataManager {
 		}
 		return -1; //else return -1 indicating Couse Index  do not exist in the current course
 	}
+
+	//returns the index of the array where student matriculation number is found
+	public int findStudent(String matricNo){
+		for(int i=0;i<this.getStudent().size();i++){
+			if(matricNo.equals(this.getStudent().get(i).getUserName()))
+			return i; //returns index of array if found
+		}
+		return -1; //else return -1 indicating student matric number do not exist in the current list
+	}
 	
 }

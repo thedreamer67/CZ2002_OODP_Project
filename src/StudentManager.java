@@ -20,10 +20,9 @@ public class StudentManager {
 		String courseIndex = sc.next().toUpperCase();
 		//get the index of array where the course index is stored.
 		int indexOfCI = app.findCourseIndex(courseIndex, indexOfCourse); 
-		
+
 		CourseIndex ci = app.getCourse().get(indexOfCourse).getIndex().get(indexOfCI);
 		this.user.addCourse(ci);
-		ci.decreaseVacancy();
 		ci.addStudent(this.user);
 		System.out.println("Successful");
 		this.user.checkRegistered();
@@ -53,7 +52,18 @@ public class StudentManager {
 		this.user.checkRegistered();
 		System.out.println("Enter the Course Code of the course you wish to drop");
 		String courseCode = sc.next().toUpperCase();
-		String code = "";
+
+		//retrieve index of the array where this specific course is stored within this student object
+		int indexOfArray = this.user.findCourse(courseCode);
+
+		CourseIndex ci = this.user.getCourseRegistered().get(indexOfArray);
+		this.user.dropCourse(ci);
+		ci.removeStudent(this.user);
+		System.out.println("Course successfully dropped.");
+		System.out.println("\n");
+		this.user.checkRegistered();
+
+		/*String code = "";
 		String index = "";
 		for(int i=0;i<this.user.getCourseRegistered().size();i++) {
 			if(this.user.getCourseRegistered().get(i).getCourseCode().equals(courseCode)) {
@@ -76,10 +86,8 @@ public class StudentManager {
 		}
 		System.out.println("Course successfully dropped.");
 		System.out.println("\n");
-		this.user.checkRegistered();
-		
-		
-		
+		this.user.checkRegistered();*/
+			
 	}
 	
 	public void checkRegistered() {
@@ -91,19 +99,42 @@ public class StudentManager {
 		app.printCourse();
 		System.out.println("Enter the course code of the course you wish to check vacancy for");
 		String courseCode = sc.next().toUpperCase();
-		for(int i=0;i<app.getCourse().size();i++) {
+		int indexOfCourse = app.findCourse(courseCode);
+		app.getCourse().get(indexOfCourse).printVacancy();
+		/*for(int i=0;i<app.getCourse().size();i++) {
 			if(courseCode.equals(app.getCourse().get(i).getCourseCode())) {
 				app.getCourse().get(i).printVacancy();
 			}
-		}
+		}*/
 	}
 	
 	public void changeIndex(DataManager app) {
 		Scanner sc = new Scanner(System.in);
 		this.user.checkRegistered();
 		System.out.println("Enter course code of the course that you wish to swap index");
-		String courseCode = sc.next().toUpperCase();
-		int arrayIndexInStudent = -1;
+		String courseCodeOld = sc.next().toUpperCase();
+		int indexOfArrayStudent = this.user.findCourse(courseCodeOld);
+		CourseIndex ciOld = this.user.getCourseRegistered().get(indexOfArrayStudent);
+
+		int indexOfCourse = app.findCourse(courseCodeOld);
+		app.getCourse().get(indexOfCourse).printVacancy();
+		System.out.println("Enter new index of the course");
+		String index = sc.next().toUpperCase();
+		int indexOfNewCI = app.findCourseIndex(index, indexOfCourse);
+		CourseIndex ciNew = app.getCourse().get(indexOfCourse).getIndex().get(indexOfNewCI);
+
+		// delete old course index and update necessary information
+		this.user.dropCourse(ciOld);
+		ciOld.removeStudent(this.user);
+
+		// add new course index and update necessary information
+		this.user.addCourse(ciNew);;
+		ciNew.addStudent(this.user);
+
+		System.out.println("Changing of course index successful");
+		this.user.checkRegistered();
+
+		/*int arrayIndexInStudent = -1;
 		for(int i=0;i<this.user.getCourseRegistered().size();i++) {
 			if(courseCode.equals(this.user.getCourseRegistered().get(i).getCourseCode())) {
 				this.user.getCourseRegistered().get(i).increaseVacancy();
@@ -129,16 +160,46 @@ public class StudentManager {
 				System.out.println("Changing of course index successful");
 				this.user.checkRegistered();
 			}
-		}
+		}*/
 	}
 	
 	public void swopIndex(DataManager app) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Matriculation Number of the Student you wish to swap with");
 		String matricNo = sc.next().toUpperCase();
+		int indexOfOtherStudent = app.findStudent(matricNo);
+		//creates a reference to the other student object
+		Student other = app.getStudent().get(indexOfOtherStudent);
+
 		System.out.println("Enter Course Code that you wish to swap in");
 		String courseCode = sc.next().toUpperCase();
-		CourseIndex temp;
+		int indexOfCourseCurrent = this.user.findCourse(courseCode);
+		//creates a reference to the course index current student is enrolled in
+		CourseIndex currentCourseIndex = this.user.getCourseRegistered().get(indexOfCourseCurrent);
+		int indexOfCourseOther = other.findCourse(courseCode);
+		//creates a reference to the course index other student is enrolled in
+		CourseIndex otherCourseIndex = other.getCourseRegistered().get(indexOfCourseOther);
+
+		//drops course index of current student and update student list in the course index
+		this.user.dropCourse(currentCourseIndex);
+		currentCourseIndex.removeStudent(this.user);
+
+		//drops course index of other student and update student list in the course index
+		other.dropCourse(otherCourseIndex);
+		otherCourseIndex.removeStudent(other);
+
+		//add new course index for current student and update student list in the course index
+		this.user.addCourse(otherCourseIndex);
+		otherCourseIndex.addStudent(this.user);
+
+		//add new course index for other student and update student list in the course index
+		other.addCourse(currentCourseIndex);
+		currentCourseIndex.addStudent(other);
+
+		System.out.println("Swopping of index successful");
+		this.user.checkRegistered();
+
+		/*CourseIndex temp;
 		int arrayIndexOfOtherStudent=-1;
 		int arrayIndex1=-1;
 		for(int i=0;i<app.getStudent().size();i++) {
@@ -166,7 +227,7 @@ public class StudentManager {
 		this.user.getCourseRegistered().remove(arrayIndex2);
 		this.user.addCourse(temp);
 		System.out.println("Swopping of index successful");
-		this.user.checkRegistered();
+		this.user.checkRegistered();*/
     }
     
     public void sendEmail() {
