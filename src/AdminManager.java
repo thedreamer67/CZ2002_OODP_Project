@@ -156,7 +156,45 @@ public class AdminManager {
         app.printCourse();
         System.out.println("Enter the course code of the course:");
         String courseCode = sc.next().toUpperCase();
-        List<Course> courses = app.getCourse();
+
+        //find the input course in the arraylist of courses
+        int courseSelected = app.findCourse(courseCode);
+
+        //returns a value >=0 when input course is found in the list
+        if (courseSelected >= 0){
+
+            //prints the available indexes from the input course
+            System.out.println("List of Index that is available for the course");
+            ArrayList <CourseIndex> listofIndex = app.getCourse().get(courseSelected).getIndex();
+            for (CourseIndex courseindex: listofIndex)
+            {
+                System.out.println(courseindex.getIndexNo());
+            }
+
+            System.out.println("Enter the course index that you wish to check vacancy for:");
+            String indexinput = sc.next();
+
+            //find the input index in the arraylist of the indexes from input course
+            int indexSelected = app.findCourseIndex(indexinput, courseSelected);
+
+            //returns a value >=0 when input index is found in the list
+            if (indexSelected >= 0)
+            {
+                //get the vacancy value from the input index
+                int vacancy = app.getCourse().get(courseSelected).getIndex().get(indexSelected).getVacancy();
+                System.out.println("Index " + app.getCourse().get(courseSelected).getIndex().get(indexSelected).getIndexNo() + ", " + "Vacancies available: " + vacancy); 
+            }
+            else 
+                System.out.println("No index found.");
+              
+                
+
+        }
+        else
+            System.out.println("No course found.");
+
+        //----------------------------------OLD CODES-------------------------------------------
+        /*List<Course> courses = app.getCourse();
         for (Course c : courses) {
             if (courseCode.equals(c.getCourseCode())) {
                 ArrayList<CourseIndex> index = c.getIndex();
@@ -174,7 +212,8 @@ public class AdminManager {
                 //int sum = vacancies.stream().mapToInt(i -> i.intValue()).sum();
                 //System.out.println("Vacancies for " + c.getCourseCode() + " : " + sum);
             }
-		}
+        }*/
+        //--------------------------------------------------------------------------------------
     }
 
     public void printStudentByIndex(DataManager app){
@@ -184,7 +223,55 @@ public class AdminManager {
         app.printCourse();
         System.out.println("Enter the course code of the course that you wish to print the student list from:");
         String courseCode = sc.next().toUpperCase();
-        ArrayList<Student> students = app.getStudent();
+        
+        //find the input course in the arraylist of courses
+        int courseSelected = app.findCourse(courseCode);
+
+        //returns a value >=0 when input course is found in the list
+        if (courseSelected >= 0){
+
+            //prints the available indexes from the input course
+            System.out.println("List of Index that is available for the course");
+            ArrayList <CourseIndex> listofIndex = app.getCourse().get(courseSelected).getIndex();
+            for (CourseIndex courseindex: listofIndex)
+            {
+                System.out.println(courseindex.getIndexNo());
+            }
+            System.out.println("Enter the course index of the course that you wish to print the student list from:");
+            String indexinput = sc.next();
+
+            //find the input index in the arraylist of the indexes from input course
+            int indexSelected = app.findCourseIndex(indexinput, courseSelected);
+
+            //returns a value >=0 when input index is found in the list
+            if (indexSelected >= 0)
+            {
+                //find the list of students who have registered for the input course and input index
+                ArrayList<Student> students = app.getStudent();
+                for (Student s : students) {
+                    List<CourseIndex> index = s.getCourseRegistered();
+
+                    for (CourseIndex indexNo : index){
+                        //if there exists a student who have registered for the input course and input index
+                        //once both found, if both matches the input course and input index 
+                        if (app.getCourse().get(courseSelected).getIndex().get(indexSelected).getIndexNo() == indexNo.getIndexNo() && courseCode.equals(indexNo.getCourseCode())){
+                            //print student's name, gender and nationality
+                           System.out.println(s.getName() + "\t" + s.getGender() + "\t" + s.getNationality());
+                       }
+                    }
+                    
+                }
+                    
+            }
+            else 
+                System.out.println("No index found.");
+
+        }
+        else
+            System.out.println("No course found.");
+        
+        //----------------------------------OLD CODES-------------------------------------------
+        /*ArrayList<Student> students = app.getStudent();
         ArrayList<Course> c = app.getCourse();
         for (Course course: c){
             if (courseCode.equals(course.getCourseCode())){
@@ -201,8 +288,9 @@ public class AdminManager {
                    }
                }
                
-           }
-       }
+            }
+       }*/
+       //--------------------------------------------------------------------------------------
    }
 
 
@@ -213,7 +301,33 @@ public class AdminManager {
          app.printCourse();
          System.out.println("Enter the course code of the course that you wish to print the student list from:");
          String courseCode = sc.next().toUpperCase();
-         ArrayList<Student> students = app.getStudent();
+
+         //find the input course in the arraylist of courses
+         int courseSelected = app.findCourse(courseCode);
+
+         //returns a value >=0 when input course is found in the list
+        if (courseSelected >= 0){
+                ArrayList<Student> students = app.getStudent();
+                //find the list of students who have registered for the input course
+                for (Student s : students) {
+                    List<CourseIndex> index = s.getCourseRegistered();
+                    for (CourseIndex indexNo : index){
+                        //if there exists a student who have registered for the input course 
+                        //and if the course found matches the input course and input index
+                        if (app.getCourse().get(courseSelected).getCourseCode() == indexNo.getCourseCode() && courseCode.equals(indexNo.getCourseCode())){
+                            //print student's name, gender and nationality
+                           System.out.println(s.getName() + "\t" + s.getGender() + "\t" + s.getNationality());
+                       }
+                    }
+                    
+                }
+
+        }
+        else
+            System.out.println("No course found.");
+        
+        //----------------------------------OLD CODES-------------------------------------------
+        /*ArrayList<Student> students = app.getStudent();
          ArrayList<Course> c = app.getCourse();
          for (Course course: c){
              if (courseCode.equals(course.getCourseCode())){
@@ -229,7 +343,8 @@ public class AdminManager {
                 }
                 
             }
-        }
+        }*/
+        //--------------------------------------------------------------------------------------
     }
         
 
