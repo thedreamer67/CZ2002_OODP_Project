@@ -52,6 +52,13 @@ public class DataManager {
 		}
 	}
 
+	public void printStudent() {
+		for (int i = 0; i < this.getStudent().size(); i++) {
+            Student s = this.getStudent().get(i);
+            System.out.println((i + 1) + ". " + s.getName());
+        }
+	}
+
 	// returns the index of the array where Course Code is found
 	public int findCourse(String courseCode){
 		for(int i=0;i<this.course.size();i++){

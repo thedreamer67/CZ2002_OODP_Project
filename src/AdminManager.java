@@ -53,6 +53,7 @@ public class AdminManager {
         System.out.println("Enter student's nationality:");
         String tempNationality = sc.next();
 
+        // input password which will be hashed
         System.out.println("Enter student's password:");
         String tempPassword = LoginManager.hashing(sc.next());
 
@@ -66,10 +67,7 @@ public class AdminManager {
         System.out.println("Current names of student(s):");
 
         //print all the student's name after update
-        for (int i = 0; i < app.getStudent().size(); i++) {
-            Student s = app.getStudent().get(i);
-            System.out.println((i + 1) + ". " + s.getName());
-        }
+        app.printStudent();
         System.out.println(" "); // extra spacing
     }
 
