@@ -87,6 +87,7 @@ public class Student implements User {
 				break;
 			}
 		}
+		this.totalAUs -= index.getNumOfAUs();
 	}
 
 	//returns index of array where course code is found
