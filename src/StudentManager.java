@@ -111,7 +111,7 @@ public class StudentManager {
 	public void changeIndex(DataManager app) {
 		Scanner sc = new Scanner(System.in);
 		this.user.checkRegistered();
-		System.out.println("Enter course code of the course that you wish to swap index");
+		System.out.println("Enter course code of the course that you wish to swap index of");
 		String courseCodeOld = sc.next().toUpperCase();
 		int indexOfArrayStudent = this.user.findCourse(courseCodeOld);
 		CourseIndex ciOld = this.user.getCourseRegistered().get(indexOfArrayStudent);
