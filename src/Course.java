@@ -7,7 +7,7 @@ public class Course {
 	protected int numOfAUs;
 	private ArrayList<CourseIndex> index;
 	
-	public Course(String courseCode,String courseName, String school, int numOfAUs) {
+	public Course(String courseCode,String courseName,int numOfAUs,String school) {
 		this.courseCode=courseCode;
 		this.courseName=courseName;
 		this.school=school;

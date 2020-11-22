@@ -8,7 +8,7 @@ public class CourseIndex extends Course {
 	private ArrayList<Student> studentList;
 	
 	public CourseIndex(String courseCode, String courseName, String school, int numOfAUs, String indexNo){
-		super(courseCode,courseName,school,numOfAUs);
+		super(courseCode,courseName,numOfAUs,school);
 		this.indexNo=indexNo;
 		this.waitingList = new ArrayList<String>();
 		this.studentList = new ArrayList<Student>();
