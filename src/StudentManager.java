@@ -14,11 +14,13 @@ public class StudentManager {
 		String courseCode = sc.next().toUpperCase();
 		//get the index of array where the course is stored.
 		int indexOfCourse = app.findCourse(courseCode); 
+
 		app.getCourse().get(indexOfCourse).printVacancy();
 		System.out.println("Enter the index you wish to register for");
 		String courseIndex = sc.next().toUpperCase();
 		//get the index of array where the course index is stored.
 		int indexOfCI = app.findCourseIndex(courseIndex, indexOfCourse); 
+		
 		CourseIndex ci = app.getCourse().get(indexOfCourse).getIndex().get(indexOfCI);
 		this.user.addCourse(ci);
 		ci.decreaseVacancy();
