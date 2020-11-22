@@ -51,5 +51,25 @@ public class DataManager {
 			System.out.println(course.get(i).getCourseCode()+" "+course.get(i).getCourseName());
 		}
 	}
+
+	// returns the index of the array where Course Code is found
+	public int findCourse(String courseCode){
+		for(int i=0;i<this.course.size();i++){
+			if(courseCode.equals(this.course.get(i).getCourseCode())){
+				return i; //returns index of array if found
+			}
+		}
+		return -1; //else return -1 indicating Course Code do not exist
+	}
+
+	//returns the index of the array where course index is found
+	public int findCourseIndex(String courseIndex,int arrayIndexofCourse){
+		for(int i=0;i<this.course.get(arrayIndexofCourse).getIndex().size();i++){
+			if(courseIndex.equals(this.course.get(arrayIndexofCourse).getIndex().get(i).getIndexNo())){
+				return i; //returns index of array if found
+			}
+		}
+		return -1; //else return -1 indicating Couse Index  do not exist in the current course
+	}
 	
 }

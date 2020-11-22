@@ -12,7 +12,7 @@ public class Course {
 		this.courseName=courseName;
 		this.school=school;
 		this.numOfAUs=numOfAUs;
-		//this.index = new ArrayList<CourseIndex>();
+		this.index = new ArrayList<CourseIndex>();
 	}
 	
 	public String getCourseCode() {

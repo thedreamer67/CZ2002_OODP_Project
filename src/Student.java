@@ -18,7 +18,7 @@ public class Student implements User {
 		this.password=password;
 		this.email = email;
 		this.totalAUs = 0;
-		//this.courseRegistered = new ArrayList<CourseIndex>();
+		this.courseRegistered = new ArrayList<CourseIndex>();
 	}
 	
 	public String getName() {

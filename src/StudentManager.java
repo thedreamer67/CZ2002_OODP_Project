@@ -12,7 +12,20 @@ public class StudentManager {
 		app.printCourse();
 		System.out.println("Enter the course code of the course you wish to register in");
 		String courseCode = sc.next().toUpperCase();
-		for(int i=0;i<app.getCourse().size();i++) {
+		//get the index of array where the course is stored.
+		int indexOfCourse = app.findCourse(courseCode); 
+		app.getCourse().get(indexOfCourse).printVacancy();
+		System.out.println("Enter the index you wish to register for");
+		String courseIndex = sc.next().toUpperCase();
+		//get the index of array where the course index is stored.
+		int indexOfCI = app.findCourseIndex(courseIndex, indexOfCourse); 
+		CourseIndex ci = app.getCourse().get(indexOfCourse).getIndex().get(indexOfCI);
+		this.user.addCourse(ci);
+		ci.decreaseVacancy();
+		ci.addStudent(this.user);
+		System.out.println("Successful");
+		this.user.checkRegistered();
+		/*for(int i=0;i<app.getCourse().size();i++) {
 			if(courseCode.equals(app.getCourse().get(i).getCourseCode())) {
 				Course c = app.getCourse().get(i);
 				System.out.println("Enter the index you wish to register for");
@@ -30,7 +43,7 @@ public class StudentManager {
 				}
 				break;
 			}
-			}
+			}*/
 	}
 	
 	public void dropCourse(DataManager app) {
