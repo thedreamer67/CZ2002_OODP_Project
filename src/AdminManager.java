@@ -20,14 +20,15 @@ public class AdminManager {
         System.out.println("3.Exit");
         int choice = sc.nextInt();
 
+        //update either start or end date depending on user's choice
         if (choice == 1) {
             System.out.println("Enter new start date");
             tempdate = sc.next();
-            app.addAccessPeriod(tempdate, temp[1]); // update start while keeping end same
+            app.addAccessPeriod(tempdate, temp[1]); // update start while keeping end date same
         } else if (choice == 2) {
             System.out.println("Enter new end date");
             tempdate = sc.next();
-            app.addAccessPeriod(temp[0], tempdate); // update end while keeping start same
+            app.addAccessPeriod(temp[0], tempdate); // update end while keeping start start same
         }
 
         System.out.println("\nDate successfully updated.");
@@ -39,6 +40,7 @@ public class AdminManager {
     public void addAStudent(DataManager app) {
         Scanner sc = new Scanner(System.in);
 
+        //Admin input the following details for student 
         System.out.println("Enter student's name:");
         String tempName = sc.next();
 
@@ -62,6 +64,8 @@ public class AdminManager {
 
         System.out.println("Student successfully added.\n");
         System.out.println("Current names of student(s):");
+
+        //print all the student's name after update
         for (int i = 0; i < app.getStudent().size(); i++) {
             Student s = app.getStudent().get(i);
             System.out.println((i + 1) + ". " + s.getName());
@@ -103,29 +107,31 @@ public class AdminManager {
 
         System.out.println("Please enter course code of the course you wish to update:");
         String courseCode = sc.next().toUpperCase();
+        int courseindex = app.findCourse(courseCode);
         boolean cont = true;
-        for (int i = 0; i < app.getCourse().size(); i++) {
-            if (courseCode.equals(app.getCourse().get(i).getCourseCode())) {
-                while (cont) {
-                    System.out.println("1.Update course code");
-                    System.out.println("2.Update course name");
-                    System.out.println("3.Update course school");
-                    System.out.println("4.Exit");
-                    int choice = sc.nextInt();
-                    switch (choice) {
-                        case (1):
-                            System.out.println("Enter new course code");
-                            String tempcoursecode = sc.next().toUpperCase();
-                            app.getCourse().get(i).setCourseCode(tempcoursecode);
-                            System.out.println("Course code successfully updated.\n");
-                            System.out.println("Current code of the course(s):");
-                            app.printCourse();
-                            System.out.println(" "); // extra spacing
-                            break;
-                        case (2):
+
+        //update particular course details depending on user's choice
+        if (courseindex != -1) {
+            while (cont) {
+                System.out.println("1.Update course code");
+                System.out.println("2.Update course name");
+                System.out.println("3.Update course school");
+                System.out.println("4.Exit");
+                int choice = sc.nextInt();
+                switch (choice) {
+                    case (1):
+                        System.out.println("Enter new course code");
+                        String tempcoursecode = sc.next().toUpperCase();
+                        app.getCourse().get(courseindex).setCourseCode(tempcoursecode);
+                        System.out.println("Course code successfully updated.\n");
+                        System.out.println("Current code of the course(s):");
+                        app.printCourse();
+                        System.out.println(" "); // extra spacing
+                        break;
+                    case (2):
                             System.out.println("Enter new course name");
                             String tempcoursename = sc.next();
-                            app.getCourse().get(i).setCourseName(tempcoursename);
+                            app.getCourse().get(courseindex).setCourseName(tempcoursename);
                             System.out.println("Course name successfully updated.\n");
                             System.out.println("Current code of the course(s):");
                             app.printCourse();
@@ -134,7 +140,7 @@ public class AdminManager {
                         case (3):
                             System.out.println("Enter new course school");
                             String tempcourseschool = sc.next();
-                            app.getCourse().get(i).setSchool(tempcourseschool);
+                            app.getCourse().get(courseindex).setSchool(tempcourseschool);
                             System.out.println("Course school successfully updated.\n");
                             System.out.println("Current code of the course(s):");
                             app.printCourse();
@@ -145,7 +151,6 @@ public class AdminManager {
                     }
                 }
             }
-        }
         if (cont == true) {
             System.out.println("Invalid Course Code\n");
         }
