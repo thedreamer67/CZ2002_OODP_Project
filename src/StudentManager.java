@@ -77,7 +77,6 @@ public class StudentManager {
 		this.user.dropCourse(ci);
 		ci.removeStudent(this.user);
 		System.out.println("Course successfully dropped.");
-		System.out.println("\n");
 		this.user.checkRegistered();
 	}
 	
