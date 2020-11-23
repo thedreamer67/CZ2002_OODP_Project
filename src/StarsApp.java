@@ -108,6 +108,11 @@ public class StarsApp {
 			break;
 				
 		}
+
+		file.writeCourse(dm);
+		file.writeStudent(dm);
+		file.writeCourseIndex(dm);
+		file.writeAccessPeriod(dm);
 		
 		
 	}
