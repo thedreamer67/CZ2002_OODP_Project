@@ -60,7 +60,7 @@ public class AdminManager {
         System.out.println("Enter student's email:");
         String tempEmail = sc.next().toLowerCase();
 
-        Student tempStudent = new Student(tempName, tempMatricNo, tempGender, tempNationality, tempPassword, tempEmail);
+        Student tempStudent = new Student(tempName, tempMatricNo, tempGender, tempNationality, tempPassword, tempEmail, 0);
         dm.addStudent(tempStudent);
 
         System.out.println("Student successfully added.\n");

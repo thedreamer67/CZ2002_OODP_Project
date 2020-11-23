@@ -11,14 +11,14 @@ public class Student implements User {
 	private ArrayList<CourseIndex> courseRegistered;
 	private ArrayList<String> waitingList;
 	
-	public Student(String name, String matricNo, char gender, String nationality, String password, String email) {
+	public Student(String name, String matricNo, char gender, String nationality, String password, String email, int totalAUs) {
 		this.name=name;
 		this.userName=matricNo;
 		this.gender=gender;
 		this.nationality=nationality;
 		this.password=password;
 		this.email = email;
-		this.totalAUs = 0;
+		this.totalAUs = totalAUs;
 		this.courseRegistered = new ArrayList<CourseIndex>();
 		this.waitingList = new ArrayList<String>();
 	}
