@@ -10,7 +10,7 @@ public class StarsApp {
 		file.readCourse(dm);
 		file.readStudent(dm);
 		file.readCourseIndex(dm);
-		file.readAccessperiod(dm);
+		file.readAccessPeriod(dm);
 		
 		LoginManager lm = new LoginManager();
 		String[] array = lm.Login(dm);

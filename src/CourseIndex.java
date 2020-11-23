@@ -54,9 +54,10 @@ public class CourseIndex extends Course {
 		}
 		this.vacancy=this.vacancy+1;
 	}
-	/*public ArrayList<Student> getStudent(){
+
+	public ArrayList<Student> getStudentList(){
 		return this.studentList;
-    }*/
+    }
     
     public void checkVacancy() {
         // check vacancy of the index

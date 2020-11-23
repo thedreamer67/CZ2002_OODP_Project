@@ -53,6 +53,6 @@ public class Lesson {
 		return this.lessonWeek;
 	}
 	public void setLessonWeek(int[] lessonWeek) {
-		this.lessonWeek=lessonWeek;
+		this.lessonWeek=lessonWeek.clone();
 	}
 }
