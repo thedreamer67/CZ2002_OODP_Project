@@ -59,5 +59,10 @@ public class Course {
 			System.out.println(index.get(i).getIndexNo()+"\t"+index.get(i).getVacancy());
 		}
 	}
-	
+	//method to delete all references to other objects in this class
+	public void deleteCourse(){
+		for(int i=0;i<this.index.size();i++){ //deleting all course indexes in this course
+			this.index.remove(i);
+		}
+	}
 }
