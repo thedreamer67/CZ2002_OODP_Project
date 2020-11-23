@@ -112,7 +112,7 @@ public class FileIOManager {
 			
 			// write to students.txt using the arraylist of students attribute in DataManager object
 			for (Student s : dm.getStudent()) {
-				pwStream2.print(s.getName() +"\t"+ s.getUserName() +"\t"+ s.getGender() +"\t"+ s.getPassword() +"\t"+ s.getEmail() +"\t");
+				pwStream2.print(s.getName() +"\t"+ s.getUserName() +"\t"+ s.getGender() +"\t"+ s.getNationality() +"\t"+ s.getPassword() +"\t"+ s.getEmail() +"\t");
 				ArrayList<String> registeredCourses = new ArrayList<String>();
 				for (CourseIndex i: s.getCourseRegistered()) {
 					registeredCourses.add(i.getCourseCode()+" "+i.getIndexNo());
