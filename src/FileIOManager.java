@@ -3,15 +3,6 @@ import java.util.ArrayList;
 
 public class FileIOManager {
 
-	 // testing the code
-	 public static void main(String[] args) {
-		Course c = new Course("CZ2007", "Intro to Databases", 3, "SCSE");
-		c.addIndex("001");
-		c.addIndex("002");
-		FileIOManager file = new FileIOManager();
-		
-	}
-
     public void readCourse(DataManager dm){
         String courseFile = "courses.txt";
 		BufferedReader br=null;
