@@ -87,6 +87,21 @@ public class StudentManager {
 	public void checkWaitingList(){
 		this.user.checkWaitingList();
 	}
+
+	public void dropWaitingList(){
+		Scanner sc = new Scanner(System.in);
+		this.user.checkWaitingList();
+		System.out.println("Enter course code to drop");
+		String courseCode = sc.nextLine();
+		if(this.user.dropWaitingList(courseCode)==false){
+			System.out.println("Course code not found in waiting list");
+			return;
+		}
+		else{
+			System.out.println("Course successfully removed from waiting list");
+			this.user.checkWaitingList();
+		}
+	}
 	
 	public void checkVacancy(DataManager dm) {
 		Scanner sc = new Scanner(System.in);

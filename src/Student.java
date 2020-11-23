@@ -103,7 +103,7 @@ public class Student implements User {
 	}
 
 	public void checkWaitingList() {
-		if(this.waitingList.size()==0){
+		if(this.waitingList.size()<1){
 			System.out.println("Waiting list is currently empty");
 			return;
 		}
@@ -111,6 +111,19 @@ public class Student implements User {
 		for(int i=0;i<this.waitingList.size();i+=3) {
 			System.out.println(this.waitingList.get(i)+" "+this.waitingList.get(i+1)+"\t"+this.waitingList.get(i+2));
 		}
+	}
+
+	//method to remove a course from the waiting of a student
+	public boolean dropWaitingList(String courseCode) {
+		for(int i=0;i<this.waitingList.size();i+=3){
+			if(courseCode.equals(this.waitingList.get(i))){
+				this.waitingList.remove(i+2); //remove index
+				this.waitingList.remove(i+1); //remove course name
+				this.waitingList.remove(i); //remove course code
+				return true;
+			}
+		}
+		return false;
 	}
 
 	//returns index of array where course code is found
