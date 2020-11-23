@@ -22,11 +22,11 @@ public class AdminManager {
 
         //update either start or end date depending on user's choice
         if (choice == 1) {
-            System.out.println("Enter new start date");
+            System.out.println("Enter new start date (DD/MM/YYYY)");
             tempdate = sc.next();
             dm.editAccessPeriod(tempdate, temp[1]); // update start date while keeping end date same
         } else if (choice == 2) {
-            System.out.println("Enter new end date");
+            System.out.println("Enter new end date (DD/MM/YYYY)");
             tempdate = sc.next();
             dm.editAccessPeriod(temp[0], tempdate); // update end date while keeping start date same
         }
@@ -46,6 +46,12 @@ public class AdminManager {
 
         System.out.println("Enter student's ID:");
         String tempMatricNo = sc.next().toUpperCase();
+        
+        //valid to ensure there are no existing same student ID
+        while (dm.findStudent(tempMatricNo) != -1){
+            System.out.println("Student ID exist! Please enter again.");
+            tempMatricNo = sc.next().toUpperCase();
+        };
 
         System.out.println("Enter student's sex:");
         char tempGender = sc.next().charAt(0);
@@ -53,7 +59,7 @@ public class AdminManager {
         System.out.println("Enter student's nationality:");
         String tempNationality = sc.next();
 
-        // input password which will be hashed
+        // input password  will be hashed
         System.out.println("Enter student's password:");
         String tempPassword = LoginManager.hashing(sc.next());
 
@@ -73,18 +79,24 @@ public class AdminManager {
 
     public void addACourse(DataManager dm) {
         Scanner sc = new Scanner(System.in);
-
+        
         System.out.println("Enter course code:");
         String tempcourseCode = sc.next();
 
+         //valid to ensure there are no existing course code
+         while (dm.findCourse(tempcourseCode) != -1){
+            System.out.println("Course code exist! Please enter again.");
+            tempcourseCode = sc.next().toUpperCase();
+        };
+       
         System.out.println("Enter course name:");
         String tempcourseName = sc.next().toUpperCase();
 
-        System.out.println("Enter course's school:");
-        String tempschool = sc.next();
-
         System.out.println("Enter number of AUs the course has:");
         int tempAU = sc.nextInt();
+        
+        System.out.println("Enter course's school:");
+        String tempschool = sc.next();
 
         Course tempcourse = new Course(tempcourseCode, tempcourseName, tempAU, tempschool);
         dm.addCourse(tempcourse);
