@@ -31,19 +31,23 @@ public class DataManager {
 	
 	public void addStudent(Student s) {
 		student.add(s);
+		// write to student.txt to add student
 	}
 	
 	public void addCourse(Course c) {
 		course.add(c);
+		// write to course.txt method to add course
 	}
 
 	public void addAdmin(Admin a) {
 		admin.add(a);
+		// write to admin.txt to add admin
 	}
 	
-	public void addAccessPeriod(String a, String b) {
+	public void editAccessPeriod(String a, String b) {
 		accessperiod[0] = a; //start date 
-		accessperiod[1] = b; //end date 
+		accessperiod[1] = b; //end date
+		// write to accessperiod.txt to change access period
 	}
 
 	public void printCourse() {

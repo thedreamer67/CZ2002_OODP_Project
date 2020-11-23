@@ -9,10 +9,10 @@ public class AdminManager {
         this.user = a;
     }
 
-    public void editAccessPeriod(DataManager app) {
+    public void editAccessPeriod(DataManager dm) {
         Scanner sc = new Scanner(System.in);
         String tempdate = "0";
-        String[] temp = app.getAccessPeriod();
+        String[] temp = dm.getAccessPeriod();
         System.out.println("\nStart date is : " + temp[0]);
         System.out.println("End date is : " + temp[1]);
         System.out.println("1.Update start date");
@@ -24,11 +24,11 @@ public class AdminManager {
         if (choice == 1) {
             System.out.println("Enter new start date");
             tempdate = sc.next();
-            app.addAccessPeriod(tempdate, temp[1]); // update start while keeping end date same
+            dm.editAccessPeriod(tempdate, temp[1]); // update start date while keeping end date same
         } else if (choice == 2) {
             System.out.println("Enter new end date");
             tempdate = sc.next();
-            app.addAccessPeriod(temp[0], tempdate); // update end while keeping start start same
+            dm.editAccessPeriod(temp[0], tempdate); // update end date while keeping start date same
         }
 
         System.out.println("\nDate successfully updated.");
@@ -37,7 +37,7 @@ public class AdminManager {
 
     }
 
-    public void addAStudent(DataManager app) {
+    public void addAStudent(DataManager dm) {
         Scanner sc = new Scanner(System.in);
 
         //Admin input the following details for student 
@@ -61,13 +61,13 @@ public class AdminManager {
         String tempEmail = sc.next().toLowerCase();
 
         Student tempStudent = new Student(tempName, tempMatricNo, tempGender, tempNationality, tempPassword, tempEmail);
-        app.addStudent(tempStudent);
+        dm.addStudent(tempStudent);
 
         System.out.println("Student successfully added.\n");
         System.out.println("Current names of student(s):");
 
         //print all the student's name after update
-        app.printStudent();
+        dm.printStudent();
         System.out.println(" "); // extra spacing
     }
 
@@ -83,10 +83,10 @@ public class AdminManager {
         System.out.println("Enter course's school:");
         String tempschool = sc.next();
 
-        System.out.println("Enter number of AUs the course is:");
+        System.out.println("Enter number of AUs the course has:");
         int tempAU = sc.nextInt();
 
-        Course tempcourse = new Course(tempcourseCode, tempcourseName,tempAU,tempschool);
+        Course tempcourse = new Course(tempcourseCode, tempcourseName, tempAU, tempschool);
         dm.addCourse(tempcourse);
 
         System.out.println("Course successfully added.\n");
@@ -117,7 +117,7 @@ public class AdminManager {
                 System.out.println("4.Exit");
                 int choice = sc.nextInt();
                 switch (choice) {
-                    case (1):
+                    case (1):   // update course code
                         System.out.println("Enter new course code");
                         String tempcoursecode = sc.next().toUpperCase();
                         dm.getCourse().get(courseindex).setCourseCode(tempcoursecode);
@@ -126,7 +126,7 @@ public class AdminManager {
                         dm.printCourse();
                         System.out.println(" "); // extra spacing
                         break;
-                    case (2):
+                    case (2):   // update course name
                             System.out.println("Enter new course name");
                             String tempcoursename = sc.next();
                             dm.getCourse().get(courseindex).setCourseName(tempcoursename);
@@ -135,17 +135,17 @@ public class AdminManager {
                             dm.printCourse();
                             System.out.println(" "); // extra spacing
                             break;
-                        case (3):
-                            System.out.println("Enter new course school");
-                            String tempcourseschool = sc.next();
-                            dm.getCourse().get(courseindex).setSchool(tempcourseschool);
-                            System.out.println("Course school successfully updated.\n");
-                            System.out.println("Current code of the course(s):");
-                            dm.printCourse();
-                            System.out.println(" "); // extra spacing
-                            break;
-                        case (4):
-                            cont = false;
+                    case (3):   // update course school
+                        System.out.println("Enter new course school");
+                        String tempcourseschool = sc.next();
+                        dm.getCourse().get(courseindex).setSchool(tempcourseschool);
+                        System.out.println("Course school successfully updated.\n");
+                        System.out.println("Current code of the course(s):");
+                        dm.printCourse();
+                        System.out.println(" "); // extra spacing
+                        break;
+                    case (4):   // exit
+                        cont = false;
                     }
                 }
             }
