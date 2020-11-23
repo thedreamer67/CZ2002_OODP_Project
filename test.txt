@@ -1,0 +1,4 @@
+CZ2002	Object Oriented Programming	3	SCSE	001,002,003
+CZ2005	Operating Systems	3	SCSE	001,002,005
+CZ2007	Intro to Databases	3	SCSE	001,002
+CZ2001	Algorithms	2	SCSE	001,003

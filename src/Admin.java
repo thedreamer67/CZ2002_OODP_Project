@@ -1,4 +1,4 @@
-public class Admin {
+public class Admin implements User {
     private String userName;
     private String password;
     private String name;

@@ -1,4 +1,4 @@
-interface User {
+public interface User {
     public String getUserName();
     public void setUserName(String userName);
 

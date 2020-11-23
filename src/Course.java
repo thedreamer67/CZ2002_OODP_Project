@@ -39,6 +39,7 @@ public class Course {
 	public int getNumOfAUs() {
 		return this.numOfAUs;
 	}
+
 	public void setNumOfAUs(int numOfAUs) {
 		this.numOfAUs=numOfAUs;
 	}
@@ -58,6 +59,5 @@ public class Course {
 			System.out.println(index.get(i).getIndexNo()+"\t"+index.get(i).getVacancy());
 		}
 	}
-	
 	
 }

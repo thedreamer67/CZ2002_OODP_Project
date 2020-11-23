@@ -32,6 +32,10 @@ public class CourseIndex extends Course {
 	public void addLesson(String type, String location,String dayOfWeek,int time,int duration,int[] lessonWeek) {
 		this.lessons.add(new Lesson(type,location,dayOfWeek,time,duration,lessonWeek));
 	}
+
+	public ArrayList<Lesson> getLessons(){
+		return this.lessons;
+	}
 	
 	public void addWaitingList(String matricNo) {
 		this.waitingList.add(matricNo);

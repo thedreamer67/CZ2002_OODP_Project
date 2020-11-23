@@ -11,6 +11,7 @@ public class LoginManager {
         sc.nextLine();
         boolean check1=false;
         boolean check2=false;
+        // admin login
         if(choice==1){
             String inputUser="";
             do{
@@ -40,6 +41,7 @@ public class LoginManager {
         array[1]=inputUser;
         return array;
         }
+        // student login
         else{
             String inputUser="";
             do{
