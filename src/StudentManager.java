@@ -94,6 +94,9 @@ public class StudentManager {
 		System.out.println("Enter the course code of the course you wish to check vacancy for");
 		String courseCode = sc.next().toUpperCase();
 		int indexOfCourse = app.findCourse(courseCode);
+		if(indexOfCourse==-1){
+			System.out.println("Course Code not found");
+			return;}
 		app.getCourse().get(indexOfCourse).printVacancy();
 	}
 	
@@ -103,6 +106,9 @@ public class StudentManager {
 		System.out.println("Enter course code of the course that you wish to swap index of");
 		String courseCodeOld = sc.next().toUpperCase();
 		int indexOfArrayStudent = this.user.findCourse(courseCodeOld);
+		if(indexOfArrayStudent==-1){
+			System.out.println("Course Code not found");
+			return;}
 		CourseIndex ciOld = this.user.getCourseRegistered().get(indexOfArrayStudent);
 
 		int indexOfCourse = app.findCourse(courseCodeOld);
@@ -110,18 +116,35 @@ public class StudentManager {
 		System.out.println("Enter new index of the course");
 		String index = sc.next().toUpperCase();
 		int indexOfNewCI = app.findCourseIndex(index, indexOfCourse);
+		if(indexOfNewCI==-1){
+			System.out.println("Course index not found");
+			return;}
 		CourseIndex ciNew = app.getCourse().get(indexOfCourse).getIndex().get(indexOfNewCI);
 
-		// delete old course index and update necessary information
+		// delete old course index
 		this.user.dropCourse(ciOld);
+
+		if(checkTimetableClash(ciNew)==true){
+			this.user.addCourse(ciOld); //add back old course index because timetable clash
+			System.out.println("Timetable clash, please select another index to swap with");
+			return;
+		}
+
 		ciOld.removeStudent(this.user);
 
-		// add new course index and update necessary information
-		this.user.addCourse(ciNew);;
-		ciNew.addStudent(this.user);
-
-		System.out.println("Changing of course index successful");
-		this.user.checkRegistered();
+		// add new course index and update necessary information if there is vacancy else add to waiting list
+		if(ciNew.getVacancy()>0){
+			this.user.addCourse(ciNew);
+			ciNew.addStudent(this.user);
+			System.out.println("Changing of course index successful");
+			this.user.checkRegistered();
+		}
+		else{
+			this.user.addWaitingList(ciNew.getCourseCode(), ciNew.getCourseName(), ciNew.getIndexNo());
+			ciNew.addWaitingList(this.user.getUserName());
+			System.out.println("No vacancy for this course index, added to waiting list");
+			this.user.checkWaitingList();
+		}
 	}
 	
 	public void swopIndex(DataManager app) {
@@ -129,24 +152,45 @@ public class StudentManager {
 		System.out.println("Enter Matriculation Number of the Student you wish to swap with");
 		String matricNo = sc.next().toUpperCase();
 		int indexOfOtherStudent = app.findStudent(matricNo);
+		if(indexOfOtherStudent==-1){ //return if invalid matric number
+			System.out.println("Student not found");
+			return;}
 		//creates a reference to the other student object
 		Student other = app.getStudent().get(indexOfOtherStudent);
 
+		this.user.checkRegistered();
 		System.out.println("Enter Course Code that you wish to swap in");
 		String courseCode = sc.next().toUpperCase();
 		int indexOfCourseCurrent = this.user.findCourse(courseCode);
+		if(indexOfCourseCurrent==-1){ //return if user enters invalid course code
+			System.out.println("Course code not found");
+			return;}
 		//creates a reference to the course index current student is enrolled in
 		CourseIndex currentCourseIndex = this.user.getCourseRegistered().get(indexOfCourseCurrent);
 		int indexOfCourseOther = other.findCourse(courseCode);
 		//creates a reference to the course index other student is enrolled in
 		CourseIndex otherCourseIndex = other.getCourseRegistered().get(indexOfCourseOther);
+		
 
-		//drops course index of current student and update student list in the course index
-		this.user.dropCourse(currentCourseIndex);
+		this.user.dropCourse(currentCourseIndex); //drop current course to check if new timetable clashes
+		if(checkTimetableClash(otherCourseIndex)==true){
+			this.user.addCourse(currentCourseIndex); //if clash add the old course back
+			System.out.println("Timetable clash");
+			return;
+		}
 		currentCourseIndex.removeStudent(this.user);
 
-		//drops course index of other student and update student list in the course index
-		other.dropCourse(otherCourseIndex);
+		other.dropCourse(otherCourseIndex);//drop current course of other student to check if new timetable clashes
+		StudentManager sm = new StudentManager();
+		sm.setUser(other); /*creates new student manager object to use the check timetable function 
+		as this function can only check timetable clash for their own user, hence the need to set the other student
+		object as the current user*/
+
+		if(sm.checkTimetableClash(currentCourseIndex)==true){
+			other.addCourse(otherCourseIndex);
+			System.out.println("Timetable clash for the student you are swapping with");
+			return;
+		}
 		otherCourseIndex.removeStudent(other);
 
 		//add new course index for current student and update student list in the course index
