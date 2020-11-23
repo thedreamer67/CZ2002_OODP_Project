@@ -61,7 +61,7 @@ public class FileIOManager {
 
 
     public void readStudent(DataManager dm){
-        String studentFile = "students.txt";
+        String studentFile = "D:/GitHub/CZ2002_Project/students.txt";
 		BufferedReader br2=null;
 		String line2 = "";
 		try {		
