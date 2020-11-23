@@ -68,13 +68,15 @@ public class StarsApp {
 				}
 			
 			do {
+			System.out.println();
 			System.out.println("1.Register a course");
 			System.out.println("2.Drop a course");
 			System.out.println("3.Check/Print Courses Registered");
-			System.out.println("4.Check Vacancies Available");
-			System.out.println("5.Swap Index Number of Course");
-			System.out.println("6.Swop Index with Another Student");
-			System.out.println("7.Exit");
+			System.out.println("4.Check/Print Waiting List");
+			System.out.println("5.Check Vacancies Available");
+			System.out.println("6.Swap Index Number of Course");
+			System.out.println("7.Swop Index with Another Student");
+			System.out.println("8.Exit");
 			System.out.println("Enter Choice");
 			choice = sc.nextInt();
 			if(choice==1) {
@@ -82,15 +84,17 @@ public class StarsApp {
 			}
 			else if(choice==2)
 				sm.dropCourse(data);
-				else if(choice==3)
-					sm.checkRegistered();
-				else if(choice==4)
-					sm.checkVacancy(data);
-				else if(choice==5)
-					sm.changeIndex(data);
-				else if(choice==6)
-					sm.swopIndex(data);
-			}while(choice!=7);
+			else if(choice==3)
+				sm.checkRegistered();
+			else if(choice==4)
+				sm.checkWaitingList();
+			else if(choice==5)
+				sm.checkVacancy(data);
+			else if(choice==6)
+				sm.changeIndex(data);
+			else if(choice==7)
+				sm.swopIndex(data);
+			}while(choice!=8);
 			
 			break;
 				
