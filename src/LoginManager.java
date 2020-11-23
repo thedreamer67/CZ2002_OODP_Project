@@ -31,6 +31,7 @@ public class LoginManager {
                     System.out.println("Incorrect Password, try again");
                 }
                 else{
+                    System.out.println();
                     System.out.println("Successful Login");
                     check2=true;
                 }

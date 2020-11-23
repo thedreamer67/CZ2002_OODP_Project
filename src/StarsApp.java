@@ -30,8 +30,7 @@ public class StarsApp {
 
 			int choice = 0;
 			do{
-				System.out.println();
-				System.out.println("1. Edit a student access period");
+				System.out.println("1. Edit student access period");
 				System.out.println("2. Add a student");
 				System.out.println("3. Add a course");
 				System.out.println("4. Update a course");
