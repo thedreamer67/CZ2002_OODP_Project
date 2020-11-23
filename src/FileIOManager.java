@@ -221,16 +221,15 @@ public class FileIOManager {
 			BufferedWriter bwStream3 = new BufferedWriter(fwStream3);
 			PrintWriter pwStream3 = new PrintWriter(bwStream3);
 			
-			// write to students.txt using the arraylist of students attribute in DataManager object
+			// write to courseindex.txt using the arraylist of courses attribute in DataManager object
 			for (Course c : dm.getCourse()) {
-				ArrayList<CourseIndex> courseIndexList = (ArrayList<CourseIndex>) c.getIndex().clone();
-				for (CourseIndex ci : courseIndexList) {
-					pwStream3.print(ci.getCourseCode() +"\t"+ ci.getIndexNo() +"\t"+ ci.getVacancy() +"\t");
+				for (CourseIndex ci : c.getIndex()) {
+					pwStream3.print(ci.getCourseCode() +"\t"+ ci.getIndexNo() +"\t"+ ci.getVacancy() +"\t"); // course index info
 					
 					ArrayList<String> allLessons = new ArrayList<String>();
 					for (Lesson l : ci.getLessons()) {
 						String weeks = Arrays.toString(l.getLessonWeek()).replace("[", "").replace("]", "").replace(",", "").trim();
-						allLessons.add(l.getType() +","+ l.getLocation() +","+ l.getDayOfWeek() +","+ l.getTime() +","+ l.getDuration() +","+ weeks);
+						allLessons.add(l.getType() +","+ l.getLocation() +","+ l.getDayOfWeek() +","+ l.getTime() +","+ l.getDuration() +","+ weeks); // lessons of course index info
 					}
 					pwStream3.print(String.join("@", allLessons) +"\t");
 					
@@ -238,20 +237,13 @@ public class FileIOManager {
 					for (Student s : ci.getStudentList()) {
 						registeredStudents.add(s.getUserName());
 					}
-					pwStream3.print(String.join(",", registeredStudents));
-					
-				}
-			}
+					pwStream3.print(String.join(",", registeredStudents) +"\t"); // registered students list
 
-			for (Student s : dm.getStudent()) {
-				pwStream3.print(s.getName() +"\t"+ s.getUserName() +"\t"+ s.getGender() +"\t"+ s.getPassword() +"\t"+ s.getEmail() +"\t");
-				ArrayList<String> registeredCourses = new ArrayList<String>();
-				for (CourseIndex i: s.getCourseRegistered()) {
-					registeredCourses.add(i.getCourseCode()+" "+i.getIndexNo());
+					pwStream3.print(String.join(",", ci.getWaitingList())); // watiing list of students
+					
+					pwStream3.println();
 				}
-				pwStream3.print(String.join(",", registeredCourses));
-				pwStream3.print("\t"+ s.getTotalAUs());
-				pwStream3.println();
+				
 			}
 			
 			pwStream3.close();
