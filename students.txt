@@ -1,17 +1,17 @@
-Ho Khee Gin	U1923622G	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	kheegin@e.ntu.edu.sg		0
-Shauna Tan	U1840754E	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	shau0013@e.ntu.edu.sg	CZ2001 10184,CZ2003 10210	6
-Jane Smith	U1839204L	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	janesmith@e.ntu.edu.sg		0
-Bree Robbins	U1903883K	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	breerobbins@e.ntu.edu.sg		0
-Peter Tan	U1918229I	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	petertan@e.ntu.edu.sg		0
-Brett Tay	U1822345M	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	bretttay@e.ntu.edu.sg		0
-Thomas Ho	U1839401E	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	thomasho@e.ntu.edu.sg		0
-Rachel Goh	U1842390E	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	rachelgoh@e.ntu.edu.sg		0
-Hannah Lim	U1739347C	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	hannahlim@e.ntu.edu.sg		0
-Ally Goh	U1749200F	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	allygoh@e.ntu.edu.sg		0
-Jay Park	U1820493K	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	jaypark@e.ntu.edu.sg		0
-William Choo	U1804324A	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	williamchoo@e.ntu.edu.sg		0
-Kenny Lim	U1998652L	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	kennylim@e.ntu.edu.sg		0
-Jodie Choi	U1923001E	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	jodiechoi@e.ntu.edu.sg		0
-Zara Regan	U1823098L	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	zararegan@e.ntu.edu.sg		0
-Tony Wu	U1902834H	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	tonywu@e.ntu.edu.sg		0
-Kara Lee	U1823098L	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	karalee@e.ntu.edu.sg		0
+Ho Khee Gin	U1923622G	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	kheegin@e.ntu.edu.sg
+Shauna Tan	U1840754E	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	shau0013@e.ntu.edu.sg
+Jane Smith	U1839204L	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	janesmith@e.ntu.edu.sg
+Bree Robbins	U1903883K	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	breerobbins@e.ntu.edu.sg
+Peter Tan	U1918229I	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	petertan@e.ntu.edu.sg
+Brett Tay	U1822345M	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	bretttay@e.ntu.edu.sg
+Thomas Ho	U1839401E	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	thomasho@e.ntu.edu.sg
+Rachel Goh	U1842390E	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	rachelgoh@e.ntu.edu.sg
+Hannah Lim	U1739347C	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	hannahlim@e.ntu.edu.sg
+Ally Goh	U1749200F	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	allygoh@e.ntu.edu.sg
+Jay Park	U1820493K	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	jaypark@e.ntu.edu.sg
+William Choo	U1804324A	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	williamchoo@e.ntu.edu.sg
+Kenny Lim	U1998652L	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	kennylim@e.ntu.edu.sg
+Jodie Choi	U1923001E	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	jodiechoi@e.ntu.edu.sg
+Zara Regan	U1823098L	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	zararegan@e.ntu.edu.sg
+Tony Wu	U1902834H	M	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	tonywu@e.ntu.edu.sg
+Kara Lee	U1823098L	F	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	karalee@e.ntu.edu.sg
