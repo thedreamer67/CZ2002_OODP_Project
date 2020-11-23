@@ -39,6 +39,7 @@ public class Course {
 	public int getNumOfAUs() {
 		return this.numOfAUs;
 	}
+	
 	public void setNumOfAUs(int numOfAUs) {
 		this.numOfAUs=numOfAUs;
 	}

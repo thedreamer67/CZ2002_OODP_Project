@@ -40,7 +40,7 @@ public class AdminManager {
     public void addAStudent(DataManager dm) {
         Scanner sc = new Scanner(System.in);
 
-        //Admin input the following details for student 
+        //Add student's name
         System.out.println("Enter student's name:");
         String tempName = sc.next();
 
@@ -50,6 +50,7 @@ public class AdminManager {
             tempName = sc.next();
         };
 
+        //Add student's ID
         System.out.println("Enter student's ID:");
         String tempMatricNo = sc.next().toUpperCase();
         
@@ -59,6 +60,7 @@ public class AdminManager {
             tempMatricNo = sc.next().toUpperCase();
         };
 
+        //Add student's sex
         System.out.println("Enter student's sex:");
         char tempGender = Character.toUpperCase(sc.next().charAt(0));
 
@@ -68,6 +70,7 @@ public class AdminManager {
             tempGender = Character.toUpperCase(sc.next().charAt(0));
         };
 
+        //Add student's nationality
         System.out.println("Enter student's nationality:");
         String tempNationality = sc.next();
 
@@ -75,6 +78,7 @@ public class AdminManager {
         System.out.println("Enter student's password:");
         String tempPassword = LoginManager.hashing(sc.next());
 
+        //Add student's email
         System.out.println("Enter student's email:");
         String tempEmail = sc.next().toLowerCase();
 
@@ -92,6 +96,7 @@ public class AdminManager {
     public void addACourse(DataManager dm) {
         Scanner sc = new Scanner(System.in);
         
+        //add course code
         System.out.println("Enter course code:");
         String tempcourseCode = sc.next();
 
@@ -101,9 +106,11 @@ public class AdminManager {
             tempcourseCode = sc.next().toUpperCase();
         };
        
+        //add course name
         System.out.println("Enter course name:");
         String tempcourseName = sc.next().toUpperCase();
 
+        //add course AUs
         System.out.println("Enter number of AUs the course has:");
         String stringtempAU = sc.next();
 
@@ -114,6 +121,7 @@ public class AdminManager {
         };
         int tempAU=Integer.parseInt(stringtempAU); 
 
+        //add course school
         System.out.println("Enter course's school:");
         String tempschool = sc.next();
 
@@ -153,7 +161,7 @@ public class AdminManager {
                         System.out.println("Enter new course code");
                         String tempcoursecode = sc.next().toUpperCase();
                         dm.getCourse().get(courseindex).setCourseCode(tempcoursecode);
-                        
+
                         System.out.println("Course code successfully updated.\n");
                         System.out.println("Current list of the course(s):");
                         dm.printCourse();
