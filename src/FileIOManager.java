@@ -67,8 +67,9 @@ public class FileIOManager {
 		try {		
 				br2 = new BufferedReader(new FileReader(studentFile));
 				while ((line2 = br2.readLine()) != null) {
-                    String[] values2 = line2.split("\t");
-                    // create Student object, but without course attribute
+					String[] values2 = line2.split("\t");
+					if(values2.length>6){ //if there is courses that the student already registered
+					// create Student object, but without course attribute
 					dm.addStudent(new Student(values2[0],values2[1],values2[2].charAt(0),values2[3],values2[4],values2[5],Integer.parseInt(values2[7])));
 					String[] courses = values2[6].split(",");    // separate different courses
 					for(int i=0;i<courses.length;i++) {
@@ -83,6 +84,9 @@ public class FileIOManager {
 								}
 							}
 						}
+					}
+					else //if student did not register for any course
+					dm.addStudent(new Student(values2[0],values2[1],values2[2].charAt(0),values2[3],values2[4],values2[5]));
 					}
 		
 				} catch (FileNotFoundException e) {
@@ -141,12 +145,22 @@ public class FileIOManager {
                 String course  = values3[0];
                 String index = values3[1];
                 String vacancy = values3[2];
-                String lesson = values3[3];
-                String waiting = values3[4];
-                String student = values3[5];
+				String lesson = values3[3];
+				String student="";
+				String waiting="";
+				boolean checkRegistered=false;
+				boolean checkWaiting=false;
+				if(values3.length>4){ //if course already have students registered for it
+					checkRegistered=true;
+					student = values3[4];
+					if(values3.length>5) //if course has a waiting list
+					checkWaiting=true;
+						waiting = values3[5];
+				}
 				for(int i=0;i<dm.getCourse().size();i++) {
                     if(course.equals(dm.getCourse().get(i).getCourseCode()))
 						arrayindex1=i;
+						System.out.println(arrayindex1+"test");
                         for(int j=0;j<dm.getCourse().get(arrayindex1).getIndex().size();j++) {
                             if(index.equals(dm.getCourse().get(arrayindex1).getIndex().get(j).getIndexNo())) {
                                 arrayindex2 = j;
@@ -165,20 +179,25 @@ public class FileIOManager {
                     }
 					dm.getCourse().get(arrayindex1).getIndex().get(arrayindex2).addLesson(lessonAttr[0], lessonAttr[1], lessonAttr[2], Integer.parseInt(lessonAttr[3]), Integer.parseInt(lessonAttr[4]), lessonWeekInt);
 				}
-				String[] waitingMatric = waiting.split(",");
-                for(int c=0;c<waitingMatric.length;c++) { //add Student Matric number into the waiting wuthin the CourseIndex
-                    dm.getCourse().get(arrayindex1).getIndex().get(arrayindex2).addWaitingList(waitingMatric[c]);
+				if(checkWaiting==true){ //if there is a waiting list
+					String[] waitingMatric = waiting.split(",");
+					for(int c=0;c<waitingMatric.length;c++) { //add Student Matric number into the waiting wuthin the CourseIndex
+						dm.getCourse().get(arrayindex1).getIndex().get(arrayindex2).addWaitingList(waitingMatric[c]);
+					}
 				}
-				String [] currentStudent = student.split(",");
-				for(int d=0;d<currentStudent.length;d++){
-                    String matricNo = currentStudent[d];
-                    for(int e=0;e<dm.getStudent().size();e++){
-                        if(matricNo.equals(dm.getStudent().get(e).getUserName())){
-							Student s = dm.getStudent().get(e);
-							dm.getCourse().get(arrayindex1).getIndex().get(arrayindex2).addStudent(s);
-                        }
-                    }
-                }
+
+				if(checkRegistered==true){ //if there exists students who are registered for this course
+					String [] currentStudent = student.split(",");
+					for(int d=0;d<currentStudent.length;d++){
+						String matricNo = currentStudent[d];
+						for(int e=0;e<dm.getStudent().size();e++){
+							if(matricNo.equals(dm.getStudent().get(e).getUserName())){
+								Student s = dm.getStudent().get(e);
+								dm.getCourse().get(arrayindex1).getIndex().get(arrayindex2).addStudent(s);
+							}
+						}
+					}
+				}
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
