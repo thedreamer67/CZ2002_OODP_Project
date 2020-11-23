@@ -69,16 +69,16 @@ public class FileIOManager {
 				while ((line2 = br2.readLine()) != null) {
 					String[] values2 = line2.split("\t");
 					if(values2.length>6){ //if there is courses that the student already registered
-					// create Student object, but without course attribute
-					dm.addStudent(new Student(values2[0],values2[1],values2[2].charAt(0),values2[3],values2[4],values2[5],Integer.parseInt(values2[7])));
-					String[] courses = values2[6].split(",");    // separate different courses
-					for(int i=0;i<courses.length;i++) {
-						String[] courseIndex = courses[i].split(" ");   // separate course index from respective course
-						for(int j=0;j<dm.getCourse().size();j++) {
-							if(courseIndex[0].equals(dm.getCourse().get(j).getCourseCode())) {
-								for(int a=0;a<dm.getCourse().get(j).getIndex().size();a++) {
-									if(courseIndex[1].equals(dm.getCourse().get(j).getIndex().get(a).getIndexNo())) {
-										dm.getStudent().get(dm.getStudent().size()-1).addCourse(dm.getCourse().get(j).getIndex().get(a));
+						// create Student object, but without course attribute
+						dm.addStudent(new Student(values2[0],values2[1],values2[2].charAt(0),values2[3],values2[4],values2[5],Integer.parseInt(values2[7])));
+						String[] courses = values2[6].split(",");    // separate different courses
+						for(int i=0;i<courses.length;i++) {
+							String[] courseIndex = courses[i].split(" ");   // separate course index from respective course
+							for(int j=0;j<dm.getCourse().size();j++) {
+								if(courseIndex[0].equals(dm.getCourse().get(j).getCourseCode())) {
+									for(int a=0;a<dm.getCourse().get(j).getIndex().size();a++) {
+										if(courseIndex[1].equals(dm.getCourse().get(j).getIndex().get(a).getIndexNo())) {
+											dm.getStudent().get(dm.getStudent().size()-1).addCourse(dm.getCourse().get(j).getIndex().get(a));
 										}
 									}
 								}
@@ -86,7 +86,7 @@ public class FileIOManager {
 						}
 					}
 					else //if student did not register for any course
-					dm.addStudent(new Student(values2[0],values2[1],values2[2].charAt(0),values2[3],values2[4],values2[5]));
+						dm.addStudent(new Student(values2[0],values2[1],values2[2].charAt(0),values2[3],values2[4],values2[5]));
 					}
 		
 				} catch (FileNotFoundException e) {
@@ -325,7 +325,7 @@ public class FileIOManager {
 			PrintWriter pwStream5 = new PrintWriter(bwStream5);
 			
 			// write to accessperiod.txt using the accessPeriod array attribute in DataManager object
-			pwStream5.print(dm.getAccessPeriod()[0] +" "+ dm.getAccessPeriod()[1]);
+			pwStream5.print(dm.getAccessPeriod()[0] +"\t"+ dm.getAccessPeriod()[1]);
 					
 			pwStream5.close();
 		}
