@@ -78,6 +78,7 @@ public class StudentManager {
 		ci.removeStudent(this.user);
 		System.out.println("Course successfully dropped.");
 		this.user.checkRegistered();
+		updateWaitingList(ci, dm); // once current student drops a course, method is called to register another student for this course
 	}
 	
 	public void checkRegistered() {
@@ -153,6 +154,7 @@ public class StudentManager {
 			ciNew.addStudent(this.user);
 			System.out.println("Changing of course index successful");
 			this.user.checkRegistered();
+			updateWaitingList(ciOld, dm); //once this student changes course index, registers another student in the queue for the course the current student dropped
 		}
 		else{
 			this.user.addWaitingList(ciNew.getCourseCode(), ciNew.getCourseName(), ciNew.getIndexNo());
@@ -283,5 +285,29 @@ public class StudentManager {
 			}
 		}
 		return false; //indicates no clash
+	}
+
+	//method to register student once there is vacancy for a course
+	public void updateWaitingList(CourseIndex ci, DataManager dm){
+		if(ci.getVacancy()>0){
+			String matricNo = ci.getWaitingList().get(0); //get first item in the list since the list works like a queue
+			int arrayIndexOfStudent = dm.findStudent(matricNo);
+			Student s = dm.getStudent().get(arrayIndexOfStudent);
+			System.out.println("There is now vacancy for course "+ci.getCourseCode()+" with index "+ci.getIndexNo());
+			System.out.println("Assigning course "+ci.getCourseCode()+" to student "+s.getUserName()+" "+s.getName()+"...");
+			StudentManager sm = new StudentManager();
+			sm.setUser(s);
+			if(sm.checkTimetableClash(ci)==true){
+				System.out.println("Course assignment failed as the student has clashing timetable");
+				return;
+			}
+			if((ci.getNumOfAUs()+s.getTotalAUs())>23){
+				System.out.println("Course assignment failed as the student has exceeded the maximum number of AUs");
+				return;}
+			s.addCourse(ci);
+			ci.addStudent(s);
+			ci.dequeueWaitingList();
+			System.out.println("Assignment of course successful");
+		}
 	}
 }

@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FileIOManager {
 
@@ -34,78 +35,29 @@ public class FileIOManager {
 
 	public void writeCourse(DataManager dm) {
 		try {
-			FileWriter fwStream = new FileWriter("courses.txt", true);
+			FileWriter fwStream = new FileWriter("courses.txt");
 			BufferedWriter bwStream = new BufferedWriter(fwStream);
 			PrintWriter pwStream = new PrintWriter(bwStream);
 			
-			// code to write to courses.txt using info from dm	
-			
-			pwStream.close();
-		}
-		catch (IOException e) {
-			System.out.print("IO Error!" + e.getMessage());
-			e.printStackTrace();
-			System.exit(0);
-		}
-	}
-
-	/*
-	public void writeNewCourse(Course c) {
-		try {
-			FileWriter fwStream = new FileWriter("courses.txt", true);
-			BufferedWriter bwStream = new BufferedWriter(fwStream);
-			PrintWriter pwStream = new PrintWriter(bwStream);
-			
-			// appending new course info to the end of the courses.txt file
-			pwStream.println();
-			pwStream.print(c.getCourseCode() + "\t" + c.getCourseName() + "\t" + c.getNumOfAUs() + "\t" + c.getSchool() + "\t");
-			ArrayList<String> indices = new ArrayList<String>();
-			for (CourseIndex i: c.getIndex()) {
-				indices.add(i.getIndexNo());
-			}
-			pwStream.print(String.join(",", indices));	
-			
-			pwStream.close();
-		}
-		catch (IOException e) {
-			System.out.print("IO Error!" + e.getMessage());
-			e.printStackTrace();
-			System.exit(0);
-		}
-	}
-
-	public void writeUpdateCourse(String oldCode, Course c) {
-		try {
-			// input the file content to the StringBuffer "inputBuffer"
-			BufferedReader file = new BufferedReader(new FileReader("courses.txt"));
-			StringBuffer inputBuffer = new StringBuffer();
-			String line;
-			ArrayList<String> indices = new ArrayList<String>();
-	
-			while ((line = file.readLine()) != null) {
-				String[] values = line.split("\t");
-				// edit course info for the course that was updated
-				if (oldCode.equals(values[0])) {
-					for (CourseIndex i: c.getIndex()) {
-						indices.add(i.getIndexNo());
-					}
-					line = c.getCourseCode() + "\t" + c.getCourseName() + "\t" + c.getNumOfAUs() + "\t" + c.getSchool() + "\t" + String.join(",", indices);
+			// write to courses.txt using the arraylist of courses attribute in DataManager object
+			for (Course c : dm.getCourse()) {
+				pwStream.print(c.getCourseCode() +"\t"+ c.getCourseName() +"\t"+ c.getNumOfAUs() +"\t"+ c.getSchool() +"\t");
+				ArrayList<String> indices = new ArrayList<String>();
+				for (CourseIndex i: c.getIndex()) {
+					indices.add(i.getIndexNo());
 				}
-				inputBuffer.append(line);
-				inputBuffer.append('\n');
-			
+				pwStream.print(String.join(",", indices));
+				pwStream.println();
 			}
-			file.close();
 			
-			 // write the new string with the replaced line over the same courses.txt file
-			 FileOutputStream fileOut = new FileOutputStream("courses.txt");
-			 fileOut.write(inputBuffer.toString().getBytes());
-			 fileOut.close();
-	 
-		 } catch (Exception e) {
-			 System.out.println("Problem reading file.");
-		 }
-	 } */
+			pwStream.close();
+		}
+		catch (IOException e) {
+			System.out.print("IO Error!" + e.getMessage());
+			e.printStackTrace();
+			System.exit(0);
+		}
+	}
 
 
     public void readStudent(DataManager dm){
@@ -146,6 +98,33 @@ public class FileIOManager {
 						}
 					}
 				}
+	}
+
+	public void writeStudent(DataManager dm) {
+		try {
+			FileWriter fwStream2 = new FileWriter("students.txt");
+			BufferedWriter bwStream2 = new BufferedWriter(fwStream2);
+			PrintWriter pwStream2 = new PrintWriter(bwStream2);
+			
+			// write to students.txt using the arraylist of students attribute in DataManager object
+			for (Student s : dm.getStudent()) {
+				pwStream2.print(s.getName() +"\t"+ s.getUserName() +"\t"+ s.getGender() +"\t"+ s.getPassword() +"\t"+ s.getEmail() +"\t");
+				ArrayList<String> registeredCourses = new ArrayList<String>();
+				for (CourseIndex i: s.getCourseRegistered()) {
+					registeredCourses.add(i.getCourseCode()+" "+i.getIndexNo());
+				}
+				pwStream2.print(String.join(",", registeredCourses));
+				pwStream2.print("\t"+ s.getTotalAUs());
+				pwStream2.println();
+			}
+			
+			pwStream2.close();
+		}
+		catch (IOException e) {
+			System.out.print("IO Error!" + e.getMessage());
+			e.printStackTrace();
+			System.exit(0);
+		}
 	}
 
 
@@ -215,6 +194,56 @@ public class FileIOManager {
 			}
 		}
 	}
+
+	public void writeCourseIndex(DataManager dm) {
+		
+		try {
+			FileWriter fwStream3 = new FileWriter("students.txt");
+			BufferedWriter bwStream3 = new BufferedWriter(fwStream3);
+			PrintWriter pwStream3 = new PrintWriter(bwStream3);
+			
+			// write to students.txt using the arraylist of students attribute in DataManager object
+			for (Course c : dm.getCourse()) {
+				ArrayList<CourseIndex> courseIndexList = (ArrayList<CourseIndex>) c.getIndex().clone();
+				for (CourseIndex ci : courseIndexList) {
+					pwStream3.print(ci.getCourseCode() +"\t"+ ci.getIndexNo() +"\t"+ ci.getVacancy() +"\t");
+					
+					ArrayList<String> allLessons = new ArrayList<String>();
+					for (Lesson l : ci.getLessons()) {
+						String weeks = Arrays.toString(l.getLessonWeek()).replace("[", "").replace("]", "").replace(",", "").trim();
+						allLessons.add(l.getType() +","+ l.getLocation() +","+ l.getDayOfWeek() +","+ l.getTime() +","+ l.getDuration() +","+ weeks);
+					}
+					pwStream3.print(String.join("@", allLessons) +"\t");
+					
+					ArrayList<String> registeredStudents = new ArrayList<String>();
+					for (Student s : ci.getStudentList()) {
+						registeredStudents.add(s.getUserName());
+					}
+					pwStream3.print(String.join(",", registeredStudents));
+					
+				}
+			}
+
+			for (Student s : dm.getStudent()) {
+				pwStream3.print(s.getName() +"\t"+ s.getUserName() +"\t"+ s.getGender() +"\t"+ s.getPassword() +"\t"+ s.getEmail() +"\t");
+				ArrayList<String> registeredCourses = new ArrayList<String>();
+				for (CourseIndex i: s.getCourseRegistered()) {
+					registeredCourses.add(i.getCourseCode()+" "+i.getIndexNo());
+				}
+				pwStream3.print(String.join(",", registeredCourses));
+				pwStream3.print("\t"+ s.getTotalAUs());
+				pwStream3.println();
+			}
+			
+			pwStream3.close();
+		}
+		catch (IOException e) {
+			System.out.print("IO Error!" + e.getMessage());
+			e.printStackTrace();
+			System.exit(0);
+		}
+	}
+
 	
 	public void readAdmin(DataManager dm){
         String adminFile = "admins.txt";
@@ -243,12 +272,12 @@ public class FileIOManager {
 				}
     }
     
-	public void readAccessperiod(DataManager dm){
-		String AccessperiodFile = "accessperiod.txt";
+	public void readAccessPeriod(DataManager dm){
+		String AccessPeriodFile = "accessperiod.txt";
 		BufferedReader br5=null;
 		String line5 = "";
 		try {		
-			br5 = new BufferedReader(new FileReader(AccessperiodFile));
+			br5 = new BufferedReader(new FileReader(AccessPeriodFile));
 			while ((line5 = br5.readLine()) != null) {
 				String[] values5 = line5.split("\t");
 				dm.editAccessPeriod(values5[0],values5[1]);
@@ -268,6 +297,24 @@ public class FileIOManager {
 					}
 				}
 			}
+	}
+
+	public void writeAccessPeriod(DataManager dm) {
+		try {
+			FileWriter fwStream5 = new FileWriter("accessperiod.txt");
+			BufferedWriter bwStream5 = new BufferedWriter(fwStream5);
+			PrintWriter pwStream5 = new PrintWriter(bwStream5);
+			
+			// write to accessperiod.txt using the accessPeriod array attribute in DataManager object
+			pwStream5.print(dm.getAccessPeriod()[0] +" "+ dm.getAccessPeriod()[1]);
+					
+			pwStream5.close();
+		}
+		catch (IOException e) {
+			System.out.print("IO Error!" + e.getMessage());
+			e.printStackTrace();
+			System.exit(0);
+		}
 	}
 	
 }
