@@ -25,7 +25,7 @@ public class StudentManager {
 			return;}
 
 		//check for unique course code within registered courses and waiting list
-		if(checkUniqueRegistered(courseCode)==false && checkUniqueWaiting(courseCode)==false){
+		if(checkUniqueRegistered(courseCode)==false || checkUniqueWaiting(courseCode)==false){
 			System.out.println("The course has already been registered or in waiting list, no duplicates allowed");
 			return;}
 
