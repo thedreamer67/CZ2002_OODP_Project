@@ -133,22 +133,4 @@ public class LoginManager {
         }
         return false;
     }
-
-    /*public <Any>Any createManager(int choice,String inputUser,DataManager app){
-        if(choice==1){
-            for(int i=0;i<app.getAdmin().size();i++){
-                if(inputUser.equals(app.getAdmin().get(i).getUserName())){
-                    AdminManager am = new AdminManager(app.getAdmin().get(i));
-                    return ((Any)((AdminManager)(am)));;
-                }
-            }
-        }
-        else if(choice==2){
-            for(int i=0;i<app.getStudent().size();i++){
-                if(inputUser.equals(app.getStudent().get(i).getUserName())){
-                    StudentManager sm = new StudentManager(app.getStudent().get(i));
-                    return ((Any)((StudentManager)(sm)));
-                }
-            }
-        }*/
     }

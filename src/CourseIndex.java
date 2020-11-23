@@ -41,6 +41,14 @@ public class CourseIndex extends Course {
 		this.waitingList.add(matricNo);
 	}
 	
+	public ArrayList<String> getWaitingList(){
+		return this.waitingList;
+	}
+
+	public void dequeueWaitingList(){
+		this.waitingList.remove(0);
+	}
+	
 	public void addStudent(Student s) {
 		this.studentList.add(s);
 		this.vacancy=this.vacancy-1;
@@ -54,11 +62,8 @@ public class CourseIndex extends Course {
 		}
 		this.vacancy=this.vacancy+1;
 	}
-	/*public ArrayList<Student> getStudent(){
-		return this.studentList;
-    }*/
     
-    public void checkVacancy() {
+    public void updateWaitingList() {
         // check vacancy of the index
         // if there's vacancy:
             // update waiting list accordingly
