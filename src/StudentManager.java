@@ -7,19 +7,19 @@ public class StudentManager {
 		this.user=student;
 	}
 	
-	public void addCourse(DataManager app) {
+	public void addCourse(DataManager dm) {
 		Scanner sc = new Scanner(System.in);
-		app.printCourse();
+		dm.printCourse();
 		System.out.println("Enter the course code of the course you wish to register in");
 		String courseCode = sc.next().toUpperCase();
 		//get the index of array where the course is stored.
-		int indexOfCourse = app.findCourse(courseCode); 
+		int indexOfCourse = dm.findCourse(courseCode); 
 		if(indexOfCourse==-1){
 			System.out.println("Course Code not found");
 			return;}
 
 		//checks if registering for this course exceeds the maximum allowable number of AUs
-		Course c = app.getCourse().get(indexOfCourse);
+		Course c = dm.getCourse().get(indexOfCourse);
 		if((c.getNumOfAUs()+this.user.getTotalAUs())>23){
 			System.out.println("Addition of this course will exceed the maximum number of AUs allowed, please drop a course first");
 			return;}
@@ -29,16 +29,16 @@ public class StudentManager {
 			System.out.println("The course has already been registered or in waiting list, no duplicates allowed");
 			return;}
 
-		app.getCourse().get(indexOfCourse).printVacancy();
+		dm.getCourse().get(indexOfCourse).printVacancy();
 		System.out.println("Enter the index you wish to register for");
 		String courseIndex = sc.next().toUpperCase();
 		//get the index of array where the course index is stored.
-		int indexOfCI = app.findCourseIndex(courseIndex, indexOfCourse);
+		int indexOfCI = dm.findCourseIndex(courseIndex, indexOfCourse);
 		if(indexOfCI==-1){
 			System.out.println("Course Index not found");
 			return;}
 
-		CourseIndex ci = app.getCourse().get(indexOfCourse).getIndex().get(indexOfCI);
+		CourseIndex ci = dm.getCourse().get(indexOfCourse).getIndex().get(indexOfCI);
 
 		//check if there is clash in timetable
 		if(checkTimetableClash(ci)==true){
@@ -61,7 +61,7 @@ public class StudentManager {
 		}
 	}
 	
-	public void dropCourse(DataManager app) {
+	public void dropCourse(DataManager dm) {
 		Scanner sc = new Scanner(System.in);
 		this.user.checkRegistered();
 		System.out.println("Enter the Course Code of the course you wish to drop");
@@ -88,16 +88,16 @@ public class StudentManager {
 		this.user.checkWaitingList();
 	}
 	
-	public void checkVacancy(DataManager app) {
+	public void checkVacancy(DataManager dm) {
 		Scanner sc = new Scanner(System.in);
-		app.printCourse();
+		dm.printCourse();
 		System.out.println("Enter the course code of the course you wish to check vacancy for");
 		String courseCode = sc.next().toUpperCase();
-		int indexOfCourse = app.findCourse(courseCode);
-		app.getCourse().get(indexOfCourse).printVacancy();
+		int indexOfCourse = dm.findCourse(courseCode);
+		dm.getCourse().get(indexOfCourse).printVacancy();
 	}
 	
-	public void changeIndex(DataManager app) {
+	public void changeIndex(DataManager dm) {
 		Scanner sc = new Scanner(System.in);
 		this.user.checkRegistered();
 		System.out.println("Enter course code of the course that you wish to swap index of");
@@ -105,12 +105,12 @@ public class StudentManager {
 		int indexOfArrayStudent = this.user.findCourse(courseCodeOld);
 		CourseIndex ciOld = this.user.getCourseRegistered().get(indexOfArrayStudent);
 
-		int indexOfCourse = app.findCourse(courseCodeOld);
-		app.getCourse().get(indexOfCourse).printVacancy();
+		int indexOfCourse = dm.findCourse(courseCodeOld);
+		dm.getCourse().get(indexOfCourse).printVacancy();
 		System.out.println("Enter new index of the course");
 		String index = sc.next().toUpperCase();
-		int indexOfNewCI = app.findCourseIndex(index, indexOfCourse);
-		CourseIndex ciNew = app.getCourse().get(indexOfCourse).getIndex().get(indexOfNewCI);
+		int indexOfNewCI = dm.findCourseIndex(index, indexOfCourse);
+		CourseIndex ciNew = dm.getCourse().get(indexOfCourse).getIndex().get(indexOfNewCI);
 
 		// delete old course index and update necessary information
 		this.user.dropCourse(ciOld);
@@ -124,13 +124,13 @@ public class StudentManager {
 		this.user.checkRegistered();
 	}
 	
-	public void swopIndex(DataManager app) {
+	public void swopIndex(DataManager dm) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Matriculation Number of the Student you wish to swap with");
 		String matricNo = sc.next().toUpperCase();
-		int indexOfOtherStudent = app.findStudent(matricNo);
+		int indexOfOtherStudent = dm.findStudent(matricNo);
 		//creates a reference to the other student object
-		Student other = app.getStudent().get(indexOfOtherStudent);
+		Student other = dm.getStudent().get(indexOfOtherStudent);
 
 		System.out.println("Enter Course Code that you wish to swap in");
 		String courseCode = sc.next().toUpperCase();

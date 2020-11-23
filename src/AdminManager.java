@@ -99,7 +99,7 @@ public class AdminManager {
     public void UpdateACourse(DataManager dm) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Current code of the course(s):");
+        System.out.println("Current codes of courses:");
         dm.printCourse();
         System.out.println(" "); // extra spacing
 
@@ -127,14 +127,14 @@ public class AdminManager {
                         System.out.println(" "); // extra spacing
                         break;
                     case (2):   // update course name
-                            System.out.println("Enter new course name");
-                            String tempcoursename = sc.next();
-                            dm.getCourse().get(courseindex).setCourseName(tempcoursename);
-                            System.out.println("Course name successfully updated.\n");
-                            System.out.println("Current code of the course(s):");
-                            dm.printCourse();
-                            System.out.println(" "); // extra spacing
-                            break;
+                        System.out.println("Enter new course name");
+                        String tempcoursename = sc.next();
+                        dm.getCourse().get(courseindex).setCourseName(tempcoursename);
+                        System.out.println("Course name successfully updated.\n");
+                        System.out.println("Current code of the course(s):");
+                        dm.printCourse();
+                        System.out.println(" "); // extra spacing
+                        break;
                     case (3):   // update course school
                         System.out.println("Enter new course school");
                         String tempcourseschool = sc.next();
