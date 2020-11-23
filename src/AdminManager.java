@@ -126,10 +126,25 @@ public class AdminManager {
         String tempschool = sc.next();
 
         Course tempcourse = new Course(tempcourseCode, tempcourseName, tempAU, tempschool);
+        
         dm.addCourse(tempcourse);
+        
+        //find the input course in the arraylist of courses
+        int courseSelected = dm.findCourse(tempcourseCode);
 
-        System.out.println("Course successfully added.\n");
-        System.out.println("Current code of the course(s):");
+        //add course school
+        System.out.println("Enter course index:");
+        String tempindex = sc.next();
+        dm.getCourse().get(courseSelected).addIndex(tempindex);
+        
+        if (dm.findCourseIndex(tempindex, 0) != -1){
+            System.out.println("Course successfully added.\n");
+            System.out.println("Current code of the course(s):");
+        }
+        else {
+            System.out.println("This is so sad haissss\n");
+        }
+  
         dm.printCourse();
         System.out.println(" "); // extra spacing
     }
@@ -255,6 +270,27 @@ public class AdminManager {
         else
             System.out.println("No course found.");
 
+        //----------------------------------OLD CODES-------------------------------------------
+        /*List<Course> courses = app.getCourse();
+        for (Course c : courses) {
+            if (courseCode.equals(c.getCourseCode())) {
+                ArrayList<CourseIndex> index = c.getIndex();
+                System.out.println("Course " + c.getCourseCode() + " has the following indexes: ");
+                //Print the available indexes
+                for (CourseIndex courseindex : index){
+                    System.out.println("Index: " + courseindex.getIndexNo());
+                }
+                System.out.println("Enter the course index of the course you wish to check vacancy for:");
+                String indexinput = sc.next();
+                for (CourseIndex courseindex : index) {
+                    if (indexinput.equals(courseindex.getIndexNo()))
+                        System.out.println("Vacancies for " + courseindex.getIndexNo() + " : " + courseindex.getVacancy());
+                }
+                //int sum = vacancies.stream().mapToInt(i -> i.intValue()).sum();
+                //System.out.println("Vacancies for " + c.getCourseCode() + " : " + sum);
+            }
+        }*/
+        //--------------------------------------------------------------------------------------
     }
 
     public void printStudentByIndex(DataManager dm){
@@ -311,6 +347,27 @@ public class AdminManager {
         else
             System.out.println("No course found.");
         
+        //----------------------------------OLD CODES-------------------------------------------
+        /*ArrayList<Student> students = app.getStudent();
+        ArrayList<Course> c = app.getCourse();
+        for (Course course: c){
+            if (courseCode.equals(course.getCourseCode())){
+                course.printVacancy();
+                System.out.println("Enter the course index of the course that you wish to print the student list from:");
+                String courseIndex = sc.next().toUpperCase();
+                for (Student s : students) {
+                    ArrayList<CourseIndex> index = s.getCourseRegistered();
+                    for (CourseIndex indexNo: index){
+                        //System.out.println("Students " + s.getUserName() + " " + indexNo.getIndexNo());
+                        if (courseIndex.equals(indexNo.getIndexNo()) && courseCode.equals(indexNo.getCourseCode())){
+                           System.out.println(s.getName() + "\t" + s.getGender() + "\t" + s.getNationality());
+                       }
+                   }
+               }
+               
+            }
+       }*/
+       //--------------------------------------------------------------------------------------
    }
 
 
@@ -346,7 +403,25 @@ public class AdminManager {
         else
             System.out.println("No course found.");
         
-        
+        //----------------------------------OLD CODES-------------------------------------------
+        /*ArrayList<Student> students = app.getStudent();
+         ArrayList<Course> c = app.getCourse();
+         for (Course course: c){
+             if (courseCode.equals(course.getCourseCode())){
+                 //course.printVacancy();
+                 for (Student s : students) {
+                     ArrayList<CourseIndex> index = s.getCourseRegistered();
+                     for (CourseIndex indexNo: index){
+                         //System.out.println("Students " + s.getUserName() + " " + indexNo.getIndexNo());
+                         if (courseCode.equals(indexNo.getCourseCode()) && courseCode.equals(course.getCourseCode())){
+                            System.out.println(s.getName() + "\t" + s.getGender() + "\t" + s.getNationality());
+                        }
+                    }
+                }
+                
+            }
+        }*/
+        //--------------------------------------------------------------------------------------
     }
         
 
