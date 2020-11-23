@@ -217,7 +217,7 @@ public class FileIOManager {
 	public void writeCourseIndex(DataManager dm) {
 		
 		try {
-			FileWriter fwStream3 = new FileWriter("students.txt");
+			FileWriter fwStream3 = new FileWriter("courseindex.txt");
 			BufferedWriter bwStream3 = new BufferedWriter(fwStream3);
 			PrintWriter pwStream3 = new PrintWriter(bwStream3);
 			
