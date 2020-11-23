@@ -1,4 +1,7 @@
-CZ2002	Object Oriented Programming	3	SCSE	001,002,003
-CZ2005	Operating Systems	3	SCSE	001,002,005
-CZ2007	Databases	3	SCSE	001,002
-CZ2001	Algorithms	2	SCSE	001,003
+CZ2001	Algorithms	3	SCSE	10184,10185,10186
+CZ2002	Object Oriented Programming	4	SCSE	10198,10199,10200,10201
+CZ2003	Computer Graphics & Visualisation	3	SCSE	10210,10211,10212
+CE2004	Circuits & Signal Analysis	4	SCSE	10028,10029,10030,10031
+CZ2005	Operating Systems	4	SCSE	10229,10230,10231,10232
+CZ2007	Introduction to Databases	3	SCSE	10255,10256
+EE8086	Astronomy - Stars, Galaxies & Cosmology	4	EEE	35003,35004
