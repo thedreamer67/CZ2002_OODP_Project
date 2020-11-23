@@ -129,7 +129,6 @@ public class AdminManager {
         dm.addCourse(tempcourse);
 
         System.out.println("Course successfully added.\n");
-
         System.out.println("Current code of the course(s):");
         dm.printCourse();
         System.out.println(" "); // extra spacing
