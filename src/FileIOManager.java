@@ -158,15 +158,15 @@ public class FileIOManager {
 						waiting = values3[5];
 				}
 				for(int i=0;i<dm.getCourse().size();i++) {
-                    if(course.equals(dm.getCourse().get(i).getCourseCode()))
+                    if(course.equals(dm.getCourse().get(i).getCourseCode())){
 						arrayindex1=i;
-						System.out.println(arrayindex1+"test");
                         for(int j=0;j<dm.getCourse().get(arrayindex1).getIndex().size();j++) {
                             if(index.equals(dm.getCourse().get(arrayindex1).getIndex().get(j).getIndexNo())) {
-                                arrayindex2 = j;
+								arrayindex2 = j;
                                 break;
                             }
-                        }
+						}
+					}
 				}
 				dm.getCourse().get(arrayindex1).getIndex().get(arrayindex2).setVacancy(Integer.parseInt(vacancy));// add vacancy into course index
 				String[] noOfLessons = lesson.split("@");
