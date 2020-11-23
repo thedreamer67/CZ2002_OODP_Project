@@ -438,7 +438,8 @@ public class AdminManager {
         deleteStudentFromCourse(s, dm); //delete student object from student list in every course index
         s.deleteStudent(); //delete all course index objects in student class
         dm.getStudent().remove(indexOfStudent); //dereference student object in data manager
-        System.out.println("Course successfully deleted");
+        System.out.println("Student successfully deleted");
+        dm.printStudent();
     }
 
     //method to delete student object from every course index
@@ -468,6 +469,7 @@ public class AdminManager {
         c.deleteCourse(); // delete references to other objects in course and course index
         dm.getCourse().remove(indexOfCourse); //dereference student object in data manager
         System.out.println("Course successfully deleted");
+        dm.printCourse();
     }
     
     //method to delete all courses registered in students
