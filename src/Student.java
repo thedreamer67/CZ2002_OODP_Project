@@ -29,7 +29,6 @@ public class Student implements User {
 		this.nationality=nationality;
 		this.password=password;
 		this.email = email;
-		this.totalAUs = totalAUs;
 		this.courseRegistered = new ArrayList<CourseIndex>();
 		this.waitingList = new ArrayList<String>();
 	}
