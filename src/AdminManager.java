@@ -44,17 +44,29 @@ public class AdminManager {
         System.out.println("Enter student's name:");
         String tempName = sc.next();
 
+        //validation to ensure valid name
+        while (tempName.matches("[A-Za-z]+") == false){
+            System.out.println("Invalid name! Please enter again.");
+            tempName = sc.next();
+        };
+
         System.out.println("Enter student's ID:");
         String tempMatricNo = sc.next().toUpperCase();
         
-        //valid to ensure there are no existing same student ID
+        //validation to ensure there are no existing same student ID
         while (dm.findStudent(tempMatricNo) != -1){
             System.out.println("Student ID exist! Please enter again.");
             tempMatricNo = sc.next().toUpperCase();
         };
 
         System.out.println("Enter student's sex:");
-        char tempGender = sc.next().charAt(0);
+        char tempGender = Character.toUpperCase(sc.next().charAt(0));
+
+        //validation to ensure valid sex
+        while (tempGender != 'M' && tempGender != 'F'){
+            System.out.println("Invalid sex! Please enter again.");
+            tempGender = Character.toUpperCase(sc.next().charAt(0));
+        };
 
         System.out.println("Enter student's nationality:");
         String tempNationality = sc.next();
@@ -83,7 +95,7 @@ public class AdminManager {
         System.out.println("Enter course code:");
         String tempcourseCode = sc.next();
 
-         //valid to ensure there are no existing course code
+         //validation to ensure there are no existing course code
          while (dm.findCourse(tempcourseCode) != -1){
             System.out.println("Course code exist! Please enter again.");
             tempcourseCode = sc.next().toUpperCase();
@@ -93,8 +105,15 @@ public class AdminManager {
         String tempcourseName = sc.next().toUpperCase();
 
         System.out.println("Enter number of AUs the course has:");
-        int tempAU = sc.nextInt();
-        
+        String stringtempAU = sc.next();
+
+        //validation to ensure valid AUs
+        while (stringtempAU.matches("[0-9]+") == false){
+            System.out.println("Invalid AUs! Please enter again.");
+            stringtempAU = sc.next();
+        };
+        int tempAU=Integer.parseInt(stringtempAU); 
+
         System.out.println("Enter course's school:");
         String tempschool = sc.next();
 
@@ -125,16 +144,18 @@ public class AdminManager {
             while (cont) {
                 System.out.println("1.Update course code");
                 System.out.println("2.Update course name");
-                System.out.println("3.Update course school");
-                System.out.println("4.Exit");
+                System.out.println("3.Update course AUs");
+                System.out.println("4.Update course school");
+                System.out.println("5.Exit");
                 int choice = sc.nextInt();
                 switch (choice) {
                     case (1):   // update course code
                         System.out.println("Enter new course code");
                         String tempcoursecode = sc.next().toUpperCase();
                         dm.getCourse().get(courseindex).setCourseCode(tempcoursecode);
+                        
                         System.out.println("Course code successfully updated.\n");
-                        System.out.println("Current code of the course(s):");
+                        System.out.println("Current list of the course(s):");
                         dm.printCourse();
                         System.out.println(" "); // extra spacing
                         break;
@@ -142,21 +163,40 @@ public class AdminManager {
                         System.out.println("Enter new course name");
                         String tempcoursename = sc.next();
                         dm.getCourse().get(courseindex).setCourseName(tempcoursename);
+
                         System.out.println("Course name successfully updated.\n");
-                        System.out.println("Current code of the course(s):");
+                        System.out.println("Current list of the course(s):");
                         dm.printCourse();
                         System.out.println(" "); // extra spacing
                         break;
-                    case (3):   // update course school
+                    case (3):   // update course AUs
+                        System.out.println("Enter new course AUs");
+                        String stringtempAU = sc.next();
+
+                        //validation to ensure valid AUs
+                        while (stringtempAU.matches("[0-9]+") == false){
+                        System.out.println("Invalid AUs! Please enter again.");
+                        stringtempAU = sc.next();
+                        };
+                        int tempAU=Integer.parseInt(stringtempAU); 
+                        dm.getCourse().get(courseindex).setNumOfAUs(tempAU);
+
+                        System.out.println("Course AUs successfully updated.\n");
+                        System.out.println("Current list of the course(s):");
+                        dm.printCourse();
+                        System.out.println(" "); // extra spacing
+                        break;
+                    case (4):   // update course school
                         System.out.println("Enter new course school");
                         String tempcourseschool = sc.next();
                         dm.getCourse().get(courseindex).setSchool(tempcourseschool);
+
                         System.out.println("Course school successfully updated.\n");
-                        System.out.println("Current code of the course(s):");
+                        System.out.println("Current list of the course(s):");
                         dm.printCourse();
                         System.out.println(" "); // extra spacing
                         break;
-                    case (4):   // exit
+                    case (5):   // exit
                         cont = false;
                     }
                 }
