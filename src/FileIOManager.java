@@ -172,7 +172,7 @@ public class FileIOManager {
 			br5 = new BufferedReader(new FileReader(AccessperiodFile));
 			while ((line5 = br5.readLine()) != null) {
 				String[] values5 = line5.split("\t");
-				app.addAccessPeriod(values5[0],values5[1]);
+				app.editAccessPeriod(values5[0],values5[1]);
 				//System.out.println("Admin: " + app.getAdmin());
 				}
 	
