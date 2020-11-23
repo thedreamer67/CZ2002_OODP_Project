@@ -423,7 +423,64 @@ public class AdminManager {
         }*/
         //--------------------------------------------------------------------------------------
     }
-        
+    
+    //method to delete specific students
+    public void deleteStudent(DataManager dm){
+        Scanner sc = new Scanner(System.in);
+        dm.printStudent();
+        System.out.println("Enter matric number of the student that you wish to delete");
+        String matricNo = sc.nextLine();
+        int indexOfStudent = dm.findStudent(matricNo);
+        if(indexOfStudent==-1){
+			System.out.println("Matriculation number not found");
+            return;}
+        Student s = dm.getStudent().get(indexOfStudent);
+        deleteStudentFromCourse(s, dm); //delete student object from student list in every course index
+        s.deleteStudent(); //delete all course index objects in student class
+        dm.getStudent().remove(indexOfStudent); //dereference student object in data manager
+        System.out.println("Course successfully deleted");
+    }
+
+    //method to delete student object from every course index
+    public void deleteStudentFromCourse(Student s,DataManager dm){
+        for(int i=0;i<dm.getCourse().size();i++){ //for every course
+            for(int j=0;j<dm.getCourse().get(i).getIndex().size();j++){ //for every course index
+                for(int a=0;a<dm.getCourse().get(i).getIndex().get(j).getStudentList().size();a++){ //for every item in student list of course index
+                    if(s.getUserName().equals(dm.getCourse().get(i).getIndex().get(j).getStudentList().get(a).getUserName())){ //if user ID are the same
+                        dm.getCourse().get(i).getIndex().get(j).getStudentList().remove(a); //remove student object from course index student list
+                    }
+                }
+            }
+        }
+    }
+
+    public void deleteCourse(DataManager dm){
+        Scanner sc = new Scanner(System.in);
+        dm.printCourse();
+        System.out.println("Enter course code that you wish to delete");
+        String courseCode = sc.nextLine();
+        int indexOfCourse = dm.findCourse(courseCode);
+        if(indexOfCourse==-1){
+			System.out.println("Course Code not found");
+            return;}
+        Course c = dm.getCourse().get(indexOfCourse);
+        deleteCourseFromStudent(c, dm); //delete course index objects in all students
+        c.deleteCourse(); // delete references to other objects in course and course index
+        dm.getCourse().remove(indexOfCourse); //dereference student object in data manager
+        System.out.println("Course successfully deleted");
+    }
+    
+    //method to delete all courses registered in students
+    public void deleteCourseFromStudent(Course c,DataManager dm){
+        for(int i=0;i<dm.getStudent().size();i++){
+            for(int j=0;j<dm.getStudent().get(i).getCourseRegistered().size();j++){
+                if(c.getCourseCode().equals(dm.getStudent().get(i).getCourseRegistered().get(j).getCourseCode())){
+                    dm.getStudent().get(i).getCourseRegistered().remove(j);
+                    break;
+                }
+            }
+        }
+    }
 
     
 }
