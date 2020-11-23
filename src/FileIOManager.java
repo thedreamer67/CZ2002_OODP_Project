@@ -69,8 +69,8 @@ public class FileIOManager {
 				while ((line2 = br2.readLine()) != null) {
                     String[] values2 = line2.split("\t");
                     // create Student object, but without course attribute
-					dm.addStudent(new Student(values2[0],values2[1],values2[2].charAt(0),values2[3],values2[4],values2[5],Integer.parseInt(values2[6])));
-					String[] courses = values2[7].split(",");    // separate different courses
+					dm.addStudent(new Student(values2[0],values2[1],values2[2].charAt(0),values2[3],values2[4],values2[5],Integer.parseInt(values2[7])));
+					String[] courses = values2[6].split(",");    // separate different courses
 					for(int i=0;i<courses.length;i++) {
 						String[] courseIndex = courses[i].split(" ");   // separate course index from respective course
 						for(int j=0;j<dm.getCourse().size();j++) {
