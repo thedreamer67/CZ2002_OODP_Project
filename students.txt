@@ -1,2 +1,17 @@
-Ho Khee Gin U1923622G   M   Singapore   b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32    kheegin@e.ntu.edu.sg    CZ2002 001,CZ2005 001   6
-Shauna Tan  U1938888T   F   Singapore   b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32    shau0013@e.ntu.edu.sg   CZ2002 001,CZ2007 002   6
+Ho Khee Gin	U1923622G	M	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	kheegin@e.ntu.edu.sg	CZ2002 001,CZ2005 001	6
+Shauna Tan	U1840754E	F	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	shau0013@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Jane Smith	U1839204L	F	England	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	janesmith@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Bree Robbins	U1903883K	F	Canada	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	breerobbins@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Peter Tan	U1918229I	M	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	petertan@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Brett Tay	U1822345M	M	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	bretttay@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Thomas Ho	U1839401E	M	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	thomasho@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Rachel Goh	U1842390E	F	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	rachelgoh@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Hannah Lim	U1739347C	F	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	hannahlim@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Ally Goh	U1749200F	F	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	allygoh@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Jay Park	U1820493K	M	Korea	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	jaypark@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+William Choo	U1804324A	M	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	williamchoo@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Kenny Lim	U1998652L	M	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	kennylim@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Jodie Choi	U1923001E	F	Hong Kong	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	jodiechoi@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Zara Regan	U1823098L	F	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	zararegan@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Tony Wu	U1902834H	M	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	tonywu@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
+Kara Lee	U1823098L	F	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	karalee@e.ntu.edu.sg	CZ2002 001,CZ2007 002	6
