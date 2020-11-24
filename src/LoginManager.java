@@ -17,8 +17,12 @@ public class LoginManager {
         if(choice==1){
             String inputUser="";
             do{
-                System.out.println("Enter Username:");
+                System.out.println("Enter Username (enter -1 to quit):");
                 inputUser = sc.nextLine().toUpperCase();
+                if (inputUser.equals("-1")) {
+                    String[] array = {"-2", "-2"};
+                    return array;
+                }
                 if(searchAdmin(inputUser, dm)==false){
                     System.out.println("Incorrect Username, try again");
                 }
@@ -27,8 +31,12 @@ public class LoginManager {
                 }
             }while(check1==false);
             do{
-                System.out.println("Enter Password:");
+                System.out.println("Enter Password (enter -1 to quit):");
                 String inputPass = hashing(sc.nextLine());
+                if (inputPass.equals("-1")) {
+                    String[] array = {"-2", "-2"};
+                    return array;
+                }
                 if(verifyAdmin(inputPass, dm)==false){
                     System.out.println("Incorrect Password, try again");
                 }
@@ -48,8 +56,12 @@ public class LoginManager {
             if (checkAccess(dm) == true) {
                 String inputUser="";
                 do{
-                    System.out.println("Enter Username:");
+                    System.out.println("Enter Username (enter -1 to quit):");
                     inputUser = sc.nextLine().toUpperCase();
+                    if (inputUser.equals("-1")) {
+                        String[] array = {"-2", "-2"};
+                        return array;
+                    }
                     if(searchStudent(inputUser, dm)==false){
                         System.out.println("Incorrect Username, try again");
                     }
@@ -58,8 +70,12 @@ public class LoginManager {
                     }
                 }while(check1==false);
                 do{
-                    System.out.println("Enter Password:");
+                    System.out.println("Enter Password (enter -1 to quit):");
                     String inputPass = hashing(sc.nextLine());
+                    if (inputPass.equals(hashing("-1"))) {
+                        String[] array = {"-2", "-2"};
+                        return array;
+                    }
                     if(verifyStudent(inputPass, dm)==false){
                         System.out.println("Incorrect Password, try again");
                     }
