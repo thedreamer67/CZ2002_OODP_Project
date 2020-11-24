@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
-
 public class AdminManager {
     private Admin user;
 
