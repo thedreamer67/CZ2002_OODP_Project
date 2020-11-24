@@ -59,7 +59,7 @@ public class LoginManager {
             return array;
         }
         // student login
-        else if (choice==1) {
+        else if (choice==2) {
             if (checkAccess(dm) == true) {
                 String inputUser="";
                 do {
