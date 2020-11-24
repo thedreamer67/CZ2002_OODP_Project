@@ -143,7 +143,7 @@ public class AdminManager {
             System.out.println(dm.findCourseIndex(tempindex, 0));
         }
         else {
-            System.out.println("This is so sad haissss\n");
+            System.out.println("Course unsuccessfully added.\n");
         }
   
         dm.printCourse();
