@@ -104,6 +104,7 @@ public class LoginManager {
         }
     }
 
+
     public static String hashing(String rawinput) {
 		try { 
 			  
@@ -129,6 +130,7 @@ public class LoginManager {
         } 
     }
     
+
     public boolean searchStudent(String student, DataManager dm){
         for(int i=0;i<dm.getStudent().size();i++){
             if(student.equals(dm.getStudent().get(i).getUserName())){
@@ -137,6 +139,7 @@ public class LoginManager {
         }
         return false;
     }
+
 
     public boolean searchAdmin(String admin, DataManager dm){
         for(int i=0;i<dm.getAdmin().size();i++){
@@ -147,6 +150,7 @@ public class LoginManager {
         return false;
     }
 
+
     public boolean verifyStudent(String password, DataManager dm){
         for(int i=0;i<dm.getStudent().size();i++){
             if(password.equals(dm.getStudent().get(i).getPassword())){
@@ -155,6 +159,7 @@ public class LoginManager {
         }
         return false;
     }
+    
 
     public boolean verifyAdmin(String password, DataManager dm){
         for(int i=0;i<dm.getAdmin().size();i++){

@@ -22,6 +22,7 @@ public class Student implements User {
 		this.courseRegistered = new ArrayList<CourseIndex>();
 		this.waitingList = new ArrayList<String>();
 	}
+	
 	public Student(String name, String matricNo, char sex, String nationality, String password, String email) {
 		this.name=name;
 		this.userName=matricNo;

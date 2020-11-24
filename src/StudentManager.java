@@ -1,5 +1,4 @@
 import java.util.*;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -8,13 +7,13 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-
 public class StudentManager {
 	private Student user;
 	
 	public void setUser(Student student) {
 		this.user=student;
 	}
+	
 	
 	public void addCourse(DataManager dm) {
 		Scanner sc = new Scanner(System.in);

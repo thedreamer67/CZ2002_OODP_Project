@@ -5,26 +5,28 @@ import java.util.Scanner;
 public class AdminManager {
     private Admin user;
 
+
     public void setUser(Admin a) {
         this.user = a;
     }
+
 
     public void editAccessPeriod(DataManager dm) {
         Scanner sc = new Scanner(System.in);
         String tempdate = "0";
         String[] temp = dm.getAccessPeriod();
-        System.out.println("\nStart date is : " + temp[0]);
-        System.out.println("End date is : " + temp[1]);
-        System.out.println("1.Update start date");
-        System.out.println("2.Update end date");
-        System.out.println("3.Exit");
+        System.out.println("\nStart date is: " + temp[0]);
+        System.out.println("End date is: " + temp[1]);
+        System.out.println("1. Update start date");
+        System.out.println("2. Update end date");
+        System.out.println("3. Exit");
         int choice = sc.nextInt();
 
         //update either start or end date depending on user's choice
         if (choice == 1) {
                 System.out.println("Enter new start date (YYYY-MM-DD)");
                 tempdate = sc.next();
-            while (dm.isValid(tempdate)==false) {
+            while (dm.isValid(tempdate)==false) { // check if date entered is valid
                 System.out.println("Date entered is invalid or is not in YYYY-MM-DD format.");
                 System.out.println("Enter new start date again (YYYY-MM-DD)");
                 tempdate = sc.next();
@@ -33,7 +35,7 @@ public class AdminManager {
         } else if (choice == 2) {
             System.out.println("Enter new end date (YYYY-MM-DD)");
             tempdate = sc.next();
-            while (dm.isValid(tempdate)==false) {
+            while (dm.isValid(tempdate)==false) { // check if date entered is valid
                 System.out.println("Date entered is invalid or is not in YYYY-MM-DD format.");
                 System.out.println("Enter new start date again (YYYY-MM-DD)");
                 tempdate = sc.next();
@@ -42,14 +44,13 @@ public class AdminManager {
         }
 
         System.out.println("\nDate successfully updated.");
-        System.out.println("Current start date is : " + temp[0]);
-        System.out.println("Current end date is : " + temp[1] + "\n");
-
+        System.out.println("Current start date is: " + temp[0]);
+        System.out.println("Current end date is: " + temp[1] + "\n");
     }
+
 
     public void addAStudent(DataManager dm) {
         Scanner sc = new Scanner(System.in);
-
         //Add student's name
         System.out.println("Enter student's name:");
         String tempName = sc.next();
@@ -103,9 +104,9 @@ public class AdminManager {
         System.out.println(" "); // extra spacing
     }
 
+
     public void addACourse(DataManager dm) {
         Scanner sc = new Scanner(System.in);
-
         
         //add course code
         System.out.println("Enter course code:");
@@ -153,7 +154,6 @@ public class AdminManager {
         System.out.println("Enter course index:");
         String tempindex = sc.next();
 
-
         while (!tempindex.matches("[0-9]+"))
         {
             System.out.println("Invalid course index! Please enter again.");
@@ -167,10 +167,10 @@ public class AdminManager {
             System.out.println("Current code of the course(s):");
         }
       
-  
         dm.printCourse();
         System.out.println(" "); // extra spacing
     }
+
 
     public void UpdateACourse(DataManager dm) {
         Scanner sc = new Scanner(System.in);
@@ -278,6 +278,7 @@ public class AdminManager {
         }
     }
 
+
     public void checkVacancy(DataManager dm) {
         Scanner sc = new Scanner(System.in);
         dm.printCourse();
@@ -319,6 +320,7 @@ public class AdminManager {
             System.out.println("No course found.");
 
     }
+
 
     public void printStudentByIndex(DataManager dm){
         //print student list by index number
@@ -410,6 +412,7 @@ public class AdminManager {
     
     }
     
+
     //method to delete specific students
     public void deleteStudent(DataManager dm){
         Scanner sc = new Scanner(System.in);
@@ -428,6 +431,7 @@ public class AdminManager {
         dm.printStudent();
     }
 
+
     //method to delete student object from every course index
     public void deleteStudentFromCourse(Student s,DataManager dm){
         for(int i=0;i<dm.getCourse().size();i++){ //for every course
@@ -440,6 +444,7 @@ public class AdminManager {
             }
         }
     }
+
 
     public void deleteCourse(DataManager dm){
         Scanner sc = new Scanner(System.in);
@@ -458,6 +463,7 @@ public class AdminManager {
         dm.printCourse();
     }
     
+
     //method to delete all courses registered in students
     public void deleteCourseFromStudent(Course c,DataManager dm){
         for(int i=0;i<dm.getStudent().size();i++){
@@ -470,5 +476,4 @@ public class AdminManager {
         }
     }
 
-    
 }

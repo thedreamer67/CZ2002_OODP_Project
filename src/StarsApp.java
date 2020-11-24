@@ -1,6 +1,5 @@
+import java.util.Scanner; // use scanner because it's command line.
 
-import java.util.Scanner; // I use scanner because it's command line.
-// import java.io.*;
 public class StarsApp {	
 	
 	public static void main(String[] args) {
@@ -33,7 +32,6 @@ public class StarsApp {
 								break;
 					}
 				}
-
 				int choice = 0;
 				do{
 					System.out.println();
@@ -122,11 +120,11 @@ public class StarsApp {
 				
 		}
 
+		// write back to the files to save whatever was done during the session
 		// file.writeCourse(dm);
 		// file.writeStudent(dm);
 		// file.writeCourseIndex(dm);
 		// file.writeAccessPeriod(dm);
-		
-		
+	
 	}
 }

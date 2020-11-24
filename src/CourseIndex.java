@@ -18,41 +18,51 @@ public class CourseIndex extends Course {
 	public String getIndexNo() {
 		return this.indexNo;
 	}
+
 	public void setIndexNo(String indexNo) {
 		this.indexNo=indexNo;
 	}
 	
+
 	public int getVacancy() {
 		return this.vacancy;
 	}
+
 	public void setVacancy(int vacancy) {
 		this.vacancy=vacancy;
 	}
 	
+
 	public void addLesson(String type, String location,String dayOfWeek,int time,int duration,int[] lessonWeek) {
 		this.lessons.add(new Lesson(type,location,dayOfWeek,time,duration,lessonWeek));
 	}
+
 
 	public ArrayList<Lesson> getLessons(){
 		return this.lessons;
 	}
 	
+
 	public void addWaitingList(String matricNo) {
 		this.waitingList.add(matricNo);
 	}
 	
+
 	public ArrayList<String> getWaitingList(){
 		return this.waitingList;
 	}
+
 
 	public void dequeueWaitingList(){
 		this.waitingList.remove(0);
 	}
 	
+
 	public void addStudent(Student s) {
 		this.studentList.add(s);
 		this.vacancy=this.vacancy-1;
 	}
+
 	public void removeStudent(Student s) {
 		String matric = s.getUserName();
 		for(int i=0;i<studentList.size();i++){
@@ -63,14 +73,15 @@ public class CourseIndex extends Course {
 		this.vacancy=this.vacancy+1;
 	}
 
+
 	public ArrayList<Student> getStudentList(){
 		return this.studentList;
     }
+
 
 	public void printLesson(){
 		for(int i=0;i<lessons.size();i++){
 			System.out.println(this.lessons.get(i).getType()+","+this.lessons.get(i).getLocation()+","+this.lessons.get(i).getDayOfWeek());
 		}
 	}
-
 }
