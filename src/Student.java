@@ -152,10 +152,12 @@ public class Student implements User {
 			System.out.println("There are no courses registered for this student");
 			return;
 		}
-		System.out.println("\nCourses currently registered for student "+this.name);
+		System.out.println("\n--------------------------------------------------------------------------------");
+		System.out.println("Courses currently registered for student "+this.name);
 		for(int i=0;i<this.courseRegistered.size();i++) {
 			System.out.println((i+1)+". "+this.courseRegistered.get(i).getCourseCode()+"\t"+this.courseRegistered.get(i).getCourseName()+"\t"+this.courseRegistered.get(i).getIndexNo());
 		}
+		System.out.println("--------------------------------------------------------------------------------");
 	}
 	//method to delete all references to other objects
 	public void deleteStudent(){

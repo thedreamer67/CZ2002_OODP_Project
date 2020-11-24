@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
+//import javax.lang.model.util.ElementScanner14;
 
 public class AdminManager {
     private Admin user;
@@ -24,12 +24,22 @@ public class AdminManager {
 
         //update either start or end date depending on user's choice
         if (choice == 1) {
-            System.out.println("Enter new start date (DD/MM/YYYY)");
-            tempdate = sc.next();
+                System.out.println("Enter new start date (YYYY-MM-DD)");
+                tempdate = sc.next();
+            while (dm.isValid(tempdate)==false) {
+                System.out.println("Date entered is invalid or is not in YYYY-MM-DD format.");
+                System.out.println("Enter new start date again (YYYY-MM-DD)");
+                tempdate = sc.next();
+            }
             dm.editAccessPeriod(tempdate, temp[1]); // update start date while keeping end date same
         } else if (choice == 2) {
-            System.out.println("Enter new end date (DD/MM/YYYY)");
+            System.out.println("Enter new end date (YYYY-MM-DD)");
             tempdate = sc.next();
+            while (dm.isValid(tempdate)==false) {
+                System.out.println("Date entered is invalid or is not in YYYY-MM-DD format.");
+                System.out.println("Enter new start date again (YYYY-MM-DD)");
+                tempdate = sc.next();
+            }
             dm.editAccessPeriod(temp[0], tempdate); // update end date while keeping start date same
         }
 

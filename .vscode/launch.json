@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - DataManager",
+            "request": "launch",
+            "mainClass": "DataManager",
+            "projectName": "CZ2002_OODP_Project_9c9ddd1f"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - LoginManager",
+            "request": "launch",
+            "mainClass": "LoginManager",
+            "projectName": "CZ2002_OODP_Project_9c9ddd1f"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"

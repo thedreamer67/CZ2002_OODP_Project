@@ -66,15 +66,6 @@ public class CourseIndex extends Course {
 	public ArrayList<Student> getStudentList(){
 		return this.studentList;
     }
-    
-    public void updateWaitingList() {
-        // check vacancy of the index
-        // if there's vacancy:
-            // update waiting list accordingly
-            // call add course method for the student
-            // call add student method for the course
-            // call send email method
-    }
 
 	public void printLesson(){
 		for(int i=0;i<lessons.size();i++){

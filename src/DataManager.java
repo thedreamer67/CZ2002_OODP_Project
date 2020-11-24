@@ -1,10 +1,15 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 public class DataManager {
 	private ArrayList<Student> student;
 	private ArrayList<Admin> admin;
 	private ArrayList<Course> course;
 	private String[] accessPeriod;
+	private final int MAX_AU=23; 
 	
 	public DataManager() {
 		this.student = new ArrayList<Student>();
@@ -91,5 +96,28 @@ public class DataManager {
 		}
 		return -1; //else return -1 indicating student matric number do not exist in the current list
 	}
-	
+
+	public int getMaxAU() {
+		return this.MAX_AU;
+	}
+
+
+	// method to check if a date entered is valid
+	public boolean isValid(String date) {
+        boolean valid = false;
+        try {
+
+            // ResolverStyle.STRICT for 30, 31 days checking, and also leap year.
+            LocalDate.parse(date,
+                DateTimeFormatter.ofPattern("uuuu-MM-dd")
+                    .withResolverStyle(ResolverStyle.STRICT)
+            );
+
+            valid = true;
+        } catch (DateTimeParseException e) {
+            //e.printStackTrace();
+            valid = false;
+        }
+        return valid;
+	}
 }

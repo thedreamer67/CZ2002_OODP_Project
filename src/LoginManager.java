@@ -2,9 +2,11 @@ import java.util.Scanner;
 import java.security.NoSuchAlgorithmException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.time.LocalDate;
 
 public class LoginManager {
-    public String[] Login(DataManager app){
+
+    public String[] Login(DataManager dm){
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter 1 for admin, 2 for Student");
         int choice = sc.nextInt();
@@ -17,7 +19,7 @@ public class LoginManager {
             do{
                 System.out.println("Enter Username:");
                 inputUser = sc.nextLine().toUpperCase();
-                if(searchAdmin(inputUser, app)==false){
+                if(searchAdmin(inputUser, dm)==false){
                     System.out.println("Incorrect Username, try again");
                 }
                 else{
@@ -27,7 +29,7 @@ public class LoginManager {
             do{
                 System.out.println("Enter Password:");
                 String inputPass = hashing(sc.nextLine());
-                if(verifyAdmin(inputPass, app)==false){
+                if(verifyAdmin(inputPass, dm)==false){
                     System.out.println("Incorrect Password, try again");
                 }
                 else{
@@ -35,41 +37,47 @@ public class LoginManager {
                     check2=true;
                 }
             }while(check2==false);
-        String choiceStr = Integer.toString(choice);
-        String[] array = new String[2];
-        array[0]=choiceStr;
-        array[1]=inputUser;
-        return array;
+            String choiceStr = Integer.toString(choice);
+            String[] array = new String[2];
+            array[0]=choiceStr;
+            array[1]=inputUser;
+            return array;
         }
         // student login
         else{
-            String inputUser="";
-            do{
-                System.out.println("Enter Username:");
-                inputUser = sc.nextLine().toUpperCase();
-                if(searchStudent(inputUser, app)==false){
-                    System.out.println("Incorrect Username, try again");
-                }
-                else{
-                    check1=true;
-                }
-            }while(check1==false);
-            do{
-                System.out.println("Enter Password:");
-                String inputPass = hashing(sc.nextLine());
-                if(verifyStudent(inputPass, app)==false){
-                    System.out.println("Incorrect Password, try again");
-                }
-                else{
-                    System.out.println("Successful Login");
-                    check2=true;
-                }
-            }while(check2==false);
-        String choiceStr = Integer.toString(choice);
-        String[] array = new String[2];
-        array[0]=choiceStr;
-        array[1]=inputUser;
-        return array;
+            if (checkAccess(dm) == true) {
+                String inputUser="";
+                do{
+                    System.out.println("Enter Username:");
+                    inputUser = sc.nextLine().toUpperCase();
+                    if(searchStudent(inputUser, dm)==false){
+                        System.out.println("Incorrect Username, try again");
+                    }
+                    else{
+                        check1=true;
+                    }
+                }while(check1==false);
+                do{
+                    System.out.println("Enter Password:");
+                    String inputPass = hashing(sc.nextLine());
+                    if(verifyStudent(inputPass, dm)==false){
+                        System.out.println("Incorrect Password, try again");
+                    }
+                    else{
+                        System.out.println("Successful Login");
+                        check2=true;
+                    }
+                }while(check2==false);
+                String choiceStr = Integer.toString(choice);
+                String[] array = new String[2];
+                array[0]=choiceStr;
+                array[1]=inputUser;
+                return array;
+            }
+            else {
+                String[] array = {"-1", "-1"};
+                return array;
+            }
         }
     }
 
@@ -98,39 +106,53 @@ public class LoginManager {
         } 
     }
     
-    public boolean searchStudent(String student,DataManager app){
-        for(int i=0;i<app.getStudent().size();i++){
-            if(student.equals(app.getStudent().get(i).getUserName())){
+    public boolean searchStudent(String student, DataManager dm){
+        for(int i=0;i<dm.getStudent().size();i++){
+            if(student.equals(dm.getStudent().get(i).getUserName())){
                 return true;
             }
         }
         return false;
     }
 
-    public boolean searchAdmin(String admin,DataManager app){
-        for(int i=0;i<app.getAdmin().size();i++){
-            if(admin.equals(app.getAdmin().get(i).getUserName())){
+    public boolean searchAdmin(String admin, DataManager dm){
+        for(int i=0;i<dm.getAdmin().size();i++){
+            if(admin.equals(dm.getAdmin().get(i).getUserName())){
                 return true;
             }
         }
         return false;
     }
 
-    public boolean verifyStudent(String password,DataManager app){
-        for(int i=0;i<app.getStudent().size();i++){
-            if(password.equals(app.getStudent().get(i).getPassword())){
+    public boolean verifyStudent(String password, DataManager dm){
+        for(int i=0;i<dm.getStudent().size();i++){
+            if(password.equals(dm.getStudent().get(i).getPassword())){
                 return true;
             }
         }
         return false;
     }
 
-    public boolean verifyAdmin(String password,DataManager app){
-        for(int i=0;i<app.getAdmin().size();i++){
-            if(password.equals(app.getAdmin().get(i).getPassword())){
+    public boolean verifyAdmin(String password, DataManager dm){
+        for(int i=0;i<dm.getAdmin().size();i++){
+            if(password.equals(dm.getAdmin().get(i).getPassword())){
                 return true;
             }
         }
         return false;
     }
+    
+
+    public boolean checkAccess(DataManager dm) {
+        LocalDate startDate, endDate, today;
+        startDate = LocalDate.parse(dm.getAccessPeriod()[0]);
+        endDate = LocalDate.parse(dm.getAccessPeriod()[1]);
+        today = LocalDate.now();
+        if (today.isAfter(startDate) && today.isBefore(endDate)) {
+            return true;
+        }
+        return false;
     }
+
+}
+

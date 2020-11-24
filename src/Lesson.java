@@ -1,4 +1,7 @@
+import java.time.*;
+
 public class Lesson {
+
 	private String type;
 	private String location;
 	private String dayOfWeek;
