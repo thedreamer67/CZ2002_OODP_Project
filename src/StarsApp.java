@@ -37,6 +37,7 @@ public class StarsApp {
 				int choice = 0;
 				do{
 					System.out.println();
+					System.out.println("Admin options:");
 					System.out.println("1. Edit student access period");
 					System.out.println("2. Add a student");
 					System.out.println("3. Delete a student");
@@ -81,6 +82,7 @@ public class StarsApp {
 			
 				do {
 				System.out.println();
+				System.out.println("Student options:");
 				System.out.println("1. Register a course");
 				System.out.println("2. Drop a course");
 				System.out.println("3. Check/Print Courses Registered");
