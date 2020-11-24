@@ -31,7 +31,7 @@ public class LoginManager {
                     return array;
                 }
                 if(searchAdmin(inputUser, dm)==false){
-                    System.out.println("Incorrect Username, try again");
+                    System.out.println("Incorrect Username, try again.");
                 }
                 else{
                     check1=true;
@@ -45,10 +45,10 @@ public class LoginManager {
                     return array;
                 }
                 if(verifyAdmin(inputPass, dm)==false){
-                    System.out.println("Incorrect Password, try again");
+                    System.out.println("Incorrect Password, try again.");
                 }
                 else{
-                    System.out.println("Successful Login");
+                    System.out.println("Successful Login.");
                     check2=true;
                 }
             }while(check2==false);
@@ -70,7 +70,7 @@ public class LoginManager {
                         return array;
                     }
                     if(searchStudent(inputUser, dm)==false){
-                        System.out.println("Incorrect Username, try again");
+                        System.out.println("Incorrect Username, try again.");
                     }
                     else{
                         check1=true;
@@ -84,10 +84,10 @@ public class LoginManager {
                         return array;
                     }
                     if(verifyStudent(inputPass, dm)==false){
-                        System.out.println("Incorrect Password, try again");
+                        System.out.println("Incorrect Password, try again.");
                     }
                     else{
-                        System.out.println("Successful Login");
+                        System.out.println("Successful Login.");
                         check2=true;
                     }
                 }while(check2==false);
@@ -159,7 +159,7 @@ public class LoginManager {
         }
         return false;
     }
-    
+
 
     public boolean verifyAdmin(String password, DataManager dm){
         for(int i=0;i<dm.getAdmin().size();i++){

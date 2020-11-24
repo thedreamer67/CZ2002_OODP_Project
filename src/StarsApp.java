@@ -21,7 +21,7 @@ public class StarsApp {
 		switch(selected){
 			// failed student login
 			case -1:
-				System.out.println("Student Login Failed.");
+				System.out.println("Student login failed.");
 				System.out.println("You cannot access NTU STARS now because it is not within the access period stated by the administrators.\nPlease contact them if you think this is a mistake.");
 				break;
 			// admin login
