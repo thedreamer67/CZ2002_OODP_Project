@@ -121,10 +121,10 @@ public class StarsApp {
 		}
 
 		// write back to the files to save whatever was done during the session
-		// file.writeCourse(dm);
-		// file.writeStudent(dm);
-		// file.writeCourseIndex(dm);
-		// file.writeAccessPeriod(dm);
+		file.writeCourse(dm);
+		file.writeStudent(dm);
+		file.writeCourseIndex(dm);
+		file.writeAccessPeriod(dm);
 	
 	}
 }
