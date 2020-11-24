@@ -264,8 +264,6 @@ public class AdminManager {
             else 
                 System.out.println("No index found.");
               
-                
-
         }
         else
             System.out.println("No course found.");
