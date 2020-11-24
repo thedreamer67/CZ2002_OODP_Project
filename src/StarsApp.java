@@ -86,12 +86,13 @@ public class StarsApp {
 				System.out.println("1. Register a course");
 				System.out.println("2. Drop a course");
 				System.out.println("3. Check/Print Courses Registered");
-				System.out.println("4. Check/Print Waiting List");
-				System.out.println("5. Drop a course from the Waiting List");
-				System.out.println("6. Check Vacancies Available");
-				System.out.println("7. Swap Index Number of Course");
-				System.out.println("8. Swap Index with Another Student");
-				System.out.println("9. Exit");
+				System.out.println("4. Check/Print Timetable");
+				System.out.println("5. Check/Print Waiting List");
+				System.out.println("6. Drop a course from the Waiting List");
+				System.out.println("7. Check Vacancies Available");
+				System.out.println("8. Swap Index Number of Course");
+				System.out.println("9. Swap Index with Another Student");
+				System.out.println("10. Exit");
 				System.out.println("Enter Choice");
 				choice = sc.nextInt();
 				if(choice==1) {
@@ -101,18 +102,19 @@ public class StarsApp {
 					sm.dropCourse(dm);
 				else if(choice==3)
 					sm.checkRegistered();
-				else if(choice==4)
-					sm.checkWaitingList();
+				else if (choice==4)
+					sm.printTimetable();
 				else if(choice==5)
-					sm.dropWaitingList();
+					sm.checkWaitingList();
 				else if(choice==6)
-					sm.checkVacancy(dm);
+					sm.dropWaitingList();
 				else if(choice==7)
-					sm.changeIndex(dm);
+					sm.checkVacancy(dm);
 				else if(choice==8)
+					sm.changeIndex(dm);
+				else if(choice==9)
 					sm.swopIndex(dm);
-				}while(choice!=9);
-				
+				} while(choice!=10);
 				break;
 
 			default:

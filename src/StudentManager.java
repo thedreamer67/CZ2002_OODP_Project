@@ -70,6 +70,7 @@ public class StudentManager {
 		}
 	}
 	
+
 	public void dropCourse(DataManager dm) {
 		Scanner sc = new Scanner(System.in);
 		this.user.checkRegistered();
@@ -87,16 +88,27 @@ public class StudentManager {
 		ci.removeStudent(this.user);
 		System.out.println("Course successfully dropped.");
 		this.user.checkRegistered();
-		updateWaitingList(ci, dm); // once current student drops a course, method is called to register another student for this course
+		if (ci.getWaitingList().size()>0) {
+			updateWaitingList(ci, dm); // once current student drops a course, method is called to register another student for this course if waiting list is not empty
+		}
+		
 	}
 	
+
 	public void checkRegistered() {
 		this.user.checkRegistered();
 	}
 
+
+	public void printTimetable() {
+		this.user.printTimetable();
+	}
+
+
 	public void checkWaitingList(){
 		this.user.checkWaitingList();
 	}
+
 
 	public void dropWaitingList(){
 		Scanner sc = new Scanner(System.in);
@@ -113,6 +125,7 @@ public class StudentManager {
 		}
 	}
 	
+
 	public void checkVacancy(DataManager dm) {
 		Scanner sc = new Scanner(System.in);
 		dm.printCourse();
@@ -125,6 +138,7 @@ public class StudentManager {
 		dm.getCourse().get(indexOfCourse).printVacancy();
 	}
 	
+
 	public void changeIndex(DataManager dm) {
 		Scanner sc = new Scanner(System.in);
 		this.user.checkRegistered();
@@ -173,6 +187,7 @@ public class StudentManager {
 		}
 	}
 	
+
 	public void swopIndex(DataManager dm) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Matriculation Number of the Student you wish to swap with");
@@ -271,7 +286,7 @@ public class StudentManager {
 	}
 	
 
-	//method to check if a course code is unique within a student's registered courses
+	// method to check if a course code is unique within a student's registered courses
 	public boolean checkUniqueRegistered(String courseCode){
 		for(int i=0;i<this.user.getCourseRegistered().size();i++){
 			if(courseCode.equals(this.user.getCourseRegistered().get(i).getCourseCode())){
@@ -282,7 +297,7 @@ public class StudentManager {
 	}
 
 
-	//method to check if a course code is unique within a student's waiting list
+	// method to check if a course code is unique within a student's waiting list
 	public boolean checkUniqueWaiting(String courseCode){
 		for(int i=0;i<this.user.getWaitingList().size();i+=3){
 			if(courseCode.equals(this.user.getWaitingList().get(i))){
@@ -308,7 +323,7 @@ public class StudentManager {
 						int startTimeReg = regL.getTime();
 						int endTimeReg = startTimeReg + 100*regL.getDuration();
 						// if time of new course and registered course clash, move on to check for clash
-						if ((startTimeNew>startTimeReg && startTimeNew<endTimeReg) || (endTimeNew>startTimeReg && endTimeNew<endTimeReg)) {
+						if ((startTimeNew>=startTimeReg && startTimeNew<endTimeReg) || (endTimeNew>startTimeReg && endTimeNew<=endTimeReg)) {
 							for (int i : newL.getLessonWeek()) {
 								for (int j : regL.getLessonWeek()) {
 									// if there is a lesson week that is the same for the new course and the registered course, there is a clash in timetable
