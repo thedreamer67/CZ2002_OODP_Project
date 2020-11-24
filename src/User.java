@@ -5,8 +5,8 @@ public interface User {
     public String getName();
     public void setName(String name);
 
-    public char getGender();
-    public void setGender(char gender);
+    public char getSex();
+    public void setSex(char sex);
 
     public String getNationality();
     public void setNationality(String nationality);

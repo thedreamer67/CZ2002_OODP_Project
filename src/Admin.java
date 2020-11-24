@@ -2,13 +2,13 @@ public class Admin implements User {
     private String userName;
     private String password;
     private String name;
-    private char gender;
+    private char sex;
     private String nationality;
 
-    public Admin(String name, String userName,char gender,String nationality,String password) {
+    public Admin(String name, String userName,char sex,String nationality,String password) {
 		this.name=name;
 		this.userName=userName;
-		this.gender=gender;
+		this.sex=sex;
 		this.nationality=nationality;
 		this.password=password;
 		
@@ -35,11 +35,11 @@ public class Admin implements User {
         this.password = password;
     }
 
-    public char getGender() {
-		return this.gender;
+    public char getSex() {
+		return this.sex;
 	}
-	public void setGender(char gender) {
-		this.gender=gender;
+	public void setSex(char sex) {
+		this.sex=sex;
 	}
 	
 	public String getNationality() {
