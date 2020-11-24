@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.lang.model.util.ElementScanner14;
+
 public class AdminManager {
     private Admin user;
 
@@ -153,7 +155,8 @@ public class AdminManager {
                 System.out.println("2.Update course name");
                 System.out.println("3.Update course AUs");
                 System.out.println("4.Update course school");
-                System.out.println("5.Exit");
+                System.out.println("5.Update course index");
+                System.out.println("6.Exit");
                 int choice = sc.nextInt();
                 switch (choice) {
                     case (1):   // update course code
@@ -203,8 +206,29 @@ public class AdminManager {
                         dm.printCourse();
                         System.out.println(" "); // extra spacing
                         break;
-                    case (5):   // exit
+                    case (5):   // update course index
+                        System.out.println("Current list of the course index(s): ");
+                        dm.getCourse().get(courseindex).printVacancy();
+                        System.out.println("Enter the course index you want to edit: ");
+                        String tempindex = sc.next();
+                        int indexSelected = dm.findCourseIndex(tempindex, courseindex);
+                        if (indexSelected >= 0)
+                        {
+                            System.out.println("Enter new course index: ");
+                            String newindex = sc.next();
+                            dm.getCourse().get(courseindex).getIndex().get(indexSelected).setIndexNo(newindex);
+                            System.out.println("Course index successfully updated.\n");
+                            System.out.println("Updated list of the course index(s) in " + dm.getCourse().get(courseindex).getCourseCode() + ": ");
+                            dm.getCourse().get(courseindex).printVacancy();
+                            System.out.println(" "); // extra spacing
+                        }
+                        else
+                            System.out.println("No such index exist.");
+                        break;
+                        
+                    case (6):
                         cont = false;
+                        break;
                     }
                 }
             }
