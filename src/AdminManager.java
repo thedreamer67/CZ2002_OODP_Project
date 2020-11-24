@@ -98,12 +98,12 @@ public class AdminManager {
         
         //add course code
         System.out.println("Enter course code:");
-        String tempcourseCode = sc.next();
+        String tempcourseCode = sc.next().toUpperCase();
 
          //validation to ensure there are no existing course code
          while (dm.findCourse(tempcourseCode) != -1){
             System.out.println("Course code exist! Please enter again.");
-            tempcourseCode = sc.next().toUpperCase();
+            tempcourseCode = sc.next();
         };
        
         //add course name
@@ -140,6 +140,7 @@ public class AdminManager {
         if (dm.findCourseIndex(tempindex, 0) != -1){
             System.out.println("Course successfully added.\n");
             System.out.println("Current code of the course(s):");
+            System.out.println(dm.findCourseIndex(tempindex, 0));
         }
         else {
             System.out.println("This is so sad haissss\n");
@@ -426,11 +427,11 @@ public class AdminManager {
     public void deleteStudent(DataManager dm){
         Scanner sc = new Scanner(System.in);
         dm.printStudent();
-        System.out.println("Enter matric number of the student that you wish to delete");
+        System.out.println("Enter student ID that you wish to delete");
         String matricNo = sc.nextLine();
         int indexOfStudent = dm.findStudent(matricNo);
         if(indexOfStudent==-1){
-			System.out.println("Matriculation number not found");
+			System.out.println("Student ID not found");
             return;}
         Student s = dm.getStudent().get(indexOfStudent);
         deleteStudentFromCourse(s, dm); //delete student object from student list in every course index
@@ -457,16 +458,16 @@ public class AdminManager {
         Scanner sc = new Scanner(System.in);
         dm.printCourse();
         System.out.println("Enter course code that you wish to delete");
-        String courseCode = sc.nextLine();
+        String courseCode = sc.nextLine().toUpperCase();
         int indexOfCourse = dm.findCourse(courseCode);
         if(indexOfCourse==-1){
-			System.out.println("Course Code not found");
+			System.out.println("/nCourse code not found");
             return;}
         Course c = dm.getCourse().get(indexOfCourse);
         deleteCourseFromStudent(c, dm); //delete course index objects in all students
         c.deleteCourse(); // delete references to other objects in course and course index
         dm.getCourse().remove(indexOfCourse); //dereference student object in data manager
-        System.out.println("Course successfully deleted");
+        System.out.println("/nCourse successfully deleted");
         dm.printCourse();
     }
     
