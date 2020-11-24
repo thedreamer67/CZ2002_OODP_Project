@@ -98,7 +98,6 @@ public class AdminManager {
     public void addACourse(DataManager dm) {
         Scanner sc = new Scanner(System.in);
 
-        dm.printCourse();
         
         //add course code
         System.out.println("Enter course code:");
