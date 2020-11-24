@@ -414,7 +414,7 @@ public class AdminManager {
         deleteStudentFromCourse(s, dm); //delete student object from student list in every course index
         s.deleteStudent(); //delete all course index objects in student class
         dm.getStudent().remove(indexOfStudent); //dereference student object in data manager
-        System.out.println("Student "+s.getUserName()+" successfully deleted");
+        System.out.println("Student "+s.getName()+" "+s.getUserName()+" successfully deleted");
         dm.printStudent();
     }
 
