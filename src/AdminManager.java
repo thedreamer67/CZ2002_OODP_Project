@@ -227,7 +227,7 @@ public class AdminManager {
                         break;
                     case (4):   // update course school
                         System.out.println("Enter new course school");
-                        String tempcourseschool = sc.next();
+                        String tempcourseschool = sc.next().toUpperCase();
                         while (!tempcourseschool.matches("[A-Za-z]+"))
                         {
                             System.out.println("Invalid course school! Please enter again.");
