@@ -1,5 +1,3 @@
-import java.time.*;
-
 public class Lesson {
 
 	private String type;
