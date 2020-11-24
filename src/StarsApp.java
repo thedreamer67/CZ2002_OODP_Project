@@ -81,7 +81,7 @@ public class StarsApp {
 				do {
 				System.out.println();
 				System.out.println("Student options:");
-				System.out.println("1. Register a course");
+				System.out.println("1. Register for a course");
 				System.out.println("2. Drop a course");
 				System.out.println("3. Check/Print Courses Registered");
 				System.out.println("4. Check/Print Timetable");

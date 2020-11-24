@@ -22,7 +22,7 @@ public class Student implements User {
 		this.courseRegistered = new ArrayList<CourseIndex>();
 		this.waitingList = new ArrayList<String>();
 	}
-	
+
 	public Student(String name, String matricNo, char sex, String nationality, String password, String email) {
 		this.name=name;
 		this.userName=matricNo;
@@ -135,7 +135,7 @@ public class Student implements User {
 
 	public void checkWaitingList() {
 		if(this.waitingList.size()<1){
-			System.out.println("Waiting list is currently empty");
+			System.out.println("Waiting list is currently empty.");
 			return;
 		}
 		System.out.println("\nCourses currently in waiting list of student "+this.name);
@@ -173,7 +173,7 @@ public class Student implements User {
 	// method to print current student's registered courses
 	public void checkRegistered() {
 		if(this.courseRegistered.size()==0){
-			System.out.println("There are no courses registered for this student");
+			System.out.println("There are no courses registered for this student.");
 			return;
 		}
 		System.out.println("\n--------------------------------------------------------------------------------");
@@ -189,7 +189,7 @@ public class Student implements User {
 	// method to print current student's timetable
 	public void printTimetable() {
 		if(this.courseRegistered.size()==0){
-			System.out.println("There are no courses registered for this student");
+			System.out.println("There are no courses registered for this student.");
 			return;
 		}
 		System.out.println("\n-------------------------------------------------------------------------------------------------------------------------------------------");
