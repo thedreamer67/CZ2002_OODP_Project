@@ -62,13 +62,13 @@ public class AdminManager {
             tempMatricNo = sc.next().toUpperCase();
         };
 
-        //Add student's sex
-        System.out.println("Enter student's sex:");
+        //Add student's gender
+        System.out.println("Enter student's gender:");
         char tempGender = Character.toUpperCase(sc.next().charAt(0));
 
         //validation to ensure valid sex
         while (tempGender != 'M' && tempGender != 'F'){
-            System.out.println("Invalid sex! Please enter again.");
+            System.out.println("Invalid gender! Please enter again.");
             tempGender = Character.toUpperCase(sc.next().charAt(0));
         };
 
@@ -97,20 +97,23 @@ public class AdminManager {
 
     public void addACourse(DataManager dm) {
         Scanner sc = new Scanner(System.in);
+
+        dm.printCourse();
         
         //add course code
         System.out.println("Enter course code:");
         String tempcourseCode = sc.next().toUpperCase();
 
          //validation to ensure there are no existing course code
-         while (dm.findCourse(tempcourseCode) != -1){
+        while (dm.findCourse(tempcourseCode) != -1){
             System.out.println("Course code exist! Please enter again.");
             tempcourseCode = sc.next();
         };
        
         //add course name
         System.out.println("Enter course name:");
-        String tempcourseName = sc.next().toUpperCase();
+        String tempcourseName = sc.next();
+        
 
         //add course AUs
         System.out.println("Enter number of AUs the course has:");
@@ -127,26 +130,36 @@ public class AdminManager {
         System.out.println("Enter course's school:");
         String tempschool = sc.next();
 
+        while (!tempschool.matches("[A-Za-z]+"))
+        {
+            System.out.println("Invalid course school! Please enter again.");
+            tempschool = sc.next();
+
+        }
         Course tempcourse = new Course(tempcourseCode, tempcourseName, tempAU, tempschool);
-        
         dm.addCourse(tempcourse);
         
         //find the input course in the arraylist of courses
         int courseSelected = dm.findCourse(tempcourseCode);
 
-        //add course school
+        //add course index
         System.out.println("Enter course index:");
         String tempindex = sc.next();
+
+
+        while (!tempindex.matches("[0-9]+"))
+        {
+            System.out.println("Invalid course index! Please enter again.");
+            tempindex = sc.next();
+        }
+
         dm.getCourse().get(courseSelected).addIndex(tempindex);
-        
-        if (dm.findCourseIndex(tempindex, 0) != -1){
+        int findCourse = dm.findCourse(tempcourseCode);
+        if (dm.findCourseIndex(tempindex, findCourse) == 0){
             System.out.println("Course successfully added.\n");
             System.out.println("Current code of the course(s):");
-            System.out.println(dm.findCourseIndex(tempindex, 0));
         }
-        else {
-            System.out.println("Course unsuccessfully added.\n");
-        }
+      
   
         dm.printCourse();
         System.out.println(" "); // extra spacing
@@ -176,9 +189,10 @@ public class AdminManager {
                 int choice = sc.nextInt();
                 switch (choice) {
                     case (1):   // update course code
-                        System.out.println("Enter new course code");
+                        System.out.println("Enter new course code:");
                         String tempcoursecode = sc.next().toUpperCase();
                         dm.getCourse().get(courseindex).setCourseCode(tempcoursecode);
+
 
                         System.out.println("Course code successfully updated.\n");
                         System.out.println("Current list of the course(s):");
@@ -186,7 +200,7 @@ public class AdminManager {
                         System.out.println(" "); // extra spacing
                         break;
                     case (2):   // update course name
-                        System.out.println("Enter new course name");
+                        System.out.println("Enter new course name:");
                         String tempcoursename = sc.next();
                         dm.getCourse().get(courseindex).setCourseName(tempcoursename);
 
@@ -215,8 +229,12 @@ public class AdminManager {
                     case (4):   // update course school
                         System.out.println("Enter new course school");
                         String tempcourseschool = sc.next();
+                        while (!tempcourseschool.matches("[A-Za-z]+"))
+                        {
+                            System.out.println("Invalid course school! Please enter again.");
+                            tempcourseschool = sc.next();
+                        }
                         dm.getCourse().get(courseindex).setSchool(tempcourseschool);
-
                         System.out.println("Course school successfully updated.\n");
                         System.out.println("Current list of the course(s):");
                         dm.printCourse();
@@ -239,7 +257,7 @@ public class AdminManager {
                             System.out.println(" "); // extra spacing
                         }
                         else
-                            System.out.println("No such index exists.");
+                            System.out.println("No such index exist.");
                         break;
                         
                     case (6):
@@ -344,7 +362,6 @@ public class AdminManager {
             }
             else 
                 System.out.println("No index found.");
-
         }
         else
             System.out.println("No course found.");
