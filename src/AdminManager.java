@@ -22,12 +22,22 @@ public class AdminManager {
 
         //update either start or end date depending on user's choice
         if (choice == 1) {
-            System.out.println("Enter new start date (DD/MM/YYYY)");
-            tempdate = sc.next();
+                System.out.println("Enter new start date (YYYY-MM-DD)");
+                tempdate = sc.next();
+            while (dm.isValid(tempdate)==false) {
+                System.out.println("Date entered is invalid or is not in YYYY-MM-DD format.");
+                System.out.println("Enter new start date again (YYYY-MM-DD)");
+                tempdate = sc.next();
+            }
             dm.editAccessPeriod(tempdate, temp[1]); // update start date while keeping end date same
         } else if (choice == 2) {
-            System.out.println("Enter new end date (DD/MM/YYYY)");
+            System.out.println("Enter new end date (YYYY-MM-DD)");
             tempdate = sc.next();
+            while (dm.isValid(tempdate)==false) {
+                System.out.println("Date entered is invalid or is not in YYYY-MM-DD format.");
+                System.out.println("Enter new start date again (YYYY-MM-DD)");
+                tempdate = sc.next();
+            }
             dm.editAccessPeriod(temp[0], tempdate); // update end date while keeping start date same
         }
 
@@ -60,14 +70,14 @@ public class AdminManager {
             tempMatricNo = sc.next().toUpperCase();
         };
 
-        //Add student's gender
-        System.out.println("Enter student's gender:");
-        char tempGender = Character.toUpperCase(sc.next().charAt(0));
+        //Add student's sex
+        System.out.println("Enter student's sex (F/M):");
+        char tempSex = Character.toUpperCase(sc.next().charAt(0));
 
         //validation to ensure valid sex
-        while (tempGender != 'M' && tempGender != 'F'){
-            System.out.println("Invalid gender! Please enter again.");
-            tempGender = Character.toUpperCase(sc.next().charAt(0));
+        while (tempSex != 'M' && tempSex != 'F'){
+            System.out.println("Invalid sex! Please enter again (F/M):");
+            tempSex = Character.toUpperCase(sc.next().charAt(0));
         };
 
         //Add student's nationality
@@ -82,7 +92,7 @@ public class AdminManager {
         System.out.println("Enter student's email:");
         String tempEmail = sc.next().toLowerCase();
 
-        Student tempStudent = new Student(tempName, tempMatricNo, tempGender, tempNationality, tempPassword, tempEmail, 0);
+        Student tempStudent = new Student(tempName, tempMatricNo, tempSex, tempNationality, tempPassword, tempEmail, 0);
         dm.addStudent(tempStudent);
 
         System.out.println("Student successfully added.\n");
@@ -349,8 +359,8 @@ public class AdminManager {
                         //if there exists a student who have registered for the input course and input index
                         //once both found, if both matches the input course and input index 
                         if (dm.getCourse().get(courseSelected).getIndex().get(indexSelected).getIndexNo() == indexNo.getIndexNo() && courseCode.equals(indexNo.getCourseCode())){
-                            //print student's name, gender and nationality
-                           System.out.println(s.getName() + "\t" + s.getGender() + "\t" + s.getNationality());
+                            //print student's name, sex and nationality
+                           System.out.println(s.getName() + "\t" + s.getSex() + "\t" + s.getNationality());
                        }
                     }
                     
@@ -387,8 +397,8 @@ public class AdminManager {
                         //if there exists a student who have registered for the input course 
                         //and if the course found matches the input course and input index
                         if (dm.getCourse().get(courseSelected).getCourseCode() == indexNo.getCourseCode() && courseCode.equals(indexNo.getCourseCode())){
-                            //print student's name, gender and nationality
-                           System.out.println(s.getName() + "\t" + s.getGender() + "\t" + s.getNationality());
+                            //print student's name, sex and nationality
+                           System.out.println(s.getName() + "\t" + s.getSex() + "\t" + s.getNationality());
                        }
                     }
                     

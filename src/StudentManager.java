@@ -29,7 +29,7 @@ public class StudentManager {
 
 		//checks if registering for this course exceeds the maximum allowable number of AUs
 		Course c = dm.getCourse().get(indexOfCourse);
-		if((c.getNumOfAUs()+this.user.getTotalAUs())>23){
+		if((c.getNumOfAUs()+this.user.getTotalAUs())>dm.getMaxAU()){
 			System.out.println("Addition of this course will exceed the maximum number of AUs allowed, please drop a course first");
 			return;}
 
@@ -296,7 +296,7 @@ public class StudentManager {
 		for(int a=0;a<ci.getLessons().size();a++){
 		//for each lesson in the newly registered course index
 			for(int b=0;b<ci.getLessons().get(a).getLessonWeek().length;b++){
-			// for each item in the lesson week array of newly registered course
+			// for each item in the lesson week array of newly registered course index
 				for(int c=0;c<this.user.getCourseRegistered().size();c++){
 				//for each course registered under the student
 					for(int d=0;d<this.user.getCourseRegistered().get(c).getLessons().size();d++){
@@ -308,8 +308,8 @@ public class StudentManager {
 							int endTimeThis = startTimeThis+(ci.getLessons().get(a).getDuration()*100);
 							int startTimeOther = this.user.getCourseRegistered().get(c).getLessons().get(d).getTime();
 							int endTimeOther = startTimeThis+(this.user.getCourseRegistered().get(c).getLessons().get(d).getTime()*100);
-							if(startTimeThis<endTimeOther || endTimeThis>startTimeOther){
-							//comparing start time and end time, if same compare further, else break since they will never clash
+							if((startTimeThis>startTimeOther && startTimeThis<endTimeOther) || (endTimeThis>startTimeOther && endTimeThis<endTimeOther)) {
+							//comparing start time and end time, if clash compare further, else break since the course indices will never clash if no clash in time
 								for(int e=0;e<this.user.getCourseRegistered().get(c).getLessons().get(d).getLessonWeek().length;e++){
 								//for each item in lesson week array in student's registered courses
 									if(ci.getLessons().get(a).getLessonWeek()[b]==this.user.getCourseRegistered().get(c).getLessons().get(d).getLessonWeek()[e]){
@@ -345,7 +345,7 @@ public class StudentManager {
 				System.out.println("Course assignment failed as the student has clashing timetable"); // comment out after demo
 				return;
 			}
-			if((ci.getNumOfAUs()+s.getTotalAUs())>23){
+			if((ci.getNumOfAUs()+s.getTotalAUs())>dm.getMaxAU()){
 				System.out.println("Course assignment failed as the student has exceeded the maximum number of AUs"); // comment out after demo
 				return;}
 			s.addCourse(ci);

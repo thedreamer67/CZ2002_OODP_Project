@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Student implements User {
 	private String name;
 	private String userName;
-	private char gender;
+	private char sex;
 	private String nationality;
 	private String password;
 	String email;
@@ -11,10 +11,10 @@ public class Student implements User {
 	private ArrayList<CourseIndex> courseRegistered;
 	private ArrayList<String> waitingList;
 	
-	public Student(String name, String matricNo, char gender, String nationality, String password, String email, int totalAUs) {
+	public Student(String name, String matricNo, char sex, String nationality, String password, String email, int totalAUs) {
 		this.name=name;
 		this.userName=matricNo;
-		this.gender=gender;
+		this.sex=sex;
 		this.nationality=nationality;
 		this.password=password;
 		this.email = email;
@@ -22,10 +22,10 @@ public class Student implements User {
 		this.courseRegistered = new ArrayList<CourseIndex>();
 		this.waitingList = new ArrayList<String>();
 	}
-	public Student(String name, String matricNo, char gender, String nationality, String password, String email) {
+	public Student(String name, String matricNo, char sex, String nationality, String password, String email) {
 		this.name=name;
 		this.userName=matricNo;
-		this.gender=gender;
+		this.sex=sex;
 		this.nationality=nationality;
 		this.password=password;
 		this.email = email;
@@ -47,11 +47,11 @@ public class Student implements User {
 		this.userName=userName;
 	}
 	
-	public char getGender() {
-		return this.gender;
+	public char getSex() {
+		return this.sex;
 	}
-	public void setGender(char gender) {
-		this.gender=gender;
+	public void setSex(char sex) {
+		this.sex=sex;
 	}
 	
 	public String getNationality() {
@@ -152,10 +152,12 @@ public class Student implements User {
 			System.out.println("There are no courses registered for this student");
 			return;
 		}
-		System.out.println("\nCourses currently registered for student "+this.name);
+		System.out.println("\n--------------------------------------------------------------------------------");
+		System.out.println("Courses currently registered for student "+this.name);
 		for(int i=0;i<this.courseRegistered.size();i++) {
 			System.out.println((i+1)+". "+this.courseRegistered.get(i).getCourseCode()+"\t"+this.courseRegistered.get(i).getCourseName()+"\t"+this.courseRegistered.get(i).getIndexNo());
 		}
+		System.out.println("--------------------------------------------------------------------------------");
 	}
 	//method to delete all references to other objects
 	public void deleteStudent(){
