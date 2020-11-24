@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
-
 public class AdminManager {
     private Admin user;
 
@@ -416,7 +414,7 @@ public class AdminManager {
         deleteStudentFromCourse(s, dm); //delete student object from student list in every course index
         s.deleteStudent(); //delete all course index objects in student class
         dm.getStudent().remove(indexOfStudent); //dereference student object in data manager
-        System.out.println("Student successfully deleted");
+        System.out.println("Student "+s.getName()+" "+s.getUserName()+" successfully deleted");
         dm.printStudent();
     }
 
@@ -446,7 +444,7 @@ public class AdminManager {
         deleteCourseFromStudent(c, dm); //delete course index objects in all students
         c.deleteCourse(); // delete references to other objects in course and course index
         dm.getCourse().remove(indexOfCourse); //dereference student object in data manager
-        System.out.println("/nCourse successfully deleted");
+        System.out.println("/nCourse "+c.getCourseCode()+" "+c.getCourseName()+" successfully deleted");
         dm.printCourse();
     }
     
