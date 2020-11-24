@@ -172,7 +172,7 @@ public class FileIOManager {
 				String[] noOfLessons = lesson.split("@");
 				for(int a=0;a<noOfLessons.length;a++) { //add lesson into course index
                     String[] lessonAttr = noOfLessons[a].split(",");
-                    String [] lessonWeek = lessonAttr[4].split(" ");
+                    String [] lessonWeek = lessonAttr[5].split(" ");
                     int[] lessonWeekInt = new int[lessonWeek.length];
                     for(int b=0;b<lessonWeek.length;b++) {
                         lessonWeekInt[b] = Integer.parseInt(lessonWeek[b]);
