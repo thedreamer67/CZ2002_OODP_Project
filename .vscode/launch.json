@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-StarsApp<CZ2002_OODP_Project_9c9ddd1f>",
+            "request": "launch",
+            "mainClass": "StarsApp",
+            "projectName": "CZ2002_OODP_Project_9c9ddd1f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-StudentManager<CZ2002_OODP_Project_9c9ddd1f>",
+            "request": "launch",
+            "mainClass": "StudentManager",
+            "projectName": "CZ2002_OODP_Project_9c9ddd1f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SendMailTLS",
+            "request": "launch",
+            "mainClass": "SendMailTLS"
+        }
+    ]
+}

@@ -1,5 +1,14 @@
 import java.util.*;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+
 public class StudentManager {
 	private Student user;
 	
@@ -221,14 +230,47 @@ public class StudentManager {
 		other.addCourse(currentCourseIndex);
 		currentCourseIndex.addStudent(other);
 
-		System.out.println("Swopping of index successful");
+		System.out.println("Swapping of index successful");
 		this.user.checkRegistered();
     }
-    
-    public void sendEmail() {
-        // method to send an email to a student according to the email given, maybe take email as input
+	
+	
+	// method to send an email to a recipient, recipient's email taken as argument
+    public void sendEmail(String recipientEmail, String courseCode, String courseName, String courseIndex) {
+        final String senderEmail = "ntustarsapp@gmail.com"; // sender email
+		final String password = "testing123!"; // sender email account password
+
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+
+		Session session = Session.getInstance(props,
+		  new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(senderEmail, password);
+			}
+		  });
+
+		try {
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(senderEmail));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail)); // to be added an email addr
+			message.setSubject("New Course Allocation for NTU STARS");
+			message.setText("Dear Student, \n\nPlease check your NTU STARS account, as a vacancy for the course " +courseCode+ " " +courseName+ " index " +courseIndex+ " has been opened up and you have been added to the course.");
+
+			Transport.send(message); // send the email to the recipientEmail
+
+			//System.out.println("Done");
+
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
+
 	//method to check if a course code is unique within a student's registered courses
 	public boolean checkUniqueRegistered(String courseCode){
 		for(int i=0;i<this.user.getCourseRegistered().size();i++){
@@ -238,6 +280,7 @@ public class StudentManager {
 		}
 		return true;
 	}
+
 
 	//method to check if a course code is unique within a student's waiting list
 	public boolean checkUniqueWaiting(String courseCode){
@@ -294,20 +337,23 @@ public class StudentManager {
 			int arrayIndexOfStudent = dm.findStudent(matricNo);
 			Student s = dm.getStudent().get(arrayIndexOfStudent);
 			System.out.println("There is now vacancy for course "+ci.getCourseCode()+" with index "+ci.getIndexNo());
-			System.out.println("Assigning course "+ci.getCourseCode()+" to student "+s.getUserName()+" "+s.getName()+"...");
+	
+			System.out.println("Assigning course "+ci.getCourseCode()+" to student "+s.getUserName()+" "+s.getName()+"..."); // only include this part to show during demo, comment out after demo because the current student that is logged in shouldn't be able to know which student was assigned the course
 			StudentManager sm = new StudentManager();
 			sm.setUser(s);
 			if(sm.checkTimetableClash(ci)==true){
-				System.out.println("Course assignment failed as the student has clashing timetable");
+				System.out.println("Course assignment failed as the student has clashing timetable"); // comment out after demo
 				return;
 			}
 			if((ci.getNumOfAUs()+s.getTotalAUs())>23){
-				System.out.println("Course assignment failed as the student has exceeded the maximum number of AUs");
+				System.out.println("Course assignment failed as the student has exceeded the maximum number of AUs"); // comment out after demo
 				return;}
 			s.addCourse(ci);
 			ci.addStudent(s);
 			ci.dequeueWaitingList();
-			System.out.println("Assignment of course successful");
+			s.dropWaitingList(ci.getCourseCode());
+			sendEmail(s.getEmail(), ci.getCourseCode(), ci.getCourseName(), ci.getIndexNo());
+			System.out.println("Assignment of course successful"); // comment out after demo
 		}
 	}
 }
