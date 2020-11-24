@@ -21,7 +21,7 @@ public class LoginManager {
         boolean check1=false;
         boolean check2=false;
         // admin login
-        if(choice==1){
+        if (choice==1) {
             String inputUser="";
             do{
                 System.out.println("Enter Username (enter -1 to quit):");
@@ -30,28 +30,28 @@ public class LoginManager {
                     String[] array = {"-2", "-2"};
                     return array;
                 }
-                if(searchAdmin(inputUser, dm)==false){
+                if (searchAdmin(inputUser, dm)==false) {
                     System.out.println("Incorrect Username, try again.");
                 }
-                else{
+                else {
                     check1=true;
                 }
-            }while(check1==false);
-            do{
+            } while (check1==false);
+            do {
                 System.out.println("Enter Password (enter -1 to quit):");
                 String inputPass = hashing(sc.nextLine());
                 if (inputPass.equals("-1")) {
                     String[] array = {"-2", "-2"};
                     return array;
                 }
-                if(verifyAdmin(inputPass, dm)==false){
+                if (verifyAdmin(inputPass, dm)==false) {
                     System.out.println("Incorrect Password, try again.");
                 }
-                else{
+                else {
                     System.out.println("Successful Login.");
                     check2=true;
                 }
-            }while(check2==false);
+            } while (check2==false);
             String choiceStr = Integer.toString(choice);
             String[] array = new String[2];
             array[0]=choiceStr;
@@ -59,38 +59,38 @@ public class LoginManager {
             return array;
         }
         // student login
-        else{
+        else if (choice==1) {
             if (checkAccess(dm) == true) {
                 String inputUser="";
-                do{
+                do {
                     System.out.println("Enter Username (enter -1 to quit):");
                     inputUser = sc.nextLine().toUpperCase();
                     if (inputUser.equals("-1")) {
                         String[] array = {"-2", "-2"};
                         return array;
                     }
-                    if(searchStudent(inputUser, dm)==false){
+                    if (searchStudent(inputUser, dm)==false) {
                         System.out.println("Incorrect Username, try again.");
                     }
-                    else{
+                    else {
                         check1=true;
                     }
-                }while(check1==false);
-                do{
+                } while (check1==false);
+                do {
                     System.out.println("Enter Password (enter -1 to quit):");
                     String inputPass = hashing(sc.nextLine());
                     if (inputPass.equals(hashing("-1"))) {
                         String[] array = {"-2", "-2"};
                         return array;
                     }
-                    if(verifyStudent(inputPass, dm)==false){
+                    if (verifyStudent(inputPass, dm)==false) {
                         System.out.println("Incorrect Password, try again.");
                     }
-                    else{
+                    else {
                         System.out.println("Successful Login.");
                         check2=true;
                     }
-                }while(check2==false);
+                } while (check2==false);
                 String choiceStr = Integer.toString(choice);
                 String[] array = new String[2];
                 array[0]=choiceStr;
@@ -101,6 +101,11 @@ public class LoginManager {
                 String[] array = {"-1", "-1"};
                 return array;
             }
+        }
+        else {
+            System.out.println("Please enter 1 or 2 only. Please run the programme again to try again.");
+            String[] array = {"-2", "-2"};
+            return array;
         }
     }
 
