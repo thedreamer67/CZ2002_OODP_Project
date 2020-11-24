@@ -100,12 +100,12 @@ public class AdminManager {
         
         //add course code
         System.out.println("Enter course code:");
-        String tempcourseCode = sc.next();
+        String tempcourseCode = sc.next().toUpperCase();
 
          //validation to ensure there are no existing course code
          while (dm.findCourse(tempcourseCode) != -1){
             System.out.println("Course code exist! Please enter again.");
-            tempcourseCode = sc.next().toUpperCase();
+            tempcourseCode = sc.next();
         };
        
         //add course name
@@ -128,10 +128,26 @@ public class AdminManager {
         String tempschool = sc.next();
 
         Course tempcourse = new Course(tempcourseCode, tempcourseName, tempAU, tempschool);
+        
         dm.addCourse(tempcourse);
+        
+        //find the input course in the arraylist of courses
+        int courseSelected = dm.findCourse(tempcourseCode);
 
-        System.out.println("Course successfully added.\n");
-        System.out.println("Current code of the course(s):");
+        //add course school
+        System.out.println("Enter course index:");
+        String tempindex = sc.next();
+        dm.getCourse().get(courseSelected).addIndex(tempindex);
+        
+        if (dm.findCourseIndex(tempindex, 0) != -1){
+            System.out.println("Course successfully added.\n");
+            System.out.println("Current code of the course(s):");
+            System.out.println(dm.findCourseIndex(tempindex, 0));
+        }
+        else {
+            System.out.println("Course unsuccessfully added.\n");
+        }
+  
         dm.printCourse();
         System.out.println(" "); // extra spacing
     }
@@ -273,12 +289,31 @@ public class AdminManager {
             else 
                 System.out.println("No index found.");
               
-                
-
         }
         else
             System.out.println("No course found.");
 
+        //----------------------------------OLD CODES-------------------------------------------
+        /*List<Course> courses = app.getCourse();
+        for (Course c : courses) {
+            if (courseCode.equals(c.getCourseCode())) {
+                ArrayList<CourseIndex> index = c.getIndex();
+                System.out.println("Course " + c.getCourseCode() + " has the following indexes: ");
+                //Print the available indexes
+                for (CourseIndex courseindex : index){
+                    System.out.println("Index: " + courseindex.getIndexNo());
+                }
+                System.out.println("Enter the course index of the course you wish to check vacancy for:");
+                String indexinput = sc.next();
+                for (CourseIndex courseindex : index) {
+                    if (indexinput.equals(courseindex.getIndexNo()))
+                        System.out.println("Vacancies for " + courseindex.getIndexNo() + " : " + courseindex.getVacancy());
+                }
+                //int sum = vacancies.stream().mapToInt(i -> i.intValue()).sum();
+                //System.out.println("Vacancies for " + c.getCourseCode() + " : " + sum);
+            }
+        }*/
+        //--------------------------------------------------------------------------------------
     }
 
     public void printStudentByIndex(DataManager dm){
@@ -335,6 +370,27 @@ public class AdminManager {
         else
             System.out.println("No course found.");
         
+        //----------------------------------OLD CODES-------------------------------------------
+        /*ArrayList<Student> students = app.getStudent();
+        ArrayList<Course> c = app.getCourse();
+        for (Course course: c){
+            if (courseCode.equals(course.getCourseCode())){
+                course.printVacancy();
+                System.out.println("Enter the course index of the course that you wish to print the student list from:");
+                String courseIndex = sc.next().toUpperCase();
+                for (Student s : students) {
+                    ArrayList<CourseIndex> index = s.getCourseRegistered();
+                    for (CourseIndex indexNo: index){
+                        //System.out.println("Students " + s.getUserName() + " " + indexNo.getIndexNo());
+                        if (courseIndex.equals(indexNo.getIndexNo()) && courseCode.equals(indexNo.getCourseCode())){
+                           System.out.println(s.getName() + "\t" + s.getGender() + "\t" + s.getNationality());
+                       }
+                   }
+               }
+               
+            }
+       }*/
+       //--------------------------------------------------------------------------------------
    }
 
 
@@ -370,9 +426,86 @@ public class AdminManager {
         else
             System.out.println("No course found.");
         
-        
+        //----------------------------------OLD CODES-------------------------------------------
+        /*ArrayList<Student> students = app.getStudent();
+         ArrayList<Course> c = app.getCourse();
+         for (Course course: c){
+             if (courseCode.equals(course.getCourseCode())){
+                 //course.printVacancy();
+                 for (Student s : students) {
+                     ArrayList<CourseIndex> index = s.getCourseRegistered();
+                     for (CourseIndex indexNo: index){
+                         //System.out.println("Students " + s.getUserName() + " " + indexNo.getIndexNo());
+                         if (courseCode.equals(indexNo.getCourseCode()) && courseCode.equals(course.getCourseCode())){
+                            System.out.println(s.getName() + "\t" + s.getGender() + "\t" + s.getNationality());
+                        }
+                    }
+                }
+                
+            }
+        }*/
+        //--------------------------------------------------------------------------------------
     }
-        
+    
+    //method to delete specific students
+    public void deleteStudent(DataManager dm){
+        Scanner sc = new Scanner(System.in);
+        dm.printStudent();
+        System.out.println("Enter student ID that you wish to delete");
+        String matricNo = sc.nextLine();
+        int indexOfStudent = dm.findStudent(matricNo);
+        if(indexOfStudent==-1){
+			System.out.println("Student ID not found");
+            return;}
+        Student s = dm.getStudent().get(indexOfStudent);
+        deleteStudentFromCourse(s, dm); //delete student object from student list in every course index
+        s.deleteStudent(); //delete all course index objects in student class
+        dm.getStudent().remove(indexOfStudent); //dereference student object in data manager
+        System.out.println("Student successfully deleted");
+        dm.printStudent();
+    }
+
+    //method to delete student object from every course index
+    public void deleteStudentFromCourse(Student s,DataManager dm){
+        for(int i=0;i<dm.getCourse().size();i++){ //for every course
+            for(int j=0;j<dm.getCourse().get(i).getIndex().size();j++){ //for every course index
+                for(int a=0;a<dm.getCourse().get(i).getIndex().get(j).getStudentList().size();a++){ //for every item in student list of course index
+                    if(s.getUserName().equals(dm.getCourse().get(i).getIndex().get(j).getStudentList().get(a).getUserName())){ //if user ID are the same
+                        dm.getCourse().get(i).getIndex().get(j).getStudentList().remove(a); //remove student object from course index student list
+                    }
+                }
+            }
+        }
+    }
+
+    public void deleteCourse(DataManager dm){
+        Scanner sc = new Scanner(System.in);
+        dm.printCourse();
+        System.out.println("Enter course code that you wish to delete");
+        String courseCode = sc.nextLine().toUpperCase();
+        int indexOfCourse = dm.findCourse(courseCode);
+        if(indexOfCourse==-1){
+			System.out.println("/nCourse code not found");
+            return;}
+        Course c = dm.getCourse().get(indexOfCourse);
+        deleteCourseFromStudent(c, dm); //delete course index objects in all students
+        c.deleteCourse(); // delete references to other objects in course and course index
+        dm.getCourse().remove(indexOfCourse); //dereference student object in data manager
+        System.out.println("/nCourse successfully deleted");
+        dm.printCourse();
+    }
+    
+    //method to delete all courses registered in students
+    public void deleteCourseFromStudent(Course c,DataManager dm){
+        for(int i=0;i<dm.getStudent().size();i++){
+            for(int j=0;j<dm.getStudent().get(i).getCourseRegistered().size();j++){
+                if(c.getCourseCode().equals(dm.getStudent().get(i).getCourseRegistered().get(j).getCourseCode())){
+                    dm.getStudent().get(i).getCourseRegistered().remove(j);
+                    break;
+                }
+            }
+        }
+    }
 
     
 }

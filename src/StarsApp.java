@@ -10,7 +10,7 @@ public class StarsApp {
 		file.readCourse(dm);
 		file.readStudent(dm);
 		file.readCourseIndex(dm);
-		file.readAccessperiod(dm);
+		file.readAccessPeriod(dm);
 		
 		LoginManager lm = new LoginManager();
 		String[] array = lm.Login(dm);
@@ -33,12 +33,14 @@ public class StarsApp {
 				System.out.println();
 				System.out.println("1. Edit student access period");
 				System.out.println("2. Add a student");
-				System.out.println("3. Add a course");
-				System.out.println("4. Update a course");
-				System.out.println("5. Check availability slot for an index");
-				System.out.println("6. Print student list by index");
-				System.out.println("7. Print student list by course");
-				System.out.println("8. Exit");
+				System.out.println("3. Delete a student");
+				System.out.println("4. Add a course");
+				System.out.println("5. Delete a course");
+				System.out.println("6. Update a course");
+				System.out.println("7. Check availability slot for an index");
+				System.out.println("8. Print student list by index");
+				System.out.println("9. Print student list by course");
+				System.out.println("10. Exit");
 				System.out.println("Enter Choice");
 				choice = sc.nextInt();
 				if(choice==1) 
@@ -46,16 +48,20 @@ public class StarsApp {
 				else if(choice==2)
 					am.addAStudent(dm);
 				else if(choice==3)
-					am.addACourse(dm);
+					am.deleteStudent(dm);
 				else if(choice==4)
-					am.UpdateACourse(dm);	
+					am.addACourse(dm);
 				else if(choice==5)
-					am.checkVacancy(dm);
+					am.deleteCourse(dm);
 				else if(choice==6)
-					am.printStudentByIndex(dm);
+					am.UpdateACourse(dm);	
 				else if(choice==7)
+					am.checkVacancy(dm);
+				else if(choice==8)
+					am.printStudentByIndex(dm);
+				else if(choice==9)
 					am.printStudentByCourse(dm);
-			}while(choice!=8);
+			}while(choice!=10);
 			break; 
 
 			case 2: 
@@ -102,6 +108,11 @@ public class StarsApp {
 			break;
 				
 		}
+
+		file.writeCourse(dm);
+		file.writeStudent(dm);
+		file.writeCourseIndex(dm);
+		file.writeAccessPeriod(dm);
 		
 		
 	}
