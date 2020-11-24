@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - StarsApp",
+            "request": "launch",
+            "mainClass": "StarsApp",
+            "projectName": "CZ2002_OODP_Project_50165abc"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - DataManager",
             "request": "launch",
             "mainClass": "DataManager",
