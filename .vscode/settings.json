@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\Shauna\\Documents\\ntu\\y2s1\\cz2002 oodp\\project\\javamail\\javax.mail.jar",
+        "c:\\Users\\Shauna\\Documents\\ntu\\y2s1\\cz2002 oodp\\project\\javamail\\jakarta.activation-1.2.1.jar"
+    ]
+}

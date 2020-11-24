@@ -60,13 +60,13 @@ public class AdminManager {
             tempMatricNo = sc.next().toUpperCase();
         };
 
-        //Add student's sex
-        System.out.println("Enter student's sex:");
+        //Add student's gender
+        System.out.println("Enter student's gender:");
         char tempGender = Character.toUpperCase(sc.next().charAt(0));
 
         //validation to ensure valid sex
         while (tempGender != 'M' && tempGender != 'F'){
-            System.out.println("Invalid sex! Please enter again.");
+            System.out.println("Invalid gender! Please enter again.");
             tempGender = Character.toUpperCase(sc.next().charAt(0));
         };
 
@@ -95,20 +95,22 @@ public class AdminManager {
 
     public void addACourse(DataManager dm) {
         Scanner sc = new Scanner(System.in);
+
         
         //add course code
         System.out.println("Enter course code:");
         String tempcourseCode = sc.next().toUpperCase();
 
          //validation to ensure there are no existing course code
-         while (dm.findCourse(tempcourseCode) != -1){
+        while (dm.findCourse(tempcourseCode) != -1){
             System.out.println("Course code exist! Please enter again.");
             tempcourseCode = sc.next();
         };
        
         //add course name
         System.out.println("Enter course name:");
-        String tempcourseName = sc.next().toUpperCase();
+        String tempcourseName = sc.next();
+        
 
         //add course AUs
         System.out.println("Enter number of AUs the course has:");
@@ -125,26 +127,36 @@ public class AdminManager {
         System.out.println("Enter course's school:");
         String tempschool = sc.next();
 
+        while (!tempschool.matches("[A-Za-z]+"))
+        {
+            System.out.println("Invalid course school! Please enter again.");
+            tempschool = sc.next();
+
+        }
         Course tempcourse = new Course(tempcourseCode, tempcourseName, tempAU, tempschool);
-        
         dm.addCourse(tempcourse);
         
         //find the input course in the arraylist of courses
         int courseSelected = dm.findCourse(tempcourseCode);
 
-        //add course school
+        //add course index
         System.out.println("Enter course index:");
         String tempindex = sc.next();
+
+
+        while (!tempindex.matches("[0-9]+"))
+        {
+            System.out.println("Invalid course index! Please enter again.");
+            tempindex = sc.next();
+        }
+
         dm.getCourse().get(courseSelected).addIndex(tempindex);
-        
-        if (dm.findCourseIndex(tempindex, 0) != -1){
+        int findCourse = dm.findCourse(tempcourseCode);
+        if (dm.findCourseIndex(tempindex, findCourse) == 0){
             System.out.println("Course successfully added.\n");
             System.out.println("Current code of the course(s):");
-            System.out.println(dm.findCourseIndex(tempindex, 0));
         }
-        else {
-            System.out.println("Course unsuccessfully added.\n");
-        }
+      
   
         dm.printCourse();
         System.out.println(" "); // extra spacing
@@ -169,13 +181,15 @@ public class AdminManager {
                 System.out.println("2.Update course name");
                 System.out.println("3.Update course AUs");
                 System.out.println("4.Update course school");
-                System.out.println("5.Exit");
+                System.out.println("5.Update course index");
+                System.out.println("6.Exit");
                 int choice = sc.nextInt();
                 switch (choice) {
                     case (1):   // update course code
-                        System.out.println("Enter new course code");
+                        System.out.println("Enter new course code:");
                         String tempcoursecode = sc.next().toUpperCase();
                         dm.getCourse().get(courseindex).setCourseCode(tempcoursecode);
+
 
                         System.out.println("Course code successfully updated.\n");
                         System.out.println("Current list of the course(s):");
@@ -183,7 +197,7 @@ public class AdminManager {
                         System.out.println(" "); // extra spacing
                         break;
                     case (2):   // update course name
-                        System.out.println("Enter new course name");
+                        System.out.println("Enter new course name:");
                         String tempcoursename = sc.next();
                         dm.getCourse().get(courseindex).setCourseName(tempcoursename);
 
@@ -212,15 +226,40 @@ public class AdminManager {
                     case (4):   // update course school
                         System.out.println("Enter new course school");
                         String tempcourseschool = sc.next();
+                        while (!tempcourseschool.matches("[A-Za-z]+"))
+                        {
+                            System.out.println("Invalid course school! Please enter again.");
+                            tempcourseschool = sc.next();
+                        }
                         dm.getCourse().get(courseindex).setSchool(tempcourseschool);
-
                         System.out.println("Course school successfully updated.\n");
                         System.out.println("Current list of the course(s):");
                         dm.printCourse();
                         System.out.println(" "); // extra spacing
                         break;
-                    case (5):   // exit
+                    case (5):   // update course index
+                        System.out.println("Current list of the course index(s): ");
+                        dm.getCourse().get(courseindex).printVacancy();
+                        System.out.println("Enter the course index you want to edit: ");
+                        String tempindex = sc.next();
+                        int indexSelected = dm.findCourseIndex(tempindex, courseindex);
+                        if (indexSelected >= 0)
+                        {
+                            System.out.println("Enter new course index: ");
+                            String newindex = sc.next();
+                            dm.getCourse().get(courseindex).getIndex().get(indexSelected).setIndexNo(newindex);
+                            System.out.println("Course index successfully updated.\n");
+                            System.out.println("Updated list of the course index(s) in " + dm.getCourse().get(courseindex).getCourseCode() + ": ");
+                            dm.getCourse().get(courseindex).printVacancy();
+                            System.out.println(" "); // extra spacing
+                        }
+                        else
+                            System.out.println("No such index exist.");
+                        break;
+                        
+                    case (6):
                         cont = false;
+                        break;
                     }
                 }
             }
@@ -269,27 +308,6 @@ public class AdminManager {
         else
             System.out.println("No course found.");
 
-        //----------------------------------OLD CODES-------------------------------------------
-        /*List<Course> courses = app.getCourse();
-        for (Course c : courses) {
-            if (courseCode.equals(c.getCourseCode())) {
-                ArrayList<CourseIndex> index = c.getIndex();
-                System.out.println("Course " + c.getCourseCode() + " has the following indexes: ");
-                //Print the available indexes
-                for (CourseIndex courseindex : index){
-                    System.out.println("Index: " + courseindex.getIndexNo());
-                }
-                System.out.println("Enter the course index of the course you wish to check vacancy for:");
-                String indexinput = sc.next();
-                for (CourseIndex courseindex : index) {
-                    if (indexinput.equals(courseindex.getIndexNo()))
-                        System.out.println("Vacancies for " + courseindex.getIndexNo() + " : " + courseindex.getVacancy());
-                }
-                //int sum = vacancies.stream().mapToInt(i -> i.intValue()).sum();
-                //System.out.println("Vacancies for " + c.getCourseCode() + " : " + sum);
-            }
-        }*/
-        //--------------------------------------------------------------------------------------
     }
 
     public void printStudentByIndex(DataManager dm){
@@ -341,32 +359,10 @@ public class AdminManager {
             }
             else 
                 System.out.println("No index found.");
-
         }
         else
             System.out.println("No course found.");
         
-        //----------------------------------OLD CODES-------------------------------------------
-        /*ArrayList<Student> students = app.getStudent();
-        ArrayList<Course> c = app.getCourse();
-        for (Course course: c){
-            if (courseCode.equals(course.getCourseCode())){
-                course.printVacancy();
-                System.out.println("Enter the course index of the course that you wish to print the student list from:");
-                String courseIndex = sc.next().toUpperCase();
-                for (Student s : students) {
-                    ArrayList<CourseIndex> index = s.getCourseRegistered();
-                    for (CourseIndex indexNo: index){
-                        //System.out.println("Students " + s.getUserName() + " " + indexNo.getIndexNo());
-                        if (courseIndex.equals(indexNo.getIndexNo()) && courseCode.equals(indexNo.getCourseCode())){
-                           System.out.println(s.getName() + "\t" + s.getGender() + "\t" + s.getNationality());
-                       }
-                   }
-               }
-               
-            }
-       }*/
-       //--------------------------------------------------------------------------------------
    }
 
 
@@ -401,26 +397,7 @@ public class AdminManager {
         }
         else
             System.out.println("No course found.");
-        
-        //----------------------------------OLD CODES-------------------------------------------
-        /*ArrayList<Student> students = app.getStudent();
-         ArrayList<Course> c = app.getCourse();
-         for (Course course: c){
-             if (courseCode.equals(course.getCourseCode())){
-                 //course.printVacancy();
-                 for (Student s : students) {
-                     ArrayList<CourseIndex> index = s.getCourseRegistered();
-                     for (CourseIndex indexNo: index){
-                         //System.out.println("Students " + s.getUserName() + " " + indexNo.getIndexNo());
-                         if (courseCode.equals(indexNo.getCourseCode()) && courseCode.equals(course.getCourseCode())){
-                            System.out.println(s.getName() + "\t" + s.getGender() + "\t" + s.getNationality());
-                        }
-                    }
-                }
-                
-            }
-        }*/
-        //--------------------------------------------------------------------------------------
+    
     }
     
     //method to delete specific students
