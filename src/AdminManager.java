@@ -239,7 +239,7 @@ public class AdminManager {
                             System.out.println(" "); // extra spacing
                         }
                         else
-                            System.out.println("No such index exist.");
+                            System.out.println("No such index exists.");
                         break;
                         
                     case (6):
