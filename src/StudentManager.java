@@ -292,43 +292,39 @@ public class StudentManager {
 		return true;
 	}
 
-	public boolean checkTimetableClash(CourseIndex ci){
-		for(int a=0;a<ci.getLessons().size();a++){
-		//for each lesson in the newly registered course index
-			for(int b=0;b<ci.getLessons().get(a).getLessonWeek().length;b++){
-			// for each item in the lesson week array of newly registered course index
-				for(int c=0;c<this.user.getCourseRegistered().size();c++){
-				//for each course registered under the student
-					for(int d=0;d<this.user.getCourseRegistered().get(c).getLessons().size();d++){
-					//for each lesson under this student's courses
-						if(ci.getLessons().get(a).getDayOfWeek().equals(this.user.getCourseRegistered().get(c).getLessons().get(d).getDayOfWeek())){
-						//comparing day of the week, if same compare further, else break since different day of week will never clash
-							int startTimeThis = ci.getLessons().get(a).getTime();
-							// multiply duration by 100 and add to start time to get end time since duration is in hours and start time is in 24hr format
-							int endTimeThis = startTimeThis+(ci.getLessons().get(a).getDuration()*100);
-							int startTimeOther = this.user.getCourseRegistered().get(c).getLessons().get(d).getTime();
-							int endTimeOther = startTimeThis+(this.user.getCourseRegistered().get(c).getLessons().get(d).getTime()*100);
-							if((startTimeThis>startTimeOther && startTimeThis<endTimeOther) || (endTimeThis>startTimeOther && endTimeThis<endTimeOther)) {
-							//comparing start time and end time, if clash compare further, else break since the course indices will never clash if no clash in time
-								for(int e=0;e<this.user.getCourseRegistered().get(c).getLessons().get(d).getLessonWeek().length;e++){
-								//for each item in lesson week array in student's registered courses
-									if(ci.getLessons().get(a).getLessonWeek()[b]==this.user.getCourseRegistered().get(c).getLessons().get(d).getLessonWeek()[e]){
-									//if 1 of the weeks clash
-										return true; //indicating there is a clash
+
+	// method to check if there is a clash in timetable with the new course and the student's registered courses
+	public boolean checkTimetableClash(CourseIndex ci) {
+		// for each lesson of the new course ci
+		for (Lesson newL : ci.getLessons()) {
+			// for each registered course of the current student
+			for (CourseIndex regC : this.user.getCourseRegistered()) {
+				// for each lesson of a registered course
+				for (Lesson regL : regC.getLessons()) {
+					// if dayOfWeek of new course and registered course clash, move on to check for clash
+					if (newL.getDayOfWeek().equals(regL.getDayOfWeek())) {
+						int startTimeNew = newL.getTime();
+						int endTimeNew = startTimeNew + 100*newL.getDuration();
+						int startTimeReg = regL.getTime();
+						int endTimeReg = startTimeReg + 100*regL.getDuration();
+						// if time of new course and registered course clash, move on to check for clash
+						if ((startTimeNew>startTimeReg && startTimeNew<endTimeReg) || (endTimeNew>startTimeReg && endTimeNew<endTimeReg)) {
+							for (int i : newL.getLessonWeek()) {
+								for (int j : regL.getLessonWeek()) {
+									// if there is a lesson week that is the same for the new course and the registered course, there is a clash in timetable
+									if (i==j) {
+										return true; // return true because there is a clash in timetable between the new course and (at least one) of the student's registered courses
 									}
+								}
 							}
 						}
-						else
-							break;
-						}
-						else
-							break;
 					}
 				}
 			}
 		}
-		return false; //indicates no clash
+		return false; // all the loops finished running without returning true, thus indicating no clash, so return false
 	}
+
 
 	//method to register student once there is vacancy for a course
 	public void updateWaitingList(CourseIndex ci, DataManager dm){
