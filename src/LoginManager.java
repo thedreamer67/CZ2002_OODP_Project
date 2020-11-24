@@ -9,7 +9,14 @@ public class LoginManager {
     public String[] Login(DataManager dm){
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter 1 for admin, 2 for Student");
-        int choice = sc.nextInt();
+        do {
+            if (!sc.hasNextInt()) {
+                sc.nextLine();
+                System.out.println("Please enter 1 or 2 only.");
+                System.out.println("Enter 1 for admin, 2 for Student");
+            }
+        } while (!sc.hasNextInt());
+        int choice = sc.nextInt();        
         sc.nextLine();
         boolean check1=false;
         boolean check2=false;
