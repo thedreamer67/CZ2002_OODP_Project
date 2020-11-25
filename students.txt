@@ -1,5 +1,5 @@
-Ho Khee Gin	U1923622G	M	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	hokh0001@e.ntu.edu.sg	EE8086 35004,CZ2007 10256	7
-Shauna Tan	U1840754E	F	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	shau0013@e.ntu.edu.sg		0
+Ho Khee Gin	U1923622G	M	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	hokh0001@e.ntu.edu.sg	CZ2007 10256,CZ2005 10229,EE8086 35004	11
+Shauna Tan	U1840754E	F	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	shau0013@e.ntu.edu.sg	CZ2002 10198,CZ2007 10255,CZ2003 10210,CZ2001 10185,EE8086 35003	17
 Jane Smith	U1839204L	F	England	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	janesmith@e.ntu.edu.sg		0
 Bree Robbins	U1903883K	F	Canada	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	breerobbins@e.ntu.edu.sg		0
 Peter Tan	U1918229I	M	Singapore	b822f1cd2dcfc685b47e83e3980289fd5d8e3ff3a82def24d7d1d68bb272eb32	petertan@e.ntu.edu.sg		0
