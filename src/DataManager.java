@@ -74,7 +74,7 @@ public class DataManager {
 	public void printStudent() {
 		for (int i = 0; i < this.getStudent().size(); i++) {
             Student s = this.getStudent().get(i);
-            System.out.println((i + 1) + ". " + s.getName());
+            System.out.println((i + 1) +". "+ s.getUserName() +" "+ s.getName());
         }
 	}
 
@@ -110,7 +110,7 @@ public class DataManager {
 		return -1; //else return -1 indicating student matric number do not exist in the current list
 	}
 
-	
+
 	public int getMaxAU() {
 		return this.MAX_AU;
 	}

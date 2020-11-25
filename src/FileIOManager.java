@@ -70,7 +70,7 @@ public class FileIOManager {
 					String[] values2 = line2.split("\t");
 					if(values2.length>6){ //if there is courses that the student already registered
 						// create Student object, but without course attribute
-						dm.addStudent(new Student(values2[0],values2[1],values2[2].charAt(0),values2[3],values2[4],values2[5],Integer.parseInt(values2[7])));
+						dm.addStudent(new Student(values2[0],values2[1],values2[2].charAt(0),values2[3],values2[4],values2[5]));
 						String[] courses = values2[6].split(",");    // separate different courses
 						for(int i=0;i<courses.length;i++) {
 							String[] courseIndex = courses[i].split(" ");   // separate course index from respective course
@@ -153,9 +153,10 @@ public class FileIOManager {
 				if(values3.length>4){ //if course already have students registered for it
 					checkRegistered=true;
 					student = values3[4];
-					if(values3.length>5) //if course has a waiting list
-					checkWaiting=true;
+					if(values3.length>5) { //if course has a waiting list
+						checkWaiting=true;
 						waiting = values3[5];
+					}
 				}
 				for(int i=0;i<dm.getCourse().size();i++) {
                     if(course.equals(dm.getCourse().get(i).getCourseCode())){
@@ -193,7 +194,7 @@ public class FileIOManager {
 						for(int e=0;e<dm.getStudent().size();e++){
 							if(matricNo.equals(dm.getStudent().get(e).getUserName())){
 								Student s = dm.getStudent().get(e);
-								dm.getCourse().get(arrayindex1).getIndex().get(arrayindex2).addStudent(s);
+								dm.getCourse().get(arrayindex1).getIndex().get(arrayindex2).addStudentFile(s);
 							}
 						}
 					}

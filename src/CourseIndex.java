@@ -60,7 +60,11 @@ public class CourseIndex extends Course {
 
 	public void addStudent(Student s) {
 		this.studentList.add(s);
-		this.vacancy=this.vacancy-1;
+		this.vacancy-=1;
+	}
+
+	public void addStudentFile(Student s) {
+		this.studentList.add(s);
 	}
 
 	public void removeStudent(Student s) {
@@ -70,7 +74,7 @@ public class CourseIndex extends Course {
 				studentList.remove(i);
 			}
 		}
-		this.vacancy=this.vacancy+1;
+		this.vacancy+=1;
 	}
 
 

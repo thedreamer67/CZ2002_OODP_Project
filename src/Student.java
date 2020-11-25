@@ -12,11 +12,11 @@ public class Student implements User {
 	private ArrayList<String> waitingList;
 	
 	public Student(String name, String matricNo, char sex, String nationality, String password, String email, int totalAUs) {
-		this.name=name;
-		this.userName=matricNo;
-		this.sex=sex;
-		this.nationality=nationality;
-		this.password=password;
+		this.name = name;
+		this.userName = matricNo;
+		this.sex = sex;
+		this.nationality = nationality;
+		this.password = password;
 		this.email = email;
 		this.totalAUs = totalAUs;
 		this.courseRegistered = new ArrayList<CourseIndex>();
@@ -24,12 +24,13 @@ public class Student implements User {
 	}
 
 	public Student(String name, String matricNo, char sex, String nationality, String password, String email) {
-		this.name=name;
-		this.userName=matricNo;
-		this.sex=sex;
-		this.nationality=nationality;
-		this.password=password;
+		this.name = name;
+		this.userName = matricNo;
+		this.sex = sex;
+		this.nationality = nationality;
+		this.password = password;
 		this.email = email;
+		this.totalAUs = 0;
 		this.courseRegistered = new ArrayList<CourseIndex>();
 		this.waitingList = new ArrayList<String>();
 	}
