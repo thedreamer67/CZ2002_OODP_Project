@@ -195,7 +195,7 @@ public class StudentManager {
 	}
 	
 
-	public void swopIndex(DataManager dm) {
+	public void swapIndex(DataManager dm) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Matriculation Number of the Student you wish to swap with:");
 		String matricNo = sc.next().toUpperCase();

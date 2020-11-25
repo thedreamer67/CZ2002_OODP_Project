@@ -107,7 +107,6 @@ public class Student implements User {
 	public void addCourse(CourseIndex index) {
 		courseRegistered.add(index);
 		this.totalAUs += index.getNumOfAUs();
-		//index.addStudent(this);
 	}
 
 	public void dropCourse(CourseIndex index) {

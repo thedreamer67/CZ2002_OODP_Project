@@ -111,7 +111,7 @@ public class StarsApp {
 				else if(choice==8)
 					sm.changeIndex(dm);
 				else if(choice==9)
-					sm.swopIndex(dm);
+					sm.swapIndex(dm);
 				} while(choice!=10);
 				break;
 
