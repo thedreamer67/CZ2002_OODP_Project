@@ -356,22 +356,22 @@ public class StudentManager {
 			Student s = dm.getStudent().get(arrayIndexOfStudent);
 			System.out.println("There is now vacancy for course "+ci.getCourseCode()+" with index "+ci.getIndexNo());
 	
-			System.out.println("Assigning course "+ci.getCourseCode()+" to student "+s.getUserName()+" "+s.getName()+"..."); // only include this part to show during demo, comment out after demo because the current student that is logged in shouldn't be able to know which student was assigned the course
+			// System.out.println("Assigning course "+ci.getCourseCode()+" to student "+s.getUserName()+" "+s.getName()+"..."); // only include this part to show during demo, comment out after demo because the current student that is logged in shouldn't be able to know which student was assigned the course
 			StudentManager sm = new StudentManager();
 			sm.setUser(s);
-			if(sm.checkTimetableClash(ci)==true){
-				System.out.println("Course assignment failed as the student has clashing timetable."); // comment out after demo
-				return;
-			}
-			if((ci.getNumOfAUs()+s.getTotalAUs())>dm.getMaxAU()){
-				System.out.println("Course assignment failed as the student has exceeded the maximum number of AUs."); // comment out after demo
-				return;}
+			// if(sm.checkTimetableClash(ci)==true){
+				// System.out.println("Course assignment failed as the student has clashing timetable."); // comment out after demo
+				// return;
+			// }
+			// if((ci.getNumOfAUs()+s.getTotalAUs())>dm.getMaxAU()){
+				// System.out.println("Course assignment failed as the student has exceeded the maximum number of AUs."); // comment out after demo
+				// return;}
 			s.addCourse(ci);
 			ci.addStudent(s);
 			ci.dequeueWaitingList();
 			s.dropWaitingList(ci.getCourseCode());
 			sendEmail(s.getEmail(), ci.getCourseCode(), ci.getCourseName(), ci.getIndexNo());
-			System.out.println("Assignment of course successful."); // comment out after demo
+			// System.out.println("Assignment of course successful."); // comment out after demo
 		}
 	}
 }
